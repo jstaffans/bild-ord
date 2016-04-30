@@ -21,5 +21,9 @@
   "Top title bar shown on some pages"
   []
   [:nav.clearfix.title-bar
-   [:div.sm-col.p2
+   [:div.sm-col
     [:h1.m0 "Bild och ord"]]])
+
+(defn include-svg
+  [group index]
+  [:img.illustration.p2 {:src (str "/svg/" group "/" index ".svg")}])
