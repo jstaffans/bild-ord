@@ -24,6 +24,10 @@
    [:div.sm-col
     [:h1.m0 "Bild och ord"]]])
 
-(defn include-svg
+(defn include-illustration-svg
   [group index]
-  [:img.illustration.p2 {:src (str "/svg/" group "/" index ".svg")}])
+  [:img.illustration.m2 {:src (str "/svg/" group "/" index ".svg")}])
+
+(defn include-box-svg
+  [index]
+  [:img.box.m2 {:src (str "/svg/box.svg")}])
