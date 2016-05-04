@@ -18,7 +18,8 @@
                  [hiccup "1.0.5"]
                  [org.postgresql/postgresql "9.4.1208"]
                  [duct/hikaricp-component "0.1.0"]
-                 [duct/ragtime-component "0.1.3"]]
+                 [duct/ragtime-component "0.1.3"]
+                 [bidi "2.0.9"]]
   :plugins [[lein-environ "1.0.2"]
             [lein-gen "0.2.2"]
             [lein-cljsbuild "1.1.2"]
@@ -42,7 +43,7 @@
 
   :cljsbuild
   {:builds
-   {:main {:jar true
+   {:prod {:jar true
            :source-paths ["src"]
            :compiler {:output-to "target/cljsbuild/bild_ord/public/js/main.js"
                       :optimizations :advanced}}}}
@@ -65,7 +66,8 @@
                                   [kerodon "0.7.0"]
                                   [com.cemerick/piggieback "0.2.1"]
                                   [duct/figwheel-component "0.3.2"]
-                                  [figwheel "0.5.0-6"]]
+                                  [figwheel "0.5.0-6"]
+                                  [binaryage/devtools "0.6.1"]]
                    :source-paths ["dev"]
                    :repl-options {:init-ns user
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}

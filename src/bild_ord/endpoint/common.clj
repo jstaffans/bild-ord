@@ -10,12 +10,11 @@
     [:head
      [:title "Bild och ord"]
      (include-css "/assets/basscss/basscss.css")
-     (include-css "/css/main.css")
-     (include-js "/js/main.js")]
+     (include-css "/css/main.css")]
     [:body
      (when-let [class (:class options)]
        {:class class})
-     body])))
+     (conj body (include-js "/js/main.js"))])))
 
 (defn title-bar
   "Top title bar shown on some pages"
