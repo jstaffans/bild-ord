@@ -29,10 +29,11 @@
   :duct {:ns-prefix bild-ord}
   :main ^:skip-aot bild-ord.main
   :target-path "target/%s/"
+  :source-paths ["src/clj"]
   :resource-paths ["resources" "target/cljsbuild"]
   :prep-tasks [["javac"] ["cljsbuild" "once"] ["compile"]]
 
-  :scss {:builds {:dev  {:source-dir "scss/"
+  :scss {:builds {:dev  {:source-dir "src/scss/"
                          :dest-dir   "resources/bild_ord/public/css/"
                          :executable "sassc"
                          :args       ["-m" "-I" "scss" "-t" "nested"]}
