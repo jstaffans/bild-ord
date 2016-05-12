@@ -1,5 +1,5 @@
 (defproject bild-ord "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
+  :description "Swedish-language word game"
   :url "http://example.com/FIXME"
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.8.0"]
@@ -19,7 +19,10 @@
                  [org.postgresql/postgresql "9.4.1208"]
                  [duct/hikaricp-component "0.1.0"]
                  [duct/ragtime-component "0.1.3"]
-                 [bidi "2.0.9"]]
+                 [bidi "2.0.9"]
+                 [reagent "0.5.1" :exclusions [cljsjs/react]]
+                 [cljsjs/react-with-addons "0.13.3-0"]
+                 [re-frame "0.7.0-alpha-2"]]
   :plugins [[lein-environ "1.0.2"]
             [lein-gen "0.2.2"]
             [lein-cljsbuild "1.1.2"]

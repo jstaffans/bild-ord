@@ -10,7 +10,8 @@
 
 (defn game-content
   []
-  [:div.clearfix.game-container
+  [:div#app]
+  #_[:div.clearfix.game-container
    [:div.col.col-4.flex.flex-column.justify.around.fill-y
     (for [i (range 5)]
       (include-illustration-svg 0 i))]

@@ -1,11 +1,13 @@
-(ns bild-ord.endpoint.app
-  (:require [bidi.bidi :as bidi]))
+(ns bild-ord.app
+  (:require [bidi.bidi :as bidi]
+            [reagent.core :as reagent]
+            [bild-ord.views :as views]))
 
-(def routes
-  ["/" {"" :game}])
-
-(defn main
+(defn mount-root
   []
-  (.log js/console {:foo 123}))
+  (.log js/console "Mounting root")
+  (reagent/render [views/app] (.getElementById js/document "app")))
 
-(main)
+(defn ^:export main []
+  ;; (dispatch [:initialise-app])
+  (mount-root))

@@ -1,5 +1,5 @@
 (ns cljs.user
-  (:require [bild-ord.endpoint.app :refer [main]]
+  (:require [bild-ord.app :refer [main]]
             [devtools.core :as devtools]
             [figwheel.client :as figwheel]))
 
@@ -10,3 +10,5 @@
 (devtools/install!)
 
 (figwheel/start {:websocket-url "ws://localhost:3449/figwheel-ws"})
+
+(main)
