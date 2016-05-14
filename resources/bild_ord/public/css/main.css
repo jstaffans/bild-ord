@@ -43,6 +43,8 @@ html, body {
   background: #f0f0f0; }
   .words div {
     font-size: 3rem; }
+    .words div:hover {
+      cursor: pointer; }
   .words .r0 {
     margin-left: 12%; }
   .words .r1 {

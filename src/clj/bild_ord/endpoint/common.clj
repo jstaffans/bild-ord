@@ -14,7 +14,9 @@
     [:body
      (when-let [class (:class options)]
        {:class class})
-     (conj body (include-js "/js/main.js"))])))
+     (cond-> body
+       true                 (conj (include-js "/js/main.js"))
+       (:cljs-main options) (conj [:script (str (:cljs-main options) "();")]))])))
 
 (defn title-bar
   "Top title bar shown on some pages"
@@ -22,11 +24,3 @@
   [:nav.clearfix.title-bar
    [:div.sm-col
     [:h1.m0 "Bild och ord"]]])
-
-(defn include-illustration-svg
-  [group index]
-  [:img.illustration.m2 {:src (str "/svg/" group "/" index ".svg")}])
-
-(defn include-box-svg
-  [index]
-  [:img.box.m2 {:src (str "/svg/box.svg")}])
