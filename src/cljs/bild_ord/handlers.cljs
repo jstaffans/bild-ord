@@ -10,5 +10,6 @@
 
 (register-handler
  :drop-word
- (fn [db [index word]]
+ (fn [db [_ index word]]
+   (.log js/console (str "Word dropped: " index ", " word))
    (specter/setval [:drop-areas (specter/keypath index) :word] word db)))

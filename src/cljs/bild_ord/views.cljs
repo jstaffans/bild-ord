@@ -10,8 +10,19 @@
   [:img.illustration.m2 {:src (str "/svg/" 0 "/" index ".svg")}])
 
 (defn render-box-svg
-  [index]
+  []
   [:img.box.m2 {:src (str "/svg/box.svg")}])
+
+(defn render-word-drop-area
+  [index]
+  (reagent/create-class
+   {:reagent-render      (fn []
+                           (render-box-svg))
+    :component-did-mount (fn [component]
+                           (.droppable
+                            (js/$ (reagent/dom-node component))
+                            #js {:drop (fn [_ ui]
+                                         (dispatch [:drop-word index (.text (js/$ (.-draggable ui)))]))}))}))
 
 (defn render-word-draggable
   [word]
@@ -34,7 +45,7 @@
       [render-illustration-svg i])]
    [:div.col.col-3.flex.flex-column.justify.around.fill-y
     (for [i (range 5)]
-      [render-box-svg i])]
+      [render-word-drop-area i])]
    [:div.col.col-5.p3.flex.flex-column.justify.around.fill-y.words
     (for [i (range 7)]
       [render-word i])]])

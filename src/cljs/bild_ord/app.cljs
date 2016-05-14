@@ -1,7 +1,8 @@
 (ns bild-ord.app
   (:require [bidi.bidi :as bidi]
             [reagent.core :as reagent]
-            [bild-ord.views :as views]))
+            [bild-ord.views :as views]
+            bild-ord.handlers))
 
 (defn mount-root
   []
