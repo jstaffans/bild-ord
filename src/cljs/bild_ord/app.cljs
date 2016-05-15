@@ -1,8 +1,10 @@
 (ns bild-ord.app
   (:require [bidi.bidi :as bidi]
             [reagent.core :as reagent]
+            [re-frame.core :refer [dispatch]]
             [bild-ord.views :as views]
-            bild-ord.handlers))
+            bild-ord.handlers
+            bild-ord.subs))
 
 (defn mount-root
   []
@@ -10,5 +12,5 @@
   (reagent/render [views/app] (.getElementById js/document "app")))
 
 (defn ^:export main []
-  ;; (dispatch [:initialise-app])
+  (dispatch [:initialise-db])
   (mount-root))
