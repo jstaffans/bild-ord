@@ -72,6 +72,9 @@
    [:div.col.col-3.flex.flex-column.justify.around.fill-y
     (for [i (range 5)]
       [render-word-drop-area i])]
-   [:div.col.col-5.p3.flex.flex-column.justify.around.fill-y.words
-    (for [i (range 7)]
-      [render-word i])]])
+   [:div.col.col-5.p3.fill-y.flex.flex-wrap.content-center.right-pane
+    [:div.col-12.flex.flex-column.justify.around.words
+     (for [i (range 7)]
+       [render-word i])]
+    [:div.col-12.actions
+     [:button "Action"]]]])

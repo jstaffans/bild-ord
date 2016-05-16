@@ -59,38 +59,27 @@ html, body {
     width: 100%;
 }
 
-.words {
+.right-pane {
     background: $grey-bg;
 
-    div {
-        font-size: 3rem;
+    .words {
+        div {
+            font-size: 3rem;
 
-        &:hover {
-            cursor: pointer;
+            &:hover {
+                cursor: pointer;
+            }
         }
+
+        .r0 { margin-left: 12%; }
+        .r1 { margin-left: 20%; }
+        .r2 { margin-left: 30%; }
+        .r3 { margin-left: 40%; }
+        .r4 { margin-left: 50%; }
+        .r5 { margin-left: 58%; }
     }
 
-    .r0 {
-        margin-left: 12%;
-    }
-
-    .r1 {
-        margin-left: 20%;
-    }
-
-    .r2 {
-        margin-left: 30%;
-    }
-
-    .r3 {
-        margin-left: 40%;
-    }
-
-    .r4 {
-        margin-left: 50%;
-    }
-
-    .r5 {
-        margin-left: 58%;
+    .actions {
+        margin-top: 20px;
     }
 }

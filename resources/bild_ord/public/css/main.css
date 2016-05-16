@@ -39,23 +39,25 @@ html, body {
   height: 60px;
   width: 100%; }
 
-.words {
+.right-pane {
   background: #f0f0f0; }
-  .words div {
+  .right-pane .words div {
     font-size: 3rem; }
-    .words div:hover {
+    .right-pane .words div:hover {
       cursor: pointer; }
-  .words .r0 {
+  .right-pane .words .r0 {
     margin-left: 12%; }
-  .words .r1 {
+  .right-pane .words .r1 {
     margin-left: 20%; }
-  .words .r2 {
+  .right-pane .words .r2 {
     margin-left: 30%; }
-  .words .r3 {
+  .right-pane .words .r3 {
     margin-left: 40%; }
-  .words .r4 {
+  .right-pane .words .r4 {
     margin-left: 50%; }
-  .words .r5 {
+  .right-pane .words .r5 {
     margin-left: 58%; }
+  .right-pane .actions {
+    margin-top: 20px; }
 
 /*# sourceMappingURL=main.css.map */
