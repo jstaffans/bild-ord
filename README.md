@@ -67,6 +67,17 @@ nil
 cljs.user=>
 ```
 
+#### Frontend assets 
+
+Stylesheets are written as SCSS files. To compile into CSS, run the following
+in a background terminal screen:
+
+```sh 
+lein scss :dev auto
+```
+
+
+
 ### Testing
 
 Testing is fastest through the REPL, as you avoid environment startup
