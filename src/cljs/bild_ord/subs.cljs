@@ -5,4 +5,9 @@
 (register-sub
  :dropped-word-query
  (fn [db [_ index]]
-   (reaction (get-in @db [:drop-areas index :word]))))
+   (reaction (get-in @db [:answers index :word]))))
+
+(register-sub
+ :answers
+ (fn [db _]
+   (reaction (set (map :word (:answers @db))))))

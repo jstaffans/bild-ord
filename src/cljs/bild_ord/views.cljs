@@ -28,7 +28,6 @@
                             #js {:drop (fn [_ ui]
                                          (let [dropped (js/$ (.-draggable ui))
                                                word    (.text dropped)]
-                                           (.hide dropped)
                                            (dispatch [:drop-word index word])))}))}))
 
 (defn render-word-svg
@@ -59,9 +58,14 @@
 
 (defn render-word
   [index]
-  [:div {:class (str "r" (rand-int 6))}
-   nbsp ;; make sure the container stays when draggable word is hidden
-   [render-word-draggable (nth (words 0) index)]])
+  (let [answers      (subscribe [:answers])
+        random-class (str "r" (rand-int 6))]
+    (fn []
+      [:div {:class random-class}
+       (let [word (nth (words 0) index)]
+         (if (@answers word)
+           nbsp ;; make sure the container stays when draggable word is hidden
+           [render-word-draggable word]))])))
 
 (defn app
   []

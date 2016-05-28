@@ -11,4 +11,4 @@
 (register-handler
  :drop-word
  (fn [db [_ index word]]
-   (specter/setval [:drop-areas (specter/keypath index) :word] word db)))
+   (specter/setval [:answers (specter/keypath index) :word] word db)))
