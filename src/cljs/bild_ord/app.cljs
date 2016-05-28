@@ -1,10 +1,11 @@
 (ns bild-ord.app
   (:require [bidi.bidi :as bidi]
-            [reagent.core :as reagent]
-            [re-frame.core :refer [dispatch]]
-            [bild-ord.views :as views]
             bild-ord.handlers
-            bild-ord.subs))
+            [bild-ord.routes :as routes]
+            bild-ord.subs
+            [bild-ord.views :as views]
+            [re-frame.core :refer [dispatch]]
+            [reagent.core :as reagent]))
 
 (defn mount-root
   []
@@ -13,4 +14,5 @@
 
 (defn ^:export main []
   (dispatch [:initialise-db])
+  (routes/init)
   (mount-root))

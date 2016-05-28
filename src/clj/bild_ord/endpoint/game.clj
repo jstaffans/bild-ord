@@ -1,6 +1,7 @@
 (ns bild-ord.endpoint.game
   (:require [compojure.core :refer :all]
-            [bild-ord.endpoint.common :refer [page title-bar]]))
+            [bild-ord.endpoint.common :refer [page title-bar]]
+            [ring.util.response :refer [redirect]]))
 
 (defn game-content []
   "Placeholder element for the Reagent app"
@@ -16,5 +17,7 @@
 
 (defn game-endpoint [config]
   (routes
-   (GET "/" []
+   (GET "/game" []
+     (redirect "/game/group/0/part/0"))
+   (GET "/game/group/:group/part/:part" [group part]
      (game))))
