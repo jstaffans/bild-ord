@@ -58,11 +58,11 @@
 
 (defn render-word
   [index]
-  (let [answers      (subscribe [:answers])
+  (let [word         (nth (words 0) index)
+        answers      (subscribe [:answers])
         random-class (str "r" (rand-int 6))]
     (fn []
       [:div {:class random-class}
-       (let [word (nth (words 0) index)]
-         (if (@answers word)
+       (if (@answers word)
            nbsp ;; make sure the container stays when draggable word is hidden
-           [render-word-draggable word]))])))
+           [render-word-draggable word])])))
