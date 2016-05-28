@@ -9,6 +9,11 @@
     default-state))
 
 (register-handler
+ :game-stage
+ (fn [db [_ group part]]
+   (assoc db :group group :part part)))
+
+(register-handler
  :drop-word
  (fn [db [_ index word]]
    (specter/setval [:answers (specter/keypath index) :word] word db)))
