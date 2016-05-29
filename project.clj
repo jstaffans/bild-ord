@@ -78,7 +78,8 @@
                                   [com.cemerick/piggieback "0.2.1"]
                                   [duct/figwheel-component "0.3.2"]
                                   [figwheel "0.5.0-6"]
-                                  [binaryage/devtools "0.6.1"]]
+                                  [binaryage/devtools "0.6.1"]
+                                  [philoskim/debux "0.2.1"]]
                    :source-paths ["dev"]
                    :repl-options {:init-ns user
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
