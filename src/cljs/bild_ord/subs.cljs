@@ -14,3 +14,13 @@
  :answers
  (fn [db _]
    (reaction (set (map :word (:answers @db))))))
+
+(register-sub
+ :current-group
+ (fn [db _]
+   (reaction (:group @db))))
+
+(register-sub
+ :current-part
+ (fn [db _]
+   (reaction (:part @db))))

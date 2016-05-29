@@ -11,7 +11,8 @@
 (register-handler
  :game-stage
  (fn [db [_ group part]]
-   (assoc db :group group :part part)))
+   (let [parts [:drag :type]]
+     (assoc db :group group :part (nth parts (js/parseInt part))))))
 
 (register-handler
  :drop-word
