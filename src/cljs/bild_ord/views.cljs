@@ -1,7 +1,8 @@
 (ns bild-ord.views
-  (:require [re-frame.core :refer [subscribe]]
-            [bild-ord.views.common :as common]
-            [bild-ord.views.part-1 :as part-1]))
+  (:require [bild-ord.views.common :as common]
+            [bild-ord.views.part-1 :as part-1]
+            [bild-ord.views.part-2 :as part-2]
+            [re-frame.core :refer [subscribe]]))
 
 (defn render-container
   []
@@ -11,6 +12,7 @@
       ^{:key i} [common/render-illustration-svg i])]])
 
 (defn render-part-1
+  "Renders the first part of a game (dragging words to their correct slots)"
   []
   (conj
    (render-container)
@@ -25,10 +27,13 @@
        ^{:key i} [part-1/render-word i])]]))
 
 (defn render-part-2
+  "Renders the second part of a game (typing the words)"
   []
   (conj
    (render-container)
-   [:div.col.col-8.flex.flex-column.justify.around.fill-y]))
+   [:div.col.col-8.flex.flex-column.justify.around.fill-y
+    (for [i (range 5)]
+      ^{:key i} [part-2/render-input i])]))
 
 (defn app
   []
