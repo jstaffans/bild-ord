@@ -6,5 +6,5 @@
 (defn render-input
   "Renders one input where the user can type in a word"
   [index]
-  [:div.flex.flex-wrap.content-end
-   [:div "Input"]])
+  [:div.flex.flex-wrap.items-end
+   [:div.m2 "Input"]])

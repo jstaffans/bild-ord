@@ -13,7 +13,8 @@ html, body {
   color: white;
   height: 75px; }
   .title-bar div {
-    padding: 16px; }
+    font-size: 26px;
+    padding: 12px; }
 
 .debug-bg {
   background: #dff; }
@@ -26,7 +27,7 @@ html, body {
 
 .fill-y {
   height: 100%; }
-  .fill-y div, .fill-y img {
+  .fill-y > div, .fill-y img {
     flex: 1 1 auto; }
 
 .illustration {
@@ -42,7 +43,8 @@ html, body {
 .right-pane {
   background: #f0f0f0; }
   .right-pane .words div {
-    font-size: 3rem; }
+    font-size: 3rem;
+    font-family: Georgia, Times, "Times New Roman", serif; }
     .right-pane .words div:hover {
       cursor: pointer; }
   .right-pane .words .r0 {
@@ -57,7 +59,5 @@ html, body {
     margin-left: 50%; }
   .right-pane .words .r5 {
     margin-left: 58%; }
-  .right-pane .actions {
-    margin-top: 20px; }
 
 /*# sourceMappingURL=main.css.map */
