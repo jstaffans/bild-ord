@@ -19,7 +19,6 @@
                  [com.rpl/specter "0.10.0"]
 
                  [ring-webjars "0.1.1"]
-                 [org.webjars/basscss "7.0.4"]
                  [org.webjars/jquery-ui-themes "1.11.4"]
 
                  [org.clojure/clojurescript "1.7.228"]
