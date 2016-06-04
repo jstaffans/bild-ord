@@ -10,3 +10,5 @@ pom.xml.asc
 /profiles.clj
 dev/local.clj
 *.log
+*.swp
+*.swo
