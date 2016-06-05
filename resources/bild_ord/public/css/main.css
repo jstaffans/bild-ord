@@ -13,8 +13,8 @@ html, body {
   color: white;
   height: 75px; }
   .title-bar div {
-    font-size: 26px;
-    padding: 12px; }
+    font-size: 1.6em;
+    padding: 0.5em; }
 
 .debug-bg {
   background: #dff; }
@@ -23,7 +23,8 @@ html, body {
   position: absolute;
   top: 75px;
   bottom: 0;
-  width: 100%; }
+  width: 100%;
+  min-width: 960px; }
 
 .fill-y {
   min-height: 500px;
@@ -44,25 +45,29 @@ html, body {
 .words-drag {
   background: #f0f0f0; }
   .words-drag div {
-    font-size: 3rem;
+    font-size: 3em;
     font-family: Georgia, Times, "Times New Roman", serif; }
     .words-drag div:hover {
       cursor: pointer; }
   .words-drag .r0 {
-    margin-left: 12%; }
+    margin-left: 10%; }
   .words-drag .r1 {
-    margin-left: 20%; }
+    margin-left: 18%; }
   .words-drag .r2 {
-    margin-left: 30%; }
+    margin-left: 28%; }
   .words-drag .r3 {
-    margin-left: 40%; }
+    margin-left: 38%; }
   .words-drag .r4 {
-    margin-left: 50%; }
+    margin-left: 48%; }
   .words-drag .r5 {
-    margin-left: 58%; }
+    margin-left: 56%; }
 
 .words-input input {
   border: 0;
-  border-bottom: 2px solid black; }
+  outline: none;
+  border-bottom: 2px solid black;
+  padding: 0.3em;
+  font-size: 3em;
+  font-family: Georgia, Times, "Times New Roman", serif; }
 
 /*# sourceMappingURL=main.css.map */
