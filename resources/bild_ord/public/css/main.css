@@ -40,24 +40,28 @@ html, body {
   height: 60px;
   width: 100%; }
 
-.right-pane {
+.words-drag {
   background: #f0f0f0; }
-  .right-pane .words div {
+  .words-drag div {
     font-size: 3rem;
     font-family: Georgia, Times, "Times New Roman", serif; }
-    .right-pane .words div:hover {
+    .words-drag div:hover {
       cursor: pointer; }
-  .right-pane .words .r0 {
+  .words-drag .r0 {
     margin-left: 12%; }
-  .right-pane .words .r1 {
+  .words-drag .r1 {
     margin-left: 20%; }
-  .right-pane .words .r2 {
+  .words-drag .r2 {
     margin-left: 30%; }
-  .right-pane .words .r3 {
+  .words-drag .r3 {
     margin-left: 40%; }
-  .right-pane .words .r4 {
+  .words-drag .r4 {
     margin-left: 50%; }
-  .right-pane .words .r5 {
+  .words-drag .r5 {
     margin-left: 58%; }
+
+.words-input input {
+  border: 0;
+  border-bottom: 2px solid black; }
 
 /*# sourceMappingURL=main.css.map */

@@ -7,4 +7,5 @@
   "Renders one input where the user can type in a word"
   [index]
   [:div.flex.flex-wrap.items-end
-   [:div.m2 "Input"]])
+   [:div.m2
+    [:input {:type "text" :autocomplete "off"}]]])
