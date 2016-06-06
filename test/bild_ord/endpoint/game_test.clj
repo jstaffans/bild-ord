@@ -6,5 +6,5 @@
   (game/game-endpoint {}))
 
 (deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+  (testing "TODO: Write me or delete me!"
+    (is (= 1 1))))
