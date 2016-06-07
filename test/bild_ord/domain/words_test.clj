@@ -6,17 +6,17 @@
   (testing "right first time"
     (is (success?
          (-> (new-game ["lura"])
-             (respond "lura" 0)))))
+             (respond 0 "lura")))))
   (testing "incorrect guess"
     (is (not (success?
               (-> (new-game ["lura"])
-                  (respond "sila" 0))))))
+                  (respond 0 "sila"))))))
   (testing "wrong then corrected"
     (is (success?
          (-> (new-game ["lura"])
-             (respond "sila" 0)
-             (respond nil 0)
-             (respond "lura" 0))))))
+             (respond 0 "sila")
+             (respond 0 nil)
+             (respond 0 "lura"))))))
 
 (deftest new-game-test
   (let [words ["lura" "sila" "vila"]
@@ -51,11 +51,11 @@
 
 (deftest respond-test
   (let [game (-> (new-game ["lura" "sila"])
-                 (respond "lura" 1))]
+                 (respond 1 "lura"))]
     (testing "adds response at given index"
       (is (= "lura" (nth (responses game) 1))))
     (testing "leaves other responses unchanged"
       (is (= nil (nth (responses game) 0))))
     (testing "can be over-written"
-      (let [game2 (respond game "sila" 1)]
+      (let [game2 (respond game 1 "sila")]
         (is (= "sila" (nth (responses game2) 1)))))))

@@ -2,7 +2,7 @@
 
 ;; Domain logic and models around words
 
-(defn words
+(defn example-words
   [group]
   ["lura" "måne" "sila" "gula" "sola" "påse" "vila"])
 
@@ -34,7 +34,14 @@
 (defn success? [game]
   (every? correct? game))
 
-(defn respond [game response index]
+(defn respond [game index response]
   (update-in game [index]
              (fn [question]
                (new-question (answer question) response))))
+
+(defn responded? [question]
+  (not (nil? (response question))))
+
+(defn remove-option [options option]
+  "Replaces the given option with nil"
+  (into [] (map #(if (= % option) nil %) options)))

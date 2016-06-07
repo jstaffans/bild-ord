@@ -1,6 +1,7 @@
 (ns bild-ord.handlers
   (:require [re-frame.core :refer [register-handler]]
             [bild-ord.db :refer [default-state]]
+            [bild-ord.domain.words :as words]
             [com.rpl.specter :as specter]))
 
 (register-handler
@@ -16,5 +17,7 @@
 
 (register-handler
  :drop-word
- (fn [db [_ index word]]
-   (specter/setval [:answers (specter/keypath index) :word] word db)))
+ (fn [db [_ index response]]
+   (-> db
+       (update-in [:questions] words/respond index response)
+       (update-in [:options] words/remove-option response))))
