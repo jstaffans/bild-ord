@@ -32,10 +32,12 @@
 
 (defn render-word-svg
   "Renders a word SVG."
-  [word]
-  [:svg
-   ;; TODO: size, position
-   [:text {:class "words" :x 100 :y 30} word]])
+  [word correct?]
+  (let [class (str "words "
+                   (if correct? "correct" "incorrect"))]
+    [:svg
+     ;; TODO: size, position
+     [:text {:class class :x 100 :y 30} word]]))
 
 #_(defn render-word-drop-area
   "Renders the word drop area. This may be either an empty drop box, if nothing has been
@@ -47,16 +49,8 @@
         [render-word-svg word]
         [render-drop-box index]))))
 
-(defn render-correct [word]
-  [render-word-svg word])
-
-(defn render-incorrect [word]
-  [render-word-svg word])
-
 (defn render-response [question]
-  (if (words/correct? question)
-    [render-correct (words/response question)]
-    [render-incorrect (words/response question)]))
+  [render-word-svg (words/response question) (words/correct? question)])
 
 (defn render-question [index question]
   (if (words/responded? question)
