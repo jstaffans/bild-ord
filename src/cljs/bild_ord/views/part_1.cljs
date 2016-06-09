@@ -39,15 +39,6 @@
      ;; TODO: size, position
      [:text {:class class :x 100 :y 30} word]]))
 
-#_(defn render-word-drop-area
-  "Renders the word drop area. This may be either an empty drop box, if nothing has been
-  dropped there yet, or the already-dropped word."
-  [index]
-  (let [dropped-word (subscribe [:dropped-word-query index])]
-    (fn []
-      (if-let [word @dropped-word]
-        [render-word-svg word]
-        [render-drop-box index]))))
 
 (defn render-response [question]
   [render-word-svg (words/response question) (words/correct? question)])
@@ -73,17 +64,6 @@
     :component-did-mount (fn [component]
                            (.draggable (js/$ (reagent/dom-node component)) #js {:revert true}))}))
 
-
-#_(defn render-word
-  [index]
-  (let [word         (nth (words 0) index)
-        answers      (subscribe [:answers])
-        random-class (str "r" (rand-int 6))]
-    (fn []
-      [:div {:class random-class}
-       (if (@answers word)
-           nbsp ;; make sure the container stays when draggable word is hidden
-           [render-word-draggable word])])))
 
 (defn render-option [index option]
   ^{:key index}

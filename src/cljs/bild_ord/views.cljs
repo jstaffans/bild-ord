@@ -24,13 +24,9 @@
    (render-container)
 
    [part-1/render-questions]
-   #_(for [i (range 5)]
-       ^{:key i} [part-1/render-word-drop-area i])
 
    [:div.col.col-5.fill-y.flex.flex-wrap.content-center
-    [part-1/render-options]
-    #_(for [i (range 7)]
-        ^{:key i} [part-1/render-word i])]
+    [part-1/render-options]]
 
    ;;[render-game-state]
    ))
