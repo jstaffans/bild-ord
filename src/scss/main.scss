@@ -65,13 +65,23 @@ html, body {
   width: 100%;
 }
 
+.words {
+  font-size: 3em;
+  font-family: $excercise-font-family;
+
+  &.correct {
+    fill: #0F0;
+  }
+
+  &.incorrect {
+    fill: #F00;
+  }
+}
+
 .words-drag {
   background: $grey-bg;
 
   div {
-    font-size: 3em;
-    font-family: $excercise-font-family; 
-
     &:hover {
       cursor: pointer;
     }
@@ -86,13 +96,10 @@ html, body {
 }
 
 .words-input {
-
   input {
     border: 0;
     outline: none;
     border-bottom: 2px solid black;
     padding: 0.3em;
-    font-size: 3em;
-    font-family: $excercise-font-family;
   }
 }

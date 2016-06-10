@@ -2,18 +2,17 @@
   (:require-macros [reagent.ratom :refer [reaction]])
   (:require [re-frame.core :refer [register-sub]]))
 
-;; subscription for drop areas, to know whether or not
-;; a word has been dropped in the area
+;; Keeps track of the users responses and the "true" answers
 (register-sub
- :dropped-word-query
- (fn [db [_ index]]
-   (reaction (get-in @db [:answers index :word]))))
-
-;; returns the set of words already used in part 1 (already dragged)
-(register-sub
- :answers
+ :questions
  (fn [db _]
-   (reaction (set (map :word (:answers @db))))))
+   (reaction (:questions @db))))
+
+;; Keeps track of the words available to try
+(register-sub
+ :options
+ (fn [db _]
+   (reaction (:options @db))))
 
 (register-sub
  :current-group

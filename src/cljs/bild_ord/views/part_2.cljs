@@ -1,5 +1,5 @@
 (ns bild-ord.views.part-2
-  (:require [bild-ord.domain.words :refer [words]]
+  (:require [bild-ord.domain.words :as words]
             [re-frame.core :refer [dispatch subscribe]]
             [reagent.core :as reagent]))
 

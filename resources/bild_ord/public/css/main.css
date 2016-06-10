@@ -42,13 +42,18 @@ html, body {
   height: 60px;
   width: 100%; }
 
+.words {
+  font-size: 3em;
+  font-family: Georgia, Times, "Times New Roman", serif; }
+  .words.correct {
+    fill: #0F0; }
+  .words.incorrect {
+    fill: #F00; }
+
 .words-drag {
   background: #f0f0f0; }
-  .words-drag div {
-    font-size: 3em;
-    font-family: Georgia, Times, "Times New Roman", serif; }
-    .words-drag div:hover {
-      cursor: pointer; }
+  .words-drag div:hover {
+    cursor: pointer; }
   .words-drag .r0 {
     margin-left: 10%; }
   .words-drag .r1 {
@@ -66,8 +71,6 @@ html, body {
   border: 0;
   outline: none;
   border-bottom: 2px solid black;
-  padding: 0.3em;
-  font-size: 3em;
-  font-family: Georgia, Times, "Times New Roman", serif; }
+  padding: 0.3em; }
 
 /*# sourceMappingURL=main.css.map */
