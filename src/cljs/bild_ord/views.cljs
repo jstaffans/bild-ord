@@ -11,12 +11,6 @@
     (for [i (range 5)]
       ^{:key i} [common/render-illustration-svg i])]])
 
-(defn render-game-state
-  []
-  (let [questions (subscribe [:questions])]
-    (fn []
-      [:pre (pr-str @questions)])))
-
 (defn render-part-1
   "Renders the first part of a game (dragging words to their correct slots)"
   []
@@ -26,10 +20,7 @@
    [part-1/render-questions]
 
    [:div.col.col-5.fill-y.flex.flex-wrap.content-center
-    [part-1/render-options]]
-
-   ;;[render-game-state]
-   ))
+    [part-1/render-options]]))
 
 (defn render-part-2
   "Renders the second part of a game (typing the words)"
