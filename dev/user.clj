@@ -14,17 +14,18 @@
             [bild-ord.system :as system]))
 
 (def dev-config
-  {:app {:middleware [wrap-stacktrace]}
+  {:db  {:file "/tmp/bild-ord-store"}
+   :app {:middleware [wrap-stacktrace]}
    :figwheel
    {:css-dirs ["resources/bild_ord/public/css"]
     :builds   [{:source-paths ["src" "dev"]
                 :build-options
-                {:optimizations :none
-                 :main "cljs.user"
-                 :asset-path "/js"
-                 :output-to  "target/figwheel/bild_ord/public/js/main.js"
-                 :output-dir "target/figwheel/bild_ord/public/js"
-                 :source-map true
+                {:optimizations   :none
+                 :main            "cljs.user"
+                 :asset-path      "/js"
+                 :output-to       "target/figwheel/bild_ord/public/js/main.js"
+                 :output-dir      "target/figwheel/bild_ord/public/js"
+                 :source-map      true
                  :source-map-path "/js"}}]}})
 
 (def config

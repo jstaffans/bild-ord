@@ -11,7 +11,8 @@
             [ring.component.jetty :refer [jetty-server]]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.webjars :refer [wrap-webjars]]
-            [bild-ord.endpoint.game :refer [game-endpoint]]))
+            [bild-ord.endpoint.game :refer [game-endpoint]]
+            [bild-ord.component.db :refer [db-component]]))
 
 (def base-config
   {:app {:middleware [[wrap-not-found :not-found]
@@ -20,8 +21,7 @@
                       [wrap-route-aliases :aliases]]
          :not-found  (io/resource "bild_ord/errors/404.html")
          :defaults   (meta-merge site-defaults {:static {:resources "bild_ord/public"}})
-         :aliases    {}}
-   :ragtime {:resource-path "bild_ord/migrations"}})
+         :aliases    {}}})
 
 (defn new-system [config]
   (let [config (meta-merge base-config config)]
@@ -29,12 +29,8 @@
          :app  (handler-component (:app config))
          :http (jetty-server (:http config))
          :game-endpoint (endpoint-component game-endpoint)
-         ;; :db   (hikaricp (:db config))
-         ;; :ragtime (ragtime (:ragtime config))
-         )
+         :db (db-component (:db config)))
         (component/system-using
          {:http          [:app]
           :app           [:game-endpoint]
-          :game-endpoint []
-          ;; :ragtime [:db]
-          }))))
+          :game-endpoint []}))))
