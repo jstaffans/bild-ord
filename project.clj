@@ -17,6 +17,7 @@
                  [duct/hikaricp-component "0.1.0"]
                  [duct/ragtime-component "0.1.3"]
                  [com.rpl/specter "0.10.0"]
+                 [buddy "1.0.0"]
 
                  [ring-webjars "0.1.1"]
                  [org.webjars/jquery-ui-themes "1.11.4"]
