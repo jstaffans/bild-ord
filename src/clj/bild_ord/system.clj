@@ -12,7 +12,7 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.webjars :refer [wrap-webjars]]
             [bild-ord.endpoint.game :refer [game-endpoint]]
-            [bild-ord.component.db :refer [db-component]]))
+            [bild-ord.db :refer [db-component]]))
 
 (def base-config
   {:app {:middleware [[wrap-not-found :not-found]

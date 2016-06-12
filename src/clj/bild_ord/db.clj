@@ -1,12 +1,18 @@
-(ns bild-ord.component.db
+(ns bild-ord.db
   (:require [clojure.java.io :as io]
-            [bild-ord.protocols :as protocols]
             [com.stuartsierra.component :as component]))
+
+
+;; Protocol describing the storage functionality we want to have
+
+(defprotocol Storage
+  (get-record [this k])
+  (insert-record! [this k r]))
 
 
 ;; File-based persistence implementation
 
-(defn serialize [data file]
+(defn serialize! [data file]
   (spit file (pr-str data)))
 
 (defn deserialize [file]
@@ -16,7 +22,7 @@
   (.exists (io/as-file file)))
 
 (defn init-db! [file]
-  (serialize {} file))
+  (serialize! {} file))
 
 
 ;; Component
@@ -30,9 +36,11 @@
         (init-db! (:file config))
         (assoc component :file (:file config)))))
 
-  (stop [component] (assoc component :file nil))
+  (stop [component] (assoc component :file nil)))
 
-  protocols/Storage
+
+(extend-type FileDbComponent
+  Storage
   (get-record [component k]
     (-> (:file component)
         deserialize
@@ -42,14 +50,15 @@
     (-> (:file component)
         deserialize
         (assoc k r)
-        (serialize (:file component)))))
+        (serialize! (:file component)))))
+
 
 (defn db-component [config]
-  (map->FileDbComponent {:config config}))
+  (->FileDbComponent config))
 
 
 (comment
-  (:db system)
-  (require '[bild-ord.protocols :refer :all])
-  (insert-record! (:db system) :foo2 "bar")
+  (require '[bild-ord.db :refer :all])
+  (insert-record! (:db system) :foo "bar")
+  (get-record (:db system) :foo)
   )
