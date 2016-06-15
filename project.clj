@@ -2,7 +2,7 @@
   :description "Swedish-language word game"
   :url "http://example.com/FIXME"
   :min-lein-version "2.0.0"
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha5"]
                  [com.stuartsierra/component "0.3.1"]
                  [compojure "1.5.0"]
                  [duct "0.5.10"]
@@ -21,7 +21,7 @@
                  [ring-webjars "0.1.1"]
                  [org.webjars/jquery-ui-themes "1.11.4"]
 
-                 [org.clojure/clojurescript "1.7.228"]
+                 [org.clojure/clojurescript "1.9.36"]
                  [reagent "0.5.1" :exclusions [cljsjs/react]]
                  [cljsjs/react-with-addons "0.13.3-0"]
                  [re-frame "0.7.0-alpha-2"]
