@@ -1,0 +1,12 @@
+- hosts: 127.0.0.1
+  connection: local
+  sudo: yes
+  tasks:
+    - include: tasks/main.yml
+    - include: tasks/sqlite.yml
+  vars:
+    leiningen_version: 2.6.1
+    sqlite_dir: /var/lib/sqlite
+    sqlite_dbs: [bild_ord]
+
+
