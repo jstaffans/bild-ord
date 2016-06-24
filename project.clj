@@ -16,8 +16,9 @@
                  [hiccup "1.0.5"]
                  [org.postgresql/postgresql "9.4.1208"]
                  [duct/hikaricp-component "0.1.0"]
-                 [duct/ragtime-component "0.1.3"]
+                 [duct/ragtime-component "0.1.4"]
                  [com.rpl/specter "0.10.0"]
+                 [org.xerial/sqlite-jdbc "3.8.11.2"]
                  [buddy "1.0.0"]
 
                  [ring-webjars "0.1.1"]

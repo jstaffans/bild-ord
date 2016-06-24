@@ -9,6 +9,7 @@
              [handler :refer [handler-component]]
              [hikaricp :refer [hikaricp]]
              [ragtime :refer [ragtime]]]
+            [ragtime.jdbc :as jdbc]
             [duct.middleware
              [not-found :refer [wrap-not-found]]
              [route-aliases :refer [wrap-route-aliases]]]
@@ -19,13 +20,14 @@
              [webjars :refer [wrap-webjars]]]))
 
 (def base-config
-  {:app {:middleware [[wrap-not-found :not-found]
-                      [wrap-webjars]
-                      [wrap-defaults :defaults]
-                      [wrap-route-aliases :aliases]]
-         :not-found  (io/resource "bild_ord/errors/404.html")
-         :defaults   (meta-merge site-defaults {:static {:resources "bild_ord/public"}})
-         :aliases    {}}})
+  {:app     {:middleware [[wrap-not-found :not-found]
+                          [wrap-webjars]
+                          [wrap-defaults :defaults]
+                          [wrap-route-aliases :aliases]]
+             :not-found  (io/resource "bild_ord/errors/404.html")
+             :defaults   (meta-merge site-defaults {:static {:resources "bild_ord/public"}})
+             :aliases    {}}
+   :ragtime {:resource-path "bild_ord/migrations"}})
 
 (defn new-system [config]
   (let [config (meta-merge base-config config)]
@@ -34,9 +36,11 @@
          :http (jetty-server (:http config))
          :game-endpoint (endpoint-component game-endpoint)
          :user-endpoint (endpoint-component user-endpoint)
-         :db (db-component (:db config)))
+         :db {:spec (:db config)}
+         :ragtime (ragtime (:ragtime config)))
         (component/system-using
          {:http          [:app]
           :game-endpoint []
           :user-endpoint []
-          :app           [:game-endpoint :user-endpoint]}))))
+          :app           [:game-endpoint :user-endpoint]
+          :ragtime       [:db]}))))

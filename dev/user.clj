@@ -14,7 +14,7 @@
             [bild-ord.system :as system]))
 
 (def dev-config
-  {:db  {:file "/tmp/bild-ord-store"}
+  {:db  {:connection-uri "jdbc:sqlite:dev.db"}
    :app {:middleware [wrap-stacktrace]}
    :figwheel
    {:css-dirs ["resources/bild_ord/public/css"]

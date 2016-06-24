@@ -1,0 +1,2 @@
+{:up ["CREATE TABLE user (id int, name varchar(256));"]
+ :down ["DROP TABLE user;"]}
