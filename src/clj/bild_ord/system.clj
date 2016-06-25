@@ -36,7 +36,8 @@
          :http (jetty-server (:http config))
          :game-endpoint (endpoint-component game-endpoint)
          :user-endpoint (endpoint-component user-endpoint)
-         :db {:spec (:db config)}
+         ;; :db {:spec (:db config)}
+         :db (db-component (:db config))
          :ragtime (ragtime (:ragtime config)))
         (component/system-using
          {:http          [:app]
