@@ -20,6 +20,7 @@
                  [org.xerial/sqlite-jdbc "3.8.11.2"]
                  [com.layerware/hugsql "0.4.7"]
                  [buddy "1.0.0"]
+                 [dire "0.5.4"]
 
                  [ring-webjars "0.1.1"]
                  [org.webjars/jquery-ui-themes "1.11.4"]
