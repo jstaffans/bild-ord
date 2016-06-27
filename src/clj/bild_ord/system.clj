@@ -42,6 +42,6 @@
         (component/system-using
          {:http          [:app]
           :game-endpoint []
-          :user-endpoint []
+          :user-endpoint [:db]
           :app           [:game-endpoint :user-endpoint]
           :ragtime       [:db]}))))

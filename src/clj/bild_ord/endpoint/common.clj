@@ -9,7 +9,7 @@
     {:lang "sv"}
     [:head
      [:title "Bild och ord"]
-     (include-css "https://npmcdn.com/basscss@8.0.1/css/basscss.min.css")
+     (include-css "/css/base.css")
      (include-css "/css/main.css")]
     [:body
      (when-let [class (:class options)]

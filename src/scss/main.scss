@@ -1,9 +1,15 @@
-$header-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$main-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
 $excercise-font-family: Georgia, Times, 'Times New Roman', serif;
 
+@import "components.btn";
+
+body {
+    font-family: $main-font-family;
+}
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: $header-font-family;
+    font-family: inherit;
     font-weight: 300;
 }
 
@@ -59,12 +65,17 @@ html, body {
     width: 100%;
 }
 
+<<<<<<< d58db2192a98a5753cd00147adac2cb366208450
 .slot {
+=======
+.box {
+>>>>>>> Login form (wip)
     margin-left: -40px;
     height: 60px;
     width: 100%;
 }
 
+<<<<<<< d58db2192a98a5753cd00147adac2cb366208450
 .slot-guess {
     display: flex;
     align-items: center;
@@ -88,6 +99,19 @@ html, body {
 .words {
     font-size: 3em;
     font-family: $excercise-font-family;
+=======
+.words {
+    font-size: 3em;
+    font-family: $excercise-font-family;
+
+    &.correct {
+        fill: #0F0;
+    }
+
+    &.incorrect {
+        fill: #F00;
+    }
+>>>>>>> Login form (wip)
 }
 
 .words-drag {

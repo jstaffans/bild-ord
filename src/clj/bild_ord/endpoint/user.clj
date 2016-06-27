@@ -4,7 +4,9 @@
 
 (defn login []
   (page
-   [:div "Login"]))
+   [:form
+    [:input.input {:type "text"}]
+    [:button.btn.btn-primary "Logga in"]]))
 
 (defn user-endpoint [config]
   (routes
