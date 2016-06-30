@@ -1,3 +1,9 @@
+.fill-y {
+  min-height: 500px;
+  height: 100%; }
+  .fill-y > div, .fill-y img {
+    flex: 1 1 auto; }
+
 .btn {
   font-family: inherit; }
 
@@ -46,9 +52,6 @@ html, body {
     font-size: 1.6em;
     padding: 0.5em; }
 
-.debug-bg {
-  background: #dff; }
-
 .game-container {
   position: absolute;
   top: 75px;
@@ -56,11 +59,16 @@ html, body {
   width: 100%;
   min-width: 960px; }
 
-.fill-y {
-  min-height: 500px;
-  height: 100%; }
-  .fill-y > div, .fill-y img {
-    flex: 1 1 auto; }
+.form-login {
+  display: table;
+  margin: 20px auto; }
+  .form-login .control-group {
+    margin: 15px 0; }
+  .form-login label {
+    display: inline-block;
+    min-width: 130px; }
+  .form-login button {
+    float: right; }
 
 .illustration {
   margin-left: -20px;

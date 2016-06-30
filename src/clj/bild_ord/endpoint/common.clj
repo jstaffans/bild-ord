@@ -14,9 +14,10 @@
     [:body
      (when-let [class (:class options)]
        {:class class})
-     (cond-> body
-       true                 (conj (include-js "/js/main.js"))
-       (:cljs-main options) (conj [:script (str (:cljs-main options) "();")]))])))
+     body
+     (include-js "/js/main.js")
+     (when (:cljs-main options)
+       [:script (str (:cljs-main options) "();")])])))
 
 (defn title-bar
   "Top title bar shown on some pages"

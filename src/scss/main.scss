@@ -1,7 +1,5 @@
-$main-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-
-$excercise-font-family: Georgia, Times, 'Times New Roman', serif;
-
+@import "variables";
+@import "trumps";
 @import "components.btn";
 
 body {
@@ -12,9 +10,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: inherit;
     font-weight: 300;
 }
-
-$brown-bg: #d4b381;
-$grey-bg: #f0f0f0;
 
 html, body {
     width: 100%;
@@ -36,10 +31,6 @@ html, body {
     }
 }
 
-.debug-bg {
-    background: #dff;
-}
-
 .game-container {
     position: absolute;
     top: 75px;
@@ -48,12 +39,18 @@ html, body {
     min-width: 960px;
 }
 
-.fill-y {
-    min-height: 500px;
-    height: 100%;
-
-    > div, img {
-        flex: 1 1 auto;
+.form-login {
+    display: table;
+    margin: 20px auto;
+    .control-group {
+        margin: 15px 0;
+    }
+    label {
+        display: inline-block;
+        min-width: 130px;
+    }
+    button {
+        float: right;
     }
 }
 

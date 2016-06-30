@@ -32,11 +32,10 @@
 (defn new-system [config]
   (let [config (meta-merge base-config config)]
     (-> (component/system-map
-         :app  (handler-component (:app config))
+         :app (handler-component (:app config))
          :http (jetty-server (:http config))
          :game-endpoint (endpoint-component game-endpoint)
          :user-endpoint (endpoint-component user-endpoint)
-         ;; :db {:spec (:db config)}
          :db (db-component (:db config))
          :ragtime (ragtime (:ragtime config)))
         (component/system-using

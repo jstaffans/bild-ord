@@ -8,7 +8,7 @@
 
 (defprotocol UserDb
   (add-user! [this user])
-  (auth-user [this credentials]))
+  (auth-user [this username password]))
 
 (hugsql/def-db-fns "bild_ord/sql/user.sql")
 
@@ -21,11 +21,11 @@
   (jdbc/with-db-connection [conn (:spec db)]
     (insert-user! conn (update-in user [:password] hs/encrypt))))
 
-(defn auth-user* [db credentials]
+(defn auth-user* [db username password]
   (jdbc/with-db-connection [conn (:spec db)]
-    (let [unauthed {:error :invalid-username-or-password}]
-      (if-let [user (get-user conn credentials)]
-        (if (hs/check (:password credentials) (:password user))
+    (let [unauthed {:error ::invalid-username-or-password}]
+      (if-let [user (get-user conn {:username username})]
+        (if (hs/check password (:password user))
           (dissoc user :password)
           (throw+ unauthed))
         (throw+ unauthed)))))
@@ -40,7 +40,7 @@
 (extend-type DbComponent
   UserDb
   (add-user! [this user] (add-user!* this user))
-  (auth-user [this credentials] (auth-user* this credentials)))
+  (auth-user [this username password] (auth-user* this username password)))
 
 (defn db-component [config]
   (map->DbComponent {:config config}))
