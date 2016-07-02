@@ -1,12 +1,10 @@
 (ns bild-ord.views.part-1
   (:require [bild-ord.domain.game :as game]
-            [bild-ord.views.common :refer [draggable droppable]]
+            [bild-ord.views.common :refer [draggable droppable nbsp]]
             [re-frame.core :refer [dispatch subscribe]]
             [reagent.core :as reagent]
             cljsjs.jquery
             cljsjs.jquery-ui))
-
-(def nbsp \u00A0)
 
 (defn render-illustration-svg
   "Renders one of the left-hand illustrations."

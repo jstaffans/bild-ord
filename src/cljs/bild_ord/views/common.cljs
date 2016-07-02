@@ -3,6 +3,8 @@
             cljsjs.jquery
             cljsjs.jquery-ui))
 
+(def nbsp \u00A0)
+
 (defn render-illustration-svg
   "Renders one of the left-hand illustrations."
   [index]
