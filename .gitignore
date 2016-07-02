@@ -13,3 +13,5 @@ dev/local.clj
 *.swp
 *.swo
 *.css.map
+.vagrant
+dev.db
