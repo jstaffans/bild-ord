@@ -23,24 +23,24 @@
   [index]
   (droppable
    render-drop-box-svg
-   (fn [word] (dispatch [:guess-word index word]))))
+   (fn [word _] (dispatch [:guess-word index word]))))
 
 #_(dispatch [:move-guess] index-from index-to)
 
 (defn render-word-svg
   "Renders a word SVG."
-  [word correct?]
+  [index word correct?]
   (let [class (str "words " (if correct? "correct" "incorrect"))]
-    [:svg
+    [:svg {:data-drag-source index}
      ;; TODO: size, position
      [:text {:class class :x 100 :y 30} word]]))
 
-(defn render-guess [{:keys [::game/truth ::game/guess] :as slot}]
-  (draggable (fn [] [render-word-svg guess (game/correct? slot)])))
+(defn render-guess [index {:keys [::game/truth ::game/guess] :as slot}]
+  (draggable (fn [] [render-word-svg index guess (game/correct? slot)])))
 
 (defn render-slot [index slot]
   (if (game/responded? slot)
-    ^{:key index} [render-guess slot]
+    ^{:key index} [render-guess index slot]
     ^{:key index} [render-drop-box index]))
 
 (defn render-slots []
@@ -64,6 +64,8 @@
 (defn render-pile []
   (let [pile (subscribe [:pile])
         random-indicies (-> @pile count range shuffle)]
-    (fn []
-      (into [:div.col-12.p3.flex.flex-column.justify-around.words.words-drag] ;; TODO - but view styles back into main views
-            (map render-option random-indicies @pile)))))
+    (droppable
+     (fn []
+       (into [:div.col-12.p3.flex.flex-column.justify-around.words.words-drag]
+             (map render-option random-indicies @pile)))
+     (fn [_ index] (dispatch [:cancel-guess index])))))

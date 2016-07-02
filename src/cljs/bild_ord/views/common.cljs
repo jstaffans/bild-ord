@@ -20,7 +20,9 @@
 
 (defn droppable
   "Wraps the given render-fn with a jQuery droppable.
-  drop-fn is a function that will be called with the dropped word."
+  drop-fn is a function that will be called with the dropped word
+  (e.g. \"lura\" or \"sila\") and the value of the dragged element's
+  data-drag-source attribute (which may be nil)."
   [render-fn drop-fn]
   (reagent/create-class
    {:reagent-render      render-fn
@@ -28,6 +30,7 @@
                            (.droppable
                             (js/$ (reagent/dom-node component))
                             #js {:drop (fn [_ ui]
-                                         (let [dropped (js/$ (.-draggable ui))
-                                               word (.text dropped)]
-                                           (drop-fn word)))}))}))
+                                         (let [dropped     (js/$ (.-draggable ui))
+                                               word        (.text dropped)
+                                               drag-source (.attr dropped "data-drag-source")]
+                                           (drop-fn word drag-source)))}))}))

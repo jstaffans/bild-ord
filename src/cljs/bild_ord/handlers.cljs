@@ -25,8 +25,13 @@
  :guess-word
  (fn [db [_ index word]]
    (-> db
-       (update-in [:game] #(game/guess-word % index word))
-       (debug-game-state))))
+       (update-in [:game] #(game/guess-word % index word)))))
+
+(register-handler
+ :cancel-guess
+ (fn [db [_ index]]
+   (-> db
+       (update-in [:game] #(game/cancel-guess % (js/parseInt index))))))
 
 #_(register-handler
  :move-guess
