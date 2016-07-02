@@ -12,3 +12,4 @@ dev/local.clj
 *.log
 *.swp
 *.swo
+*.css.map
