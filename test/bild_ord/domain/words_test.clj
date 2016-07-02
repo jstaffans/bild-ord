@@ -30,25 +30,6 @@
     (testing "is not a success"
       (is (not (success? game))))))
 
-(deftest correctness-test
-  (testing "A guess may be correct"
-    (is (true? (correct? {"lura" "lura"}))))
-  (testing "A guess may be incorrect"
-    (is (false? (correct? {"lura" "sila"}))))
-  (testing "A game is a collection of correctness"
-    (is [true false false]
-        (map correct? [{"lura" "lura"} {"sila" "vila"} {"vila" "sila"}]))))
-
-(deftest success-test
-  (testing "A successful game"
-    (testing "has all answers correct"
-      (is (true? (success? [{"lura" "lura"} {"sila" "sila"} {"vila" "vila"}])))))
-  (testing "An unsuccessful game"
-    (testing "has some answers missing"
-      (is (false? (success? [{"lura" "lura"} {"sila" nil} {"vila" nil}]))))
-    (testing "has some answers incorrect"
-      (is (false? (success? [{"lura" "sila"} {"sila" "lura"} {"vila" "vila"}]))))))
-
 (deftest respond-test
   (let [game (-> (new-game ["lura" "sila"])
                  (respond 1 "lura"))]
