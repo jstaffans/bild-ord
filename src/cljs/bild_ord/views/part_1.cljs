@@ -1,6 +1,6 @@
 (ns bild-ord.views.part-1
   (:require [bild-ord.domain.game :as game]
-            [bild-ord.views.common :refer [draggable]]
+            [bild-ord.views.common :refer [draggable droppable]]
             [re-frame.core :refer [dispatch subscribe]]
             [reagent.core :as reagent]
             cljsjs.jquery
@@ -21,15 +21,9 @@
 (defn render-drop-box
   "Renders the drop area and hooks it up as a jQuery droppable."
   [index]
-  (reagent/create-class
-   {:reagent-render      (fn [] (render-drop-box-svg))
-    :component-did-mount (fn [component]
-                           (.droppable
-                            (js/$ (reagent/dom-node component))
-                            #js {:drop (fn [_ ui]
-                                         (let [dropped (js/$ (.-draggable ui))
-                                               word (.text dropped)]
-                                           (dispatch [:guess-word index word])))}))}))
+  (droppable
+   render-drop-box-svg
+   (fn [word] (dispatch [:guess-word index word]))))
 
 #_(dispatch [:move-guess] index-from index-to)
 
