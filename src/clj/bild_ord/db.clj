@@ -46,7 +46,7 @@
   (map->DbComponent {:config config}))
 
 (comment
+  ;; Add a user to the database
   (require '[bild-ord.db :as db])
   (db/add-user! (:db system) {:username "johannes" :password "mypass"})
-  (db/auth-user (:db system) {:username "johannes" :password "mypass"})
   )
