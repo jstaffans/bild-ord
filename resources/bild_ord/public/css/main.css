@@ -49,6 +49,8 @@ html, body {
     fill: #0F0; }
   .words.incorrect {
     fill: #F00; }
+  .words:hover {
+    cursor: pointer; }
 
 .words-drag {
   background: #f0f0f0; }

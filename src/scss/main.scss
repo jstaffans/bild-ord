@@ -76,6 +76,10 @@ html, body {
   &.incorrect {
     fill: #F00;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .words-drag {

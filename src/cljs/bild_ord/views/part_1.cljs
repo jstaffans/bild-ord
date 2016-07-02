@@ -1,5 +1,6 @@
 (ns bild-ord.views.part-1
   (:require [bild-ord.domain.game :as game]
+            [bild-ord.views.common :refer [draggable]]
             [re-frame.core :refer [dispatch subscribe]]
             [reagent.core :as reagent]
             cljsjs.jquery
@@ -35,14 +36,13 @@
 (defn render-word-svg
   "Renders a word SVG."
   [word correct?]
-  (let [class (str "words "
-                   (if correct? "correct" "incorrect"))]
+  (let [class (str "words " (if correct? "correct" "incorrect"))]
     [:svg
      ;; TODO: size, position
      [:text {:class class :x 100 :y 30} word]]))
 
 (defn render-guess [{:keys [::game/truth ::game/guess] :as slot}]
-  [render-word-svg guess (game/correct? slot)])
+  (draggable (fn [] [render-word-svg guess (game/correct? slot)])))
 
 (defn render-slot [index slot]
   (if (game/responded? slot)
@@ -58,12 +58,7 @@
 
 (defn render-word-draggable
   [word]
-  (reagent/create-class
-   {:reagent-render      (fn []
-                           [:span word])
-    :component-did-mount (fn [component]
-                           (.draggable (js/$ (reagent/dom-node component)) #js {:revert true}))}))
-
+  (draggable (fn [] [:span word])))
 
 (defn render-option [index {:keys [::game/used? ::game/word] :as option}]
   ^{:key index}
