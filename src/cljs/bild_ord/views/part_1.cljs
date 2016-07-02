@@ -1,6 +1,6 @@
 (ns bild-ord.views.part-1
   (:require [bild-ord.domain.game :as game]
-            [bild-ord.views.common :refer [draggable droppable nbsp]]
+            [bild-ord.views.common :refer [draggable droppable draggable-droppable nbsp]]
             [re-frame.core :refer [dispatch subscribe]]
             [reagent.core :as reagent]
             cljsjs.jquery
@@ -21,20 +21,31 @@
   [index]
   (droppable
    render-drop-box-svg
-   (fn [word _] (dispatch [:guess-word index word]))))
+   (fn [word from-index]
+     (dispatch
+      (if from-index
+        [:move-guess from-index index]
+        [:guess-word index word])))))
 
 #_(dispatch [:move-guess] index-from index-to)
 
-(defn render-word-svg
-  "Renders a word SVG."
+(defn render-word-in-slot
   [index word correct?]
-  (let [class (str "words " (if correct? "correct" "incorrect"))]
-    [:svg {:data-drag-source index}
-     ;; TODO: size, position
-     [:text {:class class :x 100 :y 30} word]]))
+  [:div {:data-drag-source index}
+     [:svg
+      ;; TODO: size, position
+      [:text {:class (str "words " (if correct? "correct" "incorrect")) :x 100 :y 30} word]]])
 
-(defn render-guess [index {:keys [::game/truth ::game/guess] :as slot}]
-  (draggable (fn [] [render-word-svg index guess (game/correct? slot)])))
+(defn render-guess
+  [index {:keys [::game/guess] :as slot}]
+  (draggable-droppable
+   (fn [index {:keys [::game/guess] :as slot}]
+     (render-word-in-slot index guess (game/correct? slot)))
+   (fn [word from-index]
+     (dispatch
+      (if from-index
+        [:move-guess from-index index]
+        [:replace-guess index word])))))
 
 (defn render-slot [index slot]
   (if (game/responded? slot)
@@ -50,7 +61,7 @@
 
 (defn render-word-draggable
   [word]
-  (draggable (fn [] [:span word])))
+  (draggable (fn [word] [:span word])))
 
 (defn render-option [index {:keys [::game/used? ::game/word] :as option}]
   ^{:key index}
@@ -66,4 +77,4 @@
      (fn []
        (into [:div.col-12.p3.flex.flex-column.justify-around.words.words-drag]
              (map render-option random-indicies @pile)))
-     (fn [_ index] (dispatch [:cancel-guess index])))))
+     (fn [_ from-index] (dispatch [:cancel-guess from-index])))))

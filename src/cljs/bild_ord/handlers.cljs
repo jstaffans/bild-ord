@@ -18,7 +18,7 @@
 (defn debug-game-state
   [db]
   (let [data (select-keys (:game db) [::game/slots ::game/pile])]
-    (.log js/console (pr-str data))
+    (.log js/console data)
     db))
 
 (register-handler
@@ -33,9 +33,15 @@
    (-> db
        (update-in [:game] #(game/cancel-guess % (js/parseInt index))))))
 
-#_(register-handler
+(register-handler
  :move-guess
  (fn [db [_ index-from index-to]]
    (-> db
-       (update-in [:game] #(game/move-guess % index-from index-to))
-       (debug-game-state))))
+       (update-in [:game] #(game/move-guess % (js/parseInt index-from) (js/parseInt index-to))))))
+
+(register-handler
+ :replace-guess
+ (fn [db [_ index word]]
+   (-> db
+       (update-in [:game] #(game/replace-guess % index word))
+       debug-game-state)))

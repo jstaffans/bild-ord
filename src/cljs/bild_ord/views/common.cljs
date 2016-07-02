@@ -10,15 +10,27 @@
   [index]
   [:img.illustration.m2 {:src (str "/svg/" 0 "/" index ".svg")}])
 
+(defn- add-drag-handler [component]
+  (.draggable
+   (js/$ (reagent/dom-node component))
+   #js {:revert true}))
+
+(defn- add-drop-handler [component drop-fn]
+  (.droppable
+   (js/$ (reagent/dom-node component))
+   #js {:drop (fn [_ ui]
+                (let [dropped     (js/$ (.-draggable ui))
+                      word        (.text dropped)
+                      drag-source (.attr dropped "data-drag-source")]
+                  (drop-fn word drag-source)))}))
+
 (defn draggable
   "Wraps the given render-fn with a jQuery draggable."
   [render-fn]
   (reagent/create-class
    {:reagent-render      render-fn
     :component-did-mount (fn [component]
-                           (.draggable
-                            (js/$ (reagent/dom-node component))
-                            #js {:revert true}))}))
+                           (add-drag-handler component))}))
 
 (defn droppable
   "Wraps the given render-fn with a jQuery droppable.
@@ -29,10 +41,13 @@
   (reagent/create-class
    {:reagent-render      render-fn
     :component-did-mount (fn [component]
-                           (.droppable
-                            (js/$ (reagent/dom-node component))
-                            #js {:drop (fn [_ ui]
-                                         (let [dropped     (js/$ (.-draggable ui))
-                                               word        (.text dropped)
-                                               drag-source (.attr dropped "data-drag-source")]
-                                           (drop-fn word drag-source)))}))}))
+                           (add-drop-handler component drop-fn))}))
+
+(defn draggable-droppable
+  "Combination of draggable and droppable."
+  [render-fn drop-fn]
+  (reagent/create-class
+   {:reagent-render      render-fn
+    :component-did-mount (fn [component]
+                           (add-drag-handler component)
+                           (add-drop-handler component drop-fn))}))
