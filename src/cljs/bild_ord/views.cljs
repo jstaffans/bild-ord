@@ -17,10 +17,10 @@
   (conj
    (render-container)
 
-   [part-1/render-questions]
+   [part-1/render-slots]
 
    [:div.col.col-5.fill-y.flex.flex-wrap.content-center
-    [part-1/render-options]]))
+    [part-1/render-pile]]))
 
 (defn render-part-2
   "Renders the second part of a game (typing the words)"

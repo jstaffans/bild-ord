@@ -1,5 +1,5 @@
 (ns bild-ord.views.part-1
-  (:require [bild-ord.domain.words :as words]
+  (:require [bild-ord.domain.game :as game]
             [re-frame.core :refer [dispatch subscribe]]
             [reagent.core :as reagent]
             cljsjs.jquery
@@ -27,8 +27,10 @@
                             (js/$ (reagent/dom-node component))
                             #js {:drop (fn [_ ui]
                                          (let [dropped (js/$ (.-draggable ui))
-                                               response (.text dropped)]
-                                           (dispatch [:drop-word index response])))}))}))
+                                               word (.text dropped)]
+                                           (dispatch [:guess-word index word])))}))}))
+
+#_(dispatch [:move-guess] index-from index-to)
 
 (defn render-word-svg
   "Renders a word SVG."
@@ -39,22 +41,20 @@
      ;; TODO: size, position
      [:text {:class class :x 100 :y 30} word]]))
 
+(defn render-guess [{:keys [::game/truth ::game/guess] :as slot}]
+  [render-word-svg guess (game/correct? slot)])
 
-(defn render-response [question]
-  [render-word-svg (words/response question) (words/correct? question)])
-
-(defn render-question [index question]
-  (if (words/responded? question)
-    ^{:key index} [render-response question]
+(defn render-slot [index slot]
+  (if (game/responded? slot)
+    ^{:key index} [render-guess slot]
     ^{:key index} [render-drop-box index]))
 
-(defn render-questions []
-  "Renders the question: either an empty droppable box or a response."
-  (let [questions (subscribe [:questions])]
+(defn render-slots []
+  "Renders the slot: either an empty droppable box or a response."
+  (let [slots (subscribe [:slots])]
     (fn []
       (into [:div.col.col-3.flex.flex-column.justify.around.fill-y]
-            (map-indexed render-question @questions)))))
-
+            (map-indexed render-slot @slots)))))
 
 (defn render-word-draggable
   [word]
@@ -65,16 +65,16 @@
                            (.draggable (js/$ (reagent/dom-node component)) #js {:revert true}))}))
 
 
-(defn render-option [index option]
+(defn render-option [index {:keys [::game/used? ::game/word] :as option}]
   ^{:key index}
   [:div {:class (str "r" index)}
-      (if (nil? option)
+      (if used?
         nbsp
-        [render-word-draggable option])])
+        [render-word-draggable word])])
 
-(defn render-options []
-  (let [options (subscribe [:options])
-        random-indicies (-> @options count range shuffle)]
+(defn render-pile []
+  (let [pile (subscribe [:pile])
+        random-indicies (-> @pile count range shuffle)]
     (fn []
       (into [:div.col-12.p3.flex.flex-column.justify-around.words.words-drag] ;; TODO - but view styles back into main views
-            (map render-option random-indicies @options)))))
+            (map render-option random-indicies @pile)))))

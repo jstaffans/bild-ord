@@ -1,5 +1,6 @@
 (ns bild-ord.domain.game
-  (:require [clojure.spec :as s]
+  (:require #?(:clj [clojure.spec :as s]
+               :cljs [cljs.spec :as s])
             [com.rpl.specter :as specter]))
 
 (s/def ::word string?)
@@ -29,6 +30,9 @@
   (and (not (nil? truth))
        (not (nil? guess))
        (= truth guess)))
+
+(defn responded? [{:keys [::truth ::guess] :as slot}]
+  (not (nil? guess)))
 
 (defn success? [{:keys [::slots] :as game}]
   {:pre [(s/valid? ::slots slots)]}

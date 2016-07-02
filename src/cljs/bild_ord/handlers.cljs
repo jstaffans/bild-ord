@@ -1,7 +1,7 @@
 (ns bild-ord.handlers
   (:require [re-frame.core :refer [register-handler]]
             [bild-ord.db :refer [default-state]]
-            [bild-ord.domain.words :as words]
+            [bild-ord.domain.game :as game]
             [com.rpl.specter :as specter]))
 
 (register-handler
@@ -17,14 +17,20 @@
 
 (defn debug-game-state
   [db]
-  (let [data (select-keys db [:questions :options])]
+  (let [data (select-keys (:game db) [::game/slots ::game/pile])]
     (.log js/console (pr-str data))
     db))
 
 (register-handler
- :drop-word
- (fn [db [_ index response]]
+ :guess-word
+ (fn [db [_ index word]]
    (-> db
-       (update-in [:questions] words/respond index response)
-       (update-in [:options] words/remove-option response)
+       (update-in [:game] #(game/guess-word % index word))
+       (debug-game-state))))
+
+#_(register-handler
+ :move-guess
+ (fn [db [_ index-from index-to]]
+   (-> db
+       (update-in [:game] #(game/move-guess % index-from index-to))
        (debug-game-state))))
