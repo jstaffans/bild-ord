@@ -7,10 +7,12 @@
              [response :refer [redirect]]]
             [slingshot.slingshot :refer [try+]]))
 
-(defn index []
-  (page
-   [:div
-    (title-bar)]))
+(defn index [request]
+  (if-let [id (-> request :session :identity)]
+    (page
+      [:div
+       (title-bar id)])
+     (redirect "/login")))
 
 (defn login
   ([] (login nil))
@@ -44,9 +46,7 @@
 
 (defn user-endpoint [config]
   (routes
-   (GET "/" []
-     (index))
-   (GET "/login" []
-     (login))
+   (GET "/" [] index)
+   (GET "/login" [] (login))
    (POST "/login" []
      (partial authenticate (:db config)))))

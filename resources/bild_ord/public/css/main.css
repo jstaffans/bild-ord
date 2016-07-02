@@ -51,6 +51,11 @@ html, body {
   .title-bar div {
     font-size: 1.6em;
     padding: 0.5em; }
+  .title-bar .topmenu {
+    margin-top: 10px;
+    margin-right: 10px;
+    float: right;
+    font-size: 1.4em; }
 
 .game-container {
   position: absolute;

@@ -21,7 +21,9 @@
 
 (defn title-bar
   "Top title bar shown on some pages"
-  []
-  [:nav.clearfix.title-bar
-   [:div.sm-col
-    [:h1.m0 "Bild och ord"]]])
+  ([] (title-bar nil))
+  ([id]
+   [:nav.clearfix.title-bar
+    [:div.sm-col
+     [:h1.m0 "Bild och ord"]]
+    [:div.sm-col.topmenu id]]))
