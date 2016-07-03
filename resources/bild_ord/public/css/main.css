@@ -43,21 +43,19 @@ html, body {
   width: 100%; }
 
 .slot-guess {
-  text-align: center; }
-  .slot-guess span {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%); }
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .slot-guess span.correct {
+    color: #0F0; }
+  .slot-guess span.incorrect {
+    color: #F00; }
+  .slot-guess span:hover {
+    cursor: pointer; }
 
 .words {
   font-size: 3em;
   font-family: Georgia, Times, "Times New Roman", serif; }
-  .words.correct {
-    fill: #0F0; }
-  .words.incorrect {
-    fill: #F00; }
-  .words:hover {
-    cursor: pointer; }
 
 .words-drag {
   background: #f0f0f0; }
