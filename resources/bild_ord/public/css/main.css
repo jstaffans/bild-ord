@@ -37,10 +37,17 @@ html, body {
   height: 60px;
   width: 100%; }
 
-.box {
+.slot {
   margin-left: -40px;
   height: 60px;
   width: 100%; }
+
+.slot-guess {
+  text-align: center; }
+  .slot-guess span {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
 
 .words {
   font-size: 3em;

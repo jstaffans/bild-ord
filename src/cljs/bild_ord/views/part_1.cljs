@@ -14,7 +14,7 @@
 (defn render-drop-box-svg
   "Renders the generic drop box SVG."
   []
-  [:img.box.m2 {:src (str "/svg/box.svg")}])
+  [:img.slot.m2 {:src (str "/svg/box.svg")}])
 
 (defn render-drop-box
   "Renders the drop area and hooks it up as a jQuery droppable."
@@ -31,10 +31,8 @@
 
 (defn render-word-in-slot
   [index word correct?]
-  [:div {:data-drag-source index}
-     [:svg
-      ;; TODO: size, position
-      [:text {:class (str "words " (if correct? "correct" "incorrect")) :x 100 :y 30} word]]])
+  [:div.slot.slot-guess.m2 {:data-drag-source index}
+   [:span {:class (str "words " (if correct? "correct" "incorrect"))} word]])
 
 (defn render-guess
   [index {:keys [::game/guess] :as slot}]
