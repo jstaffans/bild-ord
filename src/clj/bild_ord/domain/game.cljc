@@ -88,7 +88,6 @@
                      (fn [slot] (dissoc slot ::guess))
                      game))
 
-
 (defn get-option [game word]
   (->> game ::pile (filter #(= word (::word %))) first))
 
@@ -122,16 +121,22 @@
       (remove-option word)))
 
 (defn move-guess [game slot-index-from slot-index-to]
-  (-> game
-      (set-guess slot-index-to (get-guess game slot-index-from))
-      (remove-guess slot-index-from)))
+  "Move guess from one slot to another."
+  (let [to-slot-guess (get-guess game slot-index-to)
+        to-slot-used? (not (nil? to-slot-guess))]
+    (cond-> game
+      true          (set-guess slot-index-to (get-guess game slot-index-from))
+      true          (remove-guess slot-index-from)
+      to-slot-used? (restore-option to-slot-guess))))
 
 (defn cancel-guess [game slot-index]
+  "Move guess from slot back to pile."
   (-> game
       (restore-option (get-guess game slot-index))
       (remove-guess slot-index)))
 
 (defn replace-guess [game slot-index word]
+  "Replace the current slot with a new guess from the pile."
   (-> game
       (remove-option word)
       (restore-option (get-guess game slot-index))

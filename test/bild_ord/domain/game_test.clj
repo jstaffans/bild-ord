@@ -71,6 +71,14 @@
       (is (= "lura"
              (get-guess after-move 1))))))
 
+(deftest move-replace-guess-test
+  (let [after-move (-> example-game
+                       (guess-word 0 "lura")
+                       (guess-word 1 "sila")
+                       (move-guess 0 1))]
+    (testing "replaced guess is back in pile"
+      (is (false? (::game/used? (get-option after-move "sila")))))))
+
 (deftest cancel-guess-test
   (let [after-cancel (-> example-game
                          (guess-word 0 "lura")
