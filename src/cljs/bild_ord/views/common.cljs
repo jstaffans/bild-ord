@@ -11,9 +11,8 @@
   [:img.illustration.m2 {:src (str "/svg/" 0 "/" index ".svg")}])
 
 (defn- add-drag-handler [component]
-  (.draggable
-   (js/$ (reagent/dom-node component))
-   #js {:revert true}))
+  (-> (js/$ (reagent/dom-node component))
+      (.draggable #js {:revert true})))
 
 (defn- add-drop-handler [component drop-fn]
   (.droppable
