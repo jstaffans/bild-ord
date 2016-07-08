@@ -34,5 +34,5 @@
                  (for [i (range 5)]
                    ^{:key i} [input i])])
          (container))
-       (common/modal "Grattis" #(.log js/console "next"))
-       #_(when @success? (modal "Grattis" #(.log js/console "next")))))))
+       #_(common/modal "Grattis" #(.log js/console "next"))
+       (when @success? (common/modal "Grattis" #(.log js/console "next")))))))
