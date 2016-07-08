@@ -5,7 +5,7 @@
 
 (def nbsp \u00A0)
 
-(defn render-illustration-svg
+(defn illustration-svg
   "Renders one of the left-hand illustrations."
   [index]
   [:img.illustration.m2 {:src (str "/svg/" 0 "/" index ".svg")}])
@@ -50,3 +50,11 @@
     :component-did-mount (fn [component]
                            (add-drag-handler component)
                            (add-drop-handler component drop-fn))}))
+
+(defn modal
+  "Renders a modal, covering the whole screen."
+  [children callback-fn]
+  [:div.modal.flex
+   [:div.backdrop {:on-click (callback-fn)}]
+   [:div.content.p1.border
+    children]])

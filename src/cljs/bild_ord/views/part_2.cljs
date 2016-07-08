@@ -3,7 +3,7 @@
             [re-frame.core :refer [dispatch subscribe]]
             [reagent.core :as reagent]))
 
-(defn render-input
+(defn input
   "Renders one input where the user can type in a word"
   [index]
   [:div.flex.flex-wrap.items-end
