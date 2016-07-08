@@ -3,4 +3,4 @@
             [bild-ord.domain.words :as words]))
 
 (def default-state
-  {:game (game/new-game 0 words/example-words words/example-options)})
+  {:game (game/new-game 0 words/example-words (shuffle words/example-options))})
