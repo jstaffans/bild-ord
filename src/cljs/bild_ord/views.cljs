@@ -33,8 +33,10 @@
 
 (defn app
   []
-  (let [part (subscribe [:current-part])]
+  (let [part (subscribe [:current-part])
+        success? (subscribe [:success?])]
     (fn []
+      (.log js/console @success?)
       (condp = @part
         :drag (render-part-1)
         :type (render-part-2)

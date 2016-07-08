@@ -23,3 +23,8 @@
  :current-part
  (fn [db _]
    (reaction (:part @db))))
+
+(register-sub
+ :success?
+ (fn [db _]
+   (reaction (-> @db :game game/success?))))
