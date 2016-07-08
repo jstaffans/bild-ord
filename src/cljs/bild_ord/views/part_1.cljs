@@ -27,8 +27,6 @@
         [:move-guess from-index index]
         [:guess-word index word])))))
 
-#_(dispatch [:move-guess] index-from index-to)
-
 (defn render-word-in-slot
   [index word correct?]
   (draggable-droppable
