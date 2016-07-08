@@ -36,4 +36,4 @@
                 [inputs])
          (container))
        (common/modal (goto-next) #(.log js/console "next"))
-       #_(when @success? (common/modal "Grattis" #(.log js/console "next")))))))
+       #_(when @success? (common/modal (goto-next) #(.log js/console "next")))))))

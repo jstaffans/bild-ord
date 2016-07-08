@@ -100,9 +100,9 @@ html, body {
   align-items: center;
   justify-content: center; }
   .slot-guess span.correct {
-    color: #0F0; }
+    color: #008000; }
   .slot-guess span.incorrect {
-    color: #F00; }
+    color: #CC0000; }
   .slot-guess span:hover {
     cursor: pointer; }
 
@@ -136,5 +136,8 @@ html, body {
 .goto-next h1 {
   font-weight: 600;
   color: #008000; }
+
+.goto-next button {
+  width: 100%; }
 
 /*# sourceMappingURL=main.css.map */
