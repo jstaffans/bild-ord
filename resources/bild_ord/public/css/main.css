@@ -1,5 +1,41 @@
+.fill-y {
+  min-height: 500px;
+  height: 100%; }
+  .fill-y > div, .fill-y img {
+    flex: 1 1 auto; }
+
+.btn {
+  font-family: inherit; }
+
+.btn-primary {
+  color: var(--button-color);
+  background-color: var(--button-background-color);
+  border-radius: var(--border-radius); }
+
+.btn-primary:hover {
+  box-shadow: inset 0 0 0 20rem var(--darken-1); }
+
+.btn-primary:active {
+  box-shadow: inset 0 0 0 20rem var(--darken-2), inset 0 3px 4px 0 var(--darken-3), 0 0 1px var(--darken-2); }
+
+.btn-primary:disabled,
+.btn-primary.is-disabled {
+  opacity: .5; }
+
+:root {
+  --blue: #0074d9;
+  --button-color: #fff;
+  --button-background-color: var(--blue);
+  --border-radius: 3px;
+  --darken-1: rgba(0, 0, 0, 0.0625);
+  --darken-2: rgba(0, 0, 0, 0.125);
+  --darken-3: rgba(0, 0, 0, 0.25); }
+
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: inherit;
   font-weight: 300; }
 
 html, body {
@@ -15,9 +51,11 @@ html, body {
   .title-bar div {
     font-size: 1.6em;
     padding: 0.5em; }
-
-.debug-bg {
-  background: #dff; }
+  .title-bar .topmenu {
+    margin-top: 10px;
+    margin-right: 10px;
+    float: right;
+    font-size: 1.4em; }
 
 .game-container {
   position: absolute;
@@ -26,11 +64,16 @@ html, body {
   width: 100%;
   min-width: 960px; }
 
-.fill-y {
-  min-height: 500px;
-  height: 100%; }
-  .fill-y > div, .fill-y img {
-    flex: 1 1 auto; }
+.form-login {
+  display: table;
+  margin: 20px auto; }
+  .form-login .control-group {
+    margin: 15px 0; }
+  .form-login label {
+    display: inline-block;
+    min-width: 130px; }
+  .form-login button {
+    float: right; }
 
 .illustration {
   margin-left: -20px;

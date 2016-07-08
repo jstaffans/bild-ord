@@ -1,0 +1,29 @@
+- apt_repository: repo='ppa:webupd8team/java'
+
+- name: Accept Oracle license
+  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value=true vtype=select
+
+- apt: update_cache=yes
+
+- name: Install Java 8
+  apt: name=oracle-java8-installer state=latest
+
+- name: Set Java environment variables
+  apt: name=oracle-java8-set-default state=latest
+
+- name: Download Leiningen
+  get_url:  url=https://raw.github.com/technomancy/leiningen/{{leiningen_version}}/bin/lein 
+            dest=/usr/local/bin/lein-{{leiningen_version}}
+            mode=0755
+
+- name: Link to main version of Leinigen
+  file: dest=/usr/local/bin/lein
+        src=/usr/local/bin/lein-{{leiningen_version}}
+        state=link
+
+- name: Root may execute Leiningen 
+  lineinfile: line='export LEIN_ROOT=True'
+              state=present
+              dest=~root/.bashrc
+
+

@@ -7,8 +7,7 @@
   "Placeholder element for the Reagent app"
   [:div#app])
 
-(defn game
-  []
+(defn game []
   (page
    [:div
     (title-bar)

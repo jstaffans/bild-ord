@@ -1,0 +1,13 @@
+- apt: name=sqlite3 state=installed update_cache=yes
+  
+- name: Create sqlite directory
+  file: >
+      path={{ sqlite_dir }}
+      owner={{ ansible_user_id }}
+      group={{ ansible_user_id }}
+      mode=0755
+      state=directory
+
+- name: Create sqlite dbs
+  command: touch {{ sqlite_dir }}/{{ item }}
+  with_items: sqlite_dbs
