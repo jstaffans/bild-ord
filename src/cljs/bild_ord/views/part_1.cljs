@@ -74,4 +74,5 @@
      (fn []
        (into [:div.col-12.p3.flex.flex-column.justify-around.words.words-drag]
              (map render-option random-indicies @pile)))
-     (fn [_ from-index] (dispatch [:cancel-guess from-index])))))
+     (fn [_ from-index]
+       (when from-index (dispatch [:cancel-guess from-index]))))))
