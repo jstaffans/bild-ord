@@ -4,7 +4,7 @@
             [bild-ord.routes :as routes]
             bild-ord.subs
             [bild-ord.views :as views]
-            [re-frame.core :refer [dispatch]]
+            [re-frame.core :refer [dispatch-sync]]
             [reagent.core :as reagent]))
 
 (defn mount-root
@@ -13,6 +13,6 @@
   (reagent/render [views/app] (.getElementById js/document "app")))
 
 (defn ^:export main []
-  (dispatch [:initialise-db])
+  (dispatch-sync [:initialise-db])
   (routes/init)
   (mount-root))
