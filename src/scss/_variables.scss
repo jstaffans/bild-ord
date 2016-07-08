@@ -2,5 +2,8 @@ $main-font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neu
 
 $excercise-font-family: Georgia, Times, 'Times New Roman', serif;
 
-$brown-bg: #d4b381;
+$brown: #d4b381;
+$brown-bg: $brown;
 $grey-bg: #f0f0f0;
+
+$brown-dark: darken($brown, 15%);

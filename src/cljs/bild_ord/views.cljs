@@ -13,8 +13,12 @@
 
 (defn goto-next
   []
-
-  )
+  [:div.goto-next
+   [:h1.m2 "Bra jobbat!"]
+   [:div.instructions.m2
+    "Du klarade första delen av spelet. Gå nu vidare till nästa del."]
+   [:div.m2
+    [:button.btn.btn-primary "Gå vidare"]]])
 
 (defn app
   []
@@ -31,5 +35,5 @@
                 (container)
                 [inputs])
          (container))
-       #_(common/modal "Grattis" #(.log js/console "next"))
-       (when @success? (common/modal "Grattis" #(.log js/console "next")))))))
+       (common/modal (goto-next) #(.log js/console "next"))
+       #_(when @success? (common/modal "Grattis" #(.log js/console "next")))))))

@@ -1,6 +1,7 @@
 @import "variables";
 @import "trumps";
 @import "components.btn";
+@import "components.modal";
 
 body {
     font-family: $main-font-family;
@@ -69,17 +70,12 @@ html, body {
     width: 100%;
 }
 
-<<<<<<< d58db2192a98a5753cd00147adac2cb366208450
 .slot {
-=======
-.box {
->>>>>>> Login form (wip)
     margin-left: -40px;
     height: 60px;
     width: 100%;
 }
 
-<<<<<<< d58db2192a98a5753cd00147adac2cb366208450
 .slot-guess {
     display: flex;
     align-items: center;
@@ -103,19 +99,6 @@ html, body {
 .words {
     font-size: 3em;
     font-family: $excercise-font-family;
-=======
-.words {
-    font-size: 3em;
-    font-family: $excercise-font-family;
-
-    &.correct {
-        fill: #0F0;
-    }
-
-    &.incorrect {
-        fill: #F00;
-    }
->>>>>>> Login form (wip)
 }
 
 .words-drag {
@@ -144,28 +127,9 @@ html, body {
     }
 }
 
-// Components
-
-.modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-
-    .backdrop {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        opacity: 0.6;
-        z-index: 1;
-    }
-
-    .content {
-        margin: auto;
-        z-index: 2;
-        background-color: white;
+.goto-next {
+    h1 {
+        font-weight: 600;
+        color: green;
     }
 }

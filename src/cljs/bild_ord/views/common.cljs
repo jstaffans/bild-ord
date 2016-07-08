@@ -56,5 +56,5 @@
   [children callback-fn]
   [:div.modal.flex
    [:div.backdrop {:on-click (callback-fn)}]
-   [:div.content.p1.border
+   [:div.content.p2
     children]])

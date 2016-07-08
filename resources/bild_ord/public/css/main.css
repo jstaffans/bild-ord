@@ -8,28 +8,38 @@
   font-family: inherit; }
 
 .btn-primary {
-  color: var(--button-color);
-  background-color: var(--button-background-color);
-  border-radius: var(--border-radius); }
+  color: white;
+  background-color: #c19148;
+  border-radius: 3px; }
 
 .btn-primary:hover {
-  box-shadow: inset 0 0 0 20rem var(--darken-1); }
+  box-shadow: inset 0 0 0 20rem #b2843d; }
 
 .btn-primary:active {
-  box-shadow: inset 0 0 0 20rem var(--darken-2), inset 0 3px 4px 0 var(--darken-3), 0 0 1px var(--darken-2); }
+  box-shadow: inset 0 0 0 20rem #a77b39, inset 0 3px 4px 0, 0 0 1px #ab7e3a; }
 
 .btn-primary:disabled,
 .btn-primary.is-disabled {
   opacity: .5; }
 
-:root {
-  --blue: #0074d9;
-  --button-color: #fff;
-  --button-background-color: var(--blue);
-  --border-radius: 3px;
-  --darken-1: rgba(0, 0, 0, 0.0625);
-  --darken-2: rgba(0, 0, 0, 0.125);
-  --darken-3: rgba(0, 0, 0, 0.25); }
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000; }
+  .modal .backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.6;
+    z-index: 1; }
+  .modal .content {
+    margin: auto;
+    z-index: 2;
+    background-color: white; }
 
 body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
@@ -123,23 +133,8 @@ html, body {
   border-bottom: 2px solid black;
   padding: 0.3em; }
 
-.modal {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000; }
-  .modal .backdrop {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 0.6;
-    z-index: 1; }
-  .modal .content {
-    margin: auto;
-    z-index: 2;
-    background-color: white; }
+.goto-next h1 {
+  font-weight: 600;
+  color: green; }
 
 /*# sourceMappingURL=main.css.map */
