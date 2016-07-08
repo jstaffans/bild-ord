@@ -6,17 +6,12 @@
             cljsjs.jquery
             cljsjs.jquery-ui))
 
-(defn illustration-svg
-  "Renders one of the left-hand illustrations."
-  [index]
-  [:img.illustration.m2 {:src (str "/svg/" 0 "/" index ".svg")}])
-
-(defn drop-box-svg
+(defn- drop-box-svg
   "Renders the generic drop box SVG."
   []
   [:img.slot.m2 {:src (str "/svg/box.svg")}])
 
-(defn drop-box
+(defn- drop-box
   "Renders the drop area and hooks it up as a jQuery droppable."
   [index]
   (droppable
@@ -27,7 +22,7 @@
         [:move-guess from-index index]
         [:guess-word index word])))))
 
-(defn word-in-slot
+(defn- word-in-slot
   [index word correct?]
   (draggable-droppable
     (fn [index word correct?]
@@ -39,40 +34,42 @@
          [:move-guess from-index index]
          [:replace-guess index word])))))
 
-(defn guess
+(defn- guess
   [index {:keys [::game/guess] :as slot}]
   [:div.slot.slot-guess.m2
    [word-in-slot index guess (game/correct? slot)]])
 
-(defn slot [index slot]
+(defn- slot [index slot]
   (if (game/responded? slot)
     ^{:key index} [guess index slot]
     ^{:key index} [drop-box index]))
 
-(defn slots []
-  "Renders the slot: either an empty droppable box or a response."
-  (let [slots (subscribe [:slots])]
-    (fn []
-      (into [:div.col.col-3.flex.flex-column.justify.around.fill-y]
-            (map-indexed slot @slots)))))
-
-(defn word-draggable
+(defn- word-draggable
   [word]
   (draggable (fn [word] [:span word])))
 
-(defn option [index {:keys [::game/used? ::game/word] :as option}]
+(defn- option [index {:keys [::game/used? ::game/word] :as option}]
   ^{:key index}
   [:div {:class (str "r" index)}
       (if used?
         nbsp
         [word-draggable word])])
 
+(defn slots []
+  "Renders the slots column: either droppable boxes or responses."
+  (let [slots (subscribe [:slots])]
+    (fn []
+      (into [:div.col.col-3.flex.flex-column.justify.around.fill-y]
+            (map-indexed slot @slots)))))
+
 (defn pile []
+  "Renders the pile from which to drag words."
   (let [pile (subscribe [:pile])
         random-indicies (-> @pile count range shuffle)]
     (droppable
      (fn []
-       (into [:div.col-12.p3.flex.flex-column.justify-around.words.words-drag]
-             (map option random-indicies @pile)))
+       [:div.col.col-5.fill-y.flex.flex-wrap.content-center
+        (into [:div.col-12.p3.flex.flex-column.justify-around.words.words-drag]
+              (map option random-indicies @pile))])
      (fn [_ from-index]
        (when from-index (dispatch [:cancel-guess from-index]))))))

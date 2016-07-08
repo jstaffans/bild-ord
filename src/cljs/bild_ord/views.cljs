@@ -1,7 +1,7 @@
 (ns bild-ord.views
   (:require [bild-ord.views.common :as common]
             [bild-ord.views.part-1 :refer [slots pile]]
-            [bild-ord.views.part-2 :refer [input]]
+            [bild-ord.views.part-2 :refer [inputs]]
             [re-frame.core :refer [subscribe]]))
 
 (defn container
@@ -26,13 +26,10 @@
          :drag (conj
                 (container)
                 [slots]
-                [:div.col.col-5.fill-y.flex.flex-wrap.content-center
-                 [pile]])
+                [pile])
          :type (conj
                 (container)
-                [:div.col.col-8.flex.flex-column.fill-y.words-input
-                 (for [i (range 5)]
-                   ^{:key i} [input i])])
+                [inputs])
          (container))
        #_(common/modal "Grattis" #(.log js/console "next"))
        (when @success? (common/modal "Grattis" #(.log js/console "next")))))))
