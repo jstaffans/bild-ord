@@ -3,7 +3,7 @@
 ;; Domain logic and models around words
 
 (def example-words
-  ["lura" "måne" "sila" "gula" "sola"])
+  ["måne" "gula" "påse" "vila" "sila"])
 
 (def example-options
-  ["lura" "måne" "sila" "gula" "sola" "påse" "vila"])
+  (into example-words ["lura" "sola"]))
