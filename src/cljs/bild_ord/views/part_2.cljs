@@ -8,7 +8,7 @@
   [index]
   [:div.flex.flex-wrap.items-end
    [:div.m2
-    [:input {:size "10" :type "text" :autocomplete "off"}]]])
+    [:input {:size "10" :type "text" :autoComplete "off"}]]])
 
 (defn inputs
   []
