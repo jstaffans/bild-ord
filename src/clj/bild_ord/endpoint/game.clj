@@ -18,5 +18,5 @@
   (routes
    (GET "/game" []
      (redirect "/game/group/0/part/0"))
-   (GET "/game/group/:group/part/:part" [group part]
+   (GET "/game/group/:group/stage/:part" [_ _]
      (game))))

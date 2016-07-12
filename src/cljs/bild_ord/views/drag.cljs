@@ -1,4 +1,4 @@
-(ns bild-ord.views.part-1
+(ns bild-ord.views.drag
   (:require [bild-ord.domain.game :as game]
             [bild-ord.views.common :refer [draggable droppable draggable-droppable nbsp]]
             [re-frame.core :refer [dispatch subscribe]]

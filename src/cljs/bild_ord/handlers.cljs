@@ -11,37 +11,31 @@
 
 (register-handler
  :game-stage
- (fn [db [_ group part]]
-   (let [parts [:drag :type]]
-     (assoc db :group group :part (nth parts (js/parseInt part))))))
-
-(defn debug-game-state
-  [db]
-  (let [data (select-keys (:game db) [::game/slots ::game/pile])]
-    (.log js/console data)
-    db))
+ (fn [db [_ group stage]]
+   (let [stages [:drag :type]]
+     (-> db
+         (assoc :group group :stage (nth stages (js/parseInt stage)))))))
 
 (register-handler
  :guess-word
  (fn [db [_ index word]]
    (-> db
-       (update-in [:game] #(game/guess-word % index word)))))
+       (update-in [:games (:stage db)] #(game/guess-word % index word)))))
 
 (register-handler
  :cancel-guess
  (fn [db [_ index]]
    (-> db
-       (update-in [:game] #(game/cancel-guess % (js/parseInt index))))))
+       (update-in [:games (:stage db)] #(game/cancel-guess % (js/parseInt index))))))
 
 (register-handler
  :move-guess
  (fn [db [_ index-from index-to]]
    (-> db
-       (update-in [:game] #(game/move-guess % (js/parseInt index-from) (js/parseInt index-to))))))
+       (update-in [:games (:stage db)] #(game/move-guess % (js/parseInt index-from) (js/parseInt index-to))))))
 
 (register-handler
  :replace-guess
  (fn [db [_ index word]]
    (-> db
-       (update-in [:game] #(game/replace-guess % index word))
-       debug-game-state)))
+       (update-in [:games (:stage db)] #(game/replace-guess % index word)))))

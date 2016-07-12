@@ -1,4 +1,4 @@
-(ns bild-ord.views.part-2
+(ns bild-ord.views.type
   (:require [bild-ord.domain.words :as words]
             [re-frame.core :refer [dispatch subscribe]]
             [reagent.core :as reagent]))

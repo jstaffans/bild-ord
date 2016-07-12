@@ -1,7 +1,7 @@
 (ns bild-ord.views
   (:require [bild-ord.views.common :as common]
-            [bild-ord.views.part-1 :refer [slots pile]]
-            [bild-ord.views.part-2 :refer [inputs]]
+            [bild-ord.views.drag :refer [slots pile]]
+            [bild-ord.views.type :refer [inputs]]
             [bild-ord.routes :as routes]
             [re-frame.core :refer [subscribe]]))
 
@@ -26,11 +26,11 @@
 
 (defn app
   []
-  (let [part (subscribe [:current-part])
+  (let [stage (subscribe [:current-stage])
         success? (subscribe [:success?])]
     (fn []
       (conj
-       (condp = @part
+       (condp = @stage
          :drag (conj
                 (container)
                 [slots]

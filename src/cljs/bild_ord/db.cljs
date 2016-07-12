@@ -3,4 +3,6 @@
             [bild-ord.domain.words :as words]))
 
 (def default-state
-  {:game (game/new-game 0 words/example-words (shuffle words/example-options))})
+  {:stage :drag
+   :games {:drag (game/new-game 0 words/example-words (shuffle words/example-options))
+           :type (game/new-game 0 words/example-words)}})

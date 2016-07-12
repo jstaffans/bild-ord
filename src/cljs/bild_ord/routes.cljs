@@ -4,12 +4,12 @@
             [re-frame.core :refer [dispatch]]))
 
 (def routes
-  ["/game" {["/group/" :group "/part/" :part] :game-stage}])
+  ["/game" {["/group/" :group "/stage/" :stage] :game-stage}])
 
 (defn dispatch-route
   [match]
   (case (:handler match)
-    :game-stage (dispatch [:game-stage (-> match :route-params :group) (-> match :route-params :part)])))
+    :game-stage (dispatch [:game-stage (-> match :route-params :group) (-> match :route-params :stage)])))
 
 (def history
     (pushy/pushy dispatch-route (partial bidi/match-route routes)))
