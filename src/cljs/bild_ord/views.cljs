@@ -1,7 +1,7 @@
 (ns bild-ord.views
   (:require [bild-ord.views.common :as common]
-            [bild-ord.views.drag :refer [slots pile]]
-            [bild-ord.views.type :refer [inputs]]
+            [bild-ord.views.drag :refer [slots instructions-and-pile]]
+            [bild-ord.views.type :refer [inputs instructions]]
             [bild-ord.routes :as routes]
             [re-frame.core :refer [subscribe]]))
 
@@ -18,7 +18,7 @@
     (common/modal
      [:div.goto-next
       [:h1.m2 "Bra jobbat!"]
-      [:div.instructions.m2
+      [:div.m2
        "Du klarade första delen av spelet. Gå nu vidare till nästa del."]
       [:div.m2
        [:button.btn.btn-primary {:on-click next-fn} "Gå vidare"]]]
@@ -34,9 +34,10 @@
          :drag (conj
                 (container)
                 [slots]
-                [pile])
+                [instructions-and-pile])
          :type (conj
                 (container)
-                [inputs])
+                [inputs]
+                [instructions])
          (container))
        (when @success? (goto-next @stage))))))

@@ -112,7 +112,7 @@ html, body {
 
 .words-drag {
   background: #f0f0f0; }
-  .words-drag div:hover {
+  .words-drag .word:hover {
     cursor: pointer; }
   .words-drag .r0 {
     margin-left: 10%; }
@@ -127,15 +127,26 @@ html, body {
   .words-drag .r5 {
     margin-left: 56%; }
 
+.instructions {
+  background: #f0f0f0;
+  font-size: 1.2em; }
+  .instructions a, .instructions a:active, .instructions a:visited {
+    color: #275427; }
+
 .words-input input {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 3em;
   border: 0;
   outline: none;
   border-bottom: 2px solid black;
-  padding: 0.3em; }
+  padding: 0.7em 0; }
 
 .goto-next h1 {
   font-weight: 600;
   color: #008000; }
+
+.goto-next div {
+  font-size: 1.2em; }
 
 .goto-next button {
   width: 100%; }
