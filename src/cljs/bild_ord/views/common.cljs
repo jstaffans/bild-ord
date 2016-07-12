@@ -55,6 +55,6 @@
   "Renders a modal, covering the whole screen."
   [children callback-fn]
   [:div.modal.flex
-   [:div.backdrop {:on-click (callback-fn)}]
+   [:div.backdrop {:on-click callback-fn}]
    [:div.content.p2
     children]])
