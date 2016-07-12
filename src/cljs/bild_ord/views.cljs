@@ -13,8 +13,8 @@
       ^{:key i} [common/illustration-svg i])]])
 
 (defn goto-next
-  []
-  (let [next-fn #(routes/manual-dispatch "/game/group/0/part/1")]
+  [stage]
+  (let [next-fn #(routes/manual-dispatch (routes/next-stage-path 0 stage))]
     (common/modal
      [:div.goto-next
       [:h1.m2 "Bra jobbat!"]
@@ -39,4 +39,5 @@
                 (container)
                 [inputs])
          (container))
-       (when @success? (goto-next))))))
+       (goto-next @stage)
+       #_(when @success? (goto-next @stage))))))

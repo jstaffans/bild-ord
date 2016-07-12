@@ -1,7 +1,8 @@
 (ns bild-ord.routes
   (:require [bidi.bidi :as bidi]
             [pushy.core :as pushy]
-            [re-frame.core :refer [dispatch]]))
+            [re-frame.core :refer [dispatch]]
+            [bild-ord.db :as db]))
 
 (def routes
   ["/game" {["/group/" :group "/stage/" :stage] :game-stage}])
@@ -17,6 +18,10 @@
 (defn manual-dispatch
   [path]
   (pushy/set-token! history path))
+
+(defn next-stage-path
+  [group stage]
+  (bidi/path-for routes :game-stage :group group :stage (name (db/next-stage stage))))
 
 (defn init
   []

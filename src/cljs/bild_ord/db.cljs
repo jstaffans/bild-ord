@@ -6,3 +6,13 @@
   {:stage :drag
    :games {:drag (game/new-game 0 words/example-words (shuffle words/example-options))
            :type (game/new-game 0 words/example-words)}})
+
+(defn next-stage
+  [stage]
+  (condp = stage
+    :drag :type
+    nil))
+
+(defn valid-stage?
+  [stage]
+  (#{:drag :type} stage))
