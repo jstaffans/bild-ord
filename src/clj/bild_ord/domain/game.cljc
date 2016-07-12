@@ -3,8 +3,6 @@
                :cljs [cljs.spec :as s])
             [com.rpl.specter :as specter]))
 
-#?(:cljs (defn boolean? [x] (= (js/typeof x) "boolean")))
-
 (s/def ::word string?)
 
 (s/def ::truth ::word)
