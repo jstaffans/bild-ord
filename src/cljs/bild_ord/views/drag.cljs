@@ -25,14 +25,14 @@
 (defn- word-in-slot
   [index word correct?]
   (draggable-droppable
-    (fn [index word correct?]
-      [:span {:data-drag-source index
-              :class            (str "words " (if correct? "correct" "incorrect"))} word])
-    (fn [word from-index]
-      (dispatch
-       (if from-index
-         [:move-guess from-index index]
-         [:replace-guess index word])))))
+   (fn [index word correct?]
+     [:span {:data-drag-source index
+             :class            (str "words " (if correct? "correct" "incorrect"))} word])
+   (fn [word from-index]
+     (dispatch
+      (if from-index
+        [:move-guess from-index index]
+        [:replace-guess index word])))))
 
 (defn- guess
   [index {:keys [::game/guess] :as slot}]
@@ -53,9 +53,9 @@
   [index {:keys [::game/used? ::game/word] :as option}]
   ^{:key index}
   [:div.word {:class (str "r" index)}
-      (if used?
-        nbsp
-        [word-draggable word])])
+   (if used?
+     nbsp
+     [word-draggable word])])
 
 (defn slots
   []
