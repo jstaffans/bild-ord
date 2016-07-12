@@ -28,5 +28,4 @@
 (register-sub
  :success?
  (fn [db _]
-   (.log js/console @db)
    (reaction (-> @db :games (get (:stage @db)) game/success?))))
