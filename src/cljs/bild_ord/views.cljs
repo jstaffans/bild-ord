@@ -39,5 +39,4 @@
                 (container)
                 [inputs])
          (container))
-       (goto-next @stage)
-       #_(when @success? (goto-next @stage))))))
+       (when @success? (goto-next @stage))))))

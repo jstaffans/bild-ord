@@ -3,15 +3,10 @@
   (:require [re-frame.core :refer [register-sub]]
             [bild-ord.domain.game :as game]))
 
-(defn- current-stage
-  [db]
-  (:stage @db))
-
 (register-sub
  :slots
  (fn [db _]
-   (let [stage (current-stage db)]
-     (reaction (-> @db :games stage ::game/slots)))))
+   (reaction (-> @db :games (get (:stage @db)) ::game/slots))))
 
 ;; Keeps track of the words available to try.
 ;; Only for the dragging stage of a game.
@@ -33,5 +28,5 @@
 (register-sub
  :success?
  (fn [db _]
-   (let [stage (current-stage db)]
-     (reaction (-> @db :games stage game/success?)))))
+   (.log js/console @db)
+   (reaction (-> @db :games (get (:stage @db)) game/success?))))
