@@ -14,6 +14,10 @@
 (def history
     (pushy/pushy dispatch-route (partial bidi/match-route routes)))
 
+(defn manual-dispatch
+  [path]
+  (pushy/set-token! history path))
+
 (defn init
   []
   (pushy/start! history))

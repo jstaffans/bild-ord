@@ -2,6 +2,7 @@
   (:require [bild-ord.views.common :as common]
             [bild-ord.views.part-1 :refer [slots pile]]
             [bild-ord.views.part-2 :refer [inputs]]
+            [bild-ord.routes :as routes]
             [re-frame.core :refer [subscribe]]))
 
 (defn container
@@ -13,12 +14,15 @@
 
 (defn goto-next
   []
-  [:div.goto-next
-   [:h1.m2 "Bra jobbat!"]
-   [:div.instructions.m2
-    "Du klarade första delen av spelet. Gå nu vidare till nästa del."]
-   [:div.m2
-    [:button.btn.btn-primary "Gå vidare"]]])
+  (let [next-fn #(routes/manual-dispatch "/game/group/0/part/1")]
+    (common/modal
+     [:div.goto-next
+      [:h1.m2 "Bra jobbat!"]
+      [:div.instructions.m2
+       "Du klarade första delen av spelet. Gå nu vidare till nästa del."]
+      [:div.m2
+       [:button.btn.btn-primary {:on-click next-fn} "Gå vidare"]]]
+     next-fn)))
 
 (defn app
   []
@@ -35,5 +39,4 @@
                 (container)
                 [inputs])
          (container))
-       (common/modal (goto-next) #(.log js/console "next"))
-       #_(when @success? (common/modal (goto-next) #(.log js/console "next")))))))
+       (when @success? (goto-next))))))
