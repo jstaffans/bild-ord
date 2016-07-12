@@ -22,9 +22,7 @@
 
 (s/def ::group integer?)
 
-(s/def ::current-stage #{:dragging :typing})
-
-(s/def ::game (s/keys :req [::group ::slots ::current-stage]
+(s/def ::game (s/keys :req [::group ::slots]
                       :opt [::pile]))
 
 ;; NB: need to check for nils here otherwise could compare nil with nil. Perhaps better to check that truth and guess are valid as either :pre condition or with s/fdef?
@@ -55,28 +53,26 @@
     ::used? false}))
 
 (defn game
-  ([group slots current-stage]
+  ([group slots]
    {:post [(s/valid? ::game %)]}
    {::group group
-    ::slots slots
-    ::current-stage current-stage})
-  ([group slots current-stage pile]
+    ::slots slots})
+  ([group slots pile]
    {:post [(s/valid? ::game %)]}
    (assoc
-    (game group slots current-stage)
+    (game group slots)
     ::pile pile)))
 
 (defn new-game
   ([group truths]
-   (game group
-         (into [] (map slot truths))
-         :typing))
+   (game
+    group
+    (into [] (map slot truths))))
   ([group truths options]
-   (game group
-         (into [] (map slot truths))
-         :dragging
-         (into [] (map option options)))))
-
+   (game
+    group
+    (into [] (map slot truths))
+    (into [] (map option options)))))
 
 (defn get-guess [game slot-index]
   (-> game ::slots (nth slot-index) ::guess))
