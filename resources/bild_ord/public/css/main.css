@@ -140,6 +140,10 @@ html, body {
   outline: none;
   border-bottom: 2px solid black;
   padding: 0.7em 0; }
+  .words-input input.incorrect {
+    color: #CC0000; }
+  .words-input input.correct {
+    color: #008000; }
 
 .goto-next h1 {
   font-weight: 600;

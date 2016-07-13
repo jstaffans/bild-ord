@@ -72,6 +72,9 @@
     (into [] (map slot truths))
     (into [] (map option options)))))
 
+(defn has-pile? [game]
+  (::pile game))
+
 (defn get-guess [game slot-index]
   (-> game ::slots (nth slot-index) ::guess))
 
@@ -106,15 +109,14 @@
   {:post [(s/valid? ::game %)]}
   (transform-option game word set-unused))
 
-
 (defn guess-word [game slot-index word]
-  "Puts the word into the slot and removes the option from the pile"
+  "Puts the word into the slot and removes the option from the pile, if the game has a pile."
   {:pre [(s/valid? ::game game)
          (integer? slot-index)
          (s/valid? ::word word)]}
-  (-> game
-      (set-guess slot-index word)
-      (remove-option word)))
+  (cond-> game
+    true             (set-guess slot-index word)
+    (has-pile? game) (remove-option word)))
 
 (defn move-guess [game slot-index-from slot-index-to]
   "Move guess from one slot to another."
