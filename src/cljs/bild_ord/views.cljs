@@ -1,7 +1,8 @@
 (ns bild-ord.views
   (:require [bild-ord.views.common :as common]
-            [bild-ord.views.drag :refer [slots instructions-and-pile]]
-            [bild-ord.views.type :refer [inputs instructions]]
+            [bild-ord.views.drag :as drag]
+            [bild-ord.views.type :as type]
+            [bild-ord.views.hint :as hint]
             [bild-ord.routes :as routes]
             [re-frame.core :refer [subscribe]]))
 
@@ -33,11 +34,16 @@
        (condp = @stage
          :drag (conj
                 (container)
-                [slots]
-                [instructions-and-pile])
+                [drag/slots]
+                [drag/instructions-and-pile]
+                (when @success? (goto-next @stage)))
+         :hint (conj
+                (container)
+                [hint/truths]
+                [hint/instructions])
          :type (conj
                 (container)
-                [inputs]
-                [instructions])
-         (container))
-       (when @success? (goto-next @stage))))))
+                [type/inputs]
+                [type/instructions]
+                (when @success? (goto-next @stage)))
+         (container))))))

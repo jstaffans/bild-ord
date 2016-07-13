@@ -11,8 +11,9 @@
   [stage]
   (condp = stage
     :drag :type
+    :hint :type
     nil))
 
 (defn valid-stage?
   [stage]
-  (#{:drag :type} stage))
+  (#{:drag :hint :type} stage))

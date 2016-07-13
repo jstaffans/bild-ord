@@ -95,16 +95,17 @@ html, body {
   height: 60px;
   width: 100%; }
 
-.slot-guess {
+.slot-guess, .slot-truth {
   display: flex;
   align-items: center;
   justify-content: center; }
-  .slot-guess span.correct {
+  .slot-guess span.correct, .slot-truth span.correct {
     color: #008000; }
-  .slot-guess span.incorrect {
+  .slot-guess span.incorrect, .slot-truth span.incorrect {
     color: #CC0000; }
-  .slot-guess span:hover {
-    cursor: pointer; }
+
+.slot-guess span:hover {
+  cursor: pointer; }
 
 .words {
   font-size: 3em;
@@ -139,7 +140,9 @@ html, body {
   border: 0;
   outline: none;
   border-bottom: 2px solid black;
-  padding: 0.7em 0; }
+  padding: 0.7em 0;
+  margin-bottom: 0.35em;
+  margin-left: 20px; }
   .words-input input.incorrect {
     color: #CC0000; }
   .words-input input.correct {

@@ -8,6 +8,11 @@
  (fn [db _]
    (reaction (-> @db :games (get (:stage @db)) ::game/slots))))
 
+(register-sub
+ :truths
+ (fn [db _]
+   (reaction (map ::game/truth (-> @db :games :drag ::game/slots)))))
+
 ;; Keeps track of the words available to try.
 ;; Only for the dragging stage of a game.
 (register-sub
@@ -28,4 +33,4 @@
 (register-sub
  :success?
  (fn [db _]
-   (reaction (-> @db :games (get (:stage @db)) game/success?))))
+   (reaction (some-> @db :games (get (:stage @db)) game/success?))))

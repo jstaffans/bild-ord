@@ -76,7 +76,7 @@ html, body {
     width: 100%;
 }
 
-.slot-guess {
+.slot-guess, .slot-truth {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,10 +90,11 @@ html, body {
             color: $red;
         }
 
-        &:hover {
-            cursor: pointer;
-        }
     }
+}
+
+.slot-guess span:hover {
+    cursor: pointer;
 }
 
 .words {
@@ -135,6 +136,8 @@ html, body {
         outline: none;
         border-bottom: 2px solid black;
         padding: 0.7em 0;
+        margin-bottom: 0.35em;
+        margin-left: 20px;
 
         &.incorrect {
             color: $red;
