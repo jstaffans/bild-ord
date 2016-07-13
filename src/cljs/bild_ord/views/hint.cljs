@@ -1,5 +1,6 @@
 (ns bild-ord.views.hint
-  (:require [bild-ord.routes :as routes]
+  (:require [bild-ord.domain.words :as words]
+            [bild-ord.routes :as routes]
             [re-frame.core :refer [subscribe]]))
 
 ;; From the type stage, the user can go back to the drag stage, and the
@@ -15,10 +16,8 @@
 (defn truths
   []
   "Renders the correct words in their respective positions."
-  (let [truths (subscribe [:truths])]
-    (fn []
-      (into [:div.col.col-3.flex.flex-column.justify.around.fill-y]
-            (map-indexed truth @truths)))))
+  (into [:div.col.col-3.flex.flex-column.justify.around.fill-y]
+        (map-indexed truth words/example-words)))
 
 (defn instructions
   []
