@@ -10,7 +10,8 @@
 (defn dispatch-route
   [match]
   (case (:handler match)
-    :game-stage (dispatch-sync [:game-stage (-> match :route-params :group) (-> match :route-params :stage)])))
+    :game-stage
+    (dispatch-sync [:game-stage (-> match :route-params :group) (-> match :route-params :stage)])))
 
 (def history
     (pushy/pushy dispatch-route (partial bidi/match-route routes)))
@@ -21,7 +22,9 @@
 
 (defn next-stage-path
   [group stage]
-  (bidi/path-for routes :game-stage :group group :stage (name (db/next-stage stage))))
+  (if-let [next-stage (db/next-stage stage)]
+    (bidi/path-for routes :game-stage :group group :stage next-stage)
+    "/"))
 
 (defn init
   []

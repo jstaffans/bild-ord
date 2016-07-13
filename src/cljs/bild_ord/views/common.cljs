@@ -53,8 +53,8 @@
 
 (defn modal
   "Renders a modal, covering the whole screen."
-  [children callback-fn]
+  [children]
   [:div.modal.flex
-   [:div.backdrop {:on-click callback-fn}]
+   [:div.backdrop]
    [:div.content.p2
     children]])

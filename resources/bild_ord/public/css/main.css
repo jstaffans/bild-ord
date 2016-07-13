@@ -152,7 +152,8 @@ html, body {
 .goto-next div {
   font-size: 1.2em; }
 
-.goto-next button {
-  width: 100%; }
+.goto-next a {
+  text-align: center;
+  display: block; }
 
 /*# sourceMappingURL=main.css.map */

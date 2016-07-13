@@ -14,15 +14,15 @@
 
 (defn goto-next
   [stage]
-  (let [next-fn #(routes/manual-dispatch (routes/next-stage-path 0 stage))]
+  (let [texts     {:drag "Du klarade första delen av spelet. Gå nu vidare till nästa del."
+                   :type "Du klarade av andra delen av spelet. Du kan nu gå vidare och välja en annan grupp ord."}
+        next-path (routes/next-stage-path 0 stage)]
     (common/modal
      [:div.goto-next
       [:h1.m2 "Bra jobbat!"]
+      [:div.m2 (stage texts)]
       [:div.m2
-       "Du klarade första delen av spelet. Gå nu vidare till nästa del."]
-      [:div.m2
-       [:button.btn.btn-primary {:on-click next-fn} "Gå vidare"]]]
-     next-fn)))
+       [:a.btn.btn-primary {:href next-path} "Gå vidare"] ]])))
 
 (defn app
   []
