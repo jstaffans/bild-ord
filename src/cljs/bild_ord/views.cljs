@@ -25,6 +25,11 @@
       [:div.m2
        [:a.btn.btn-primary {:href next-path} "Gå vidare"] ]])))
 
+(defn progress
+  []
+  [:div.clearfix.center.align-middle.progress
+   "progress"])
+
 (defn app
   []
   (let [stage (subscribe [:current-stage])
@@ -46,4 +51,5 @@
                 [type/inputs]
                 [type/instructions]
                 (when @success? (goto-next @stage)))
-         (container))))))
+         (container))
+       (progress)))))
