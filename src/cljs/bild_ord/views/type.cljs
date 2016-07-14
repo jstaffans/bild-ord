@@ -8,7 +8,7 @@
   "Renders one input where the user can type in a word"
   [index {:keys [::game/guess] :as slot}]
   [:div.flex.flex-wrap.items-end
-   [:div.m2
+   [:div
     [:input {:class        (cond
                              (empty? guess)       ""
                              (game/correct? slot) "correct"

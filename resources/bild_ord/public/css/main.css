@@ -1,5 +1,4 @@
 .fill-y {
-  min-height: 500px;
   height: 100%; }
   .fill-y > div, .fill-y img {
     flex: 1 1 auto; }
@@ -57,7 +56,8 @@ html, body {
 .title-bar {
   background: #d4b381;
   color: white;
-  height: 65px; }
+  height: 65px;
+  border-bottom: 1px solid #999; }
   .title-bar div {
     font-size: 1.6em;
     padding: 8px 15px; }
@@ -69,10 +69,12 @@ html, body {
 
 .game-container {
   position: absolute;
-  top: 65px;
-  bottom: 0;
+  top: 66px;
+  bottom: 80px;
+  border-bottom: 1px solid #999;
   width: 100%;
-  min-width: 960px; }
+  min-width: 960px;
+  min-height: 500px; }
 
 .form-login {
   display: table;
@@ -134,19 +136,20 @@ html, body {
   .instructions a, .instructions a:active, .instructions a:visited {
     color: #275427; }
 
-.words-input input {
-  font-family: Georgia, Times, "Times New Roman", serif;
-  font-size: 3em;
-  border: 0;
-  outline: none;
-  border-bottom: 2px solid black;
-  padding: 0.7em 0;
-  margin-bottom: 0.35em;
-  margin-left: 20px; }
-  .words-input input.incorrect {
-    color: #CC0000; }
-  .words-input input.correct {
-    color: #008000; }
+.words-input {
+  margin-top: -20px; }
+  .words-input input {
+    height: auto;
+    margin-left: 20px;
+    border: 0;
+    border-bottom: 2px solid black;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    font-size: 3em;
+    outline: none; }
+    .words-input input.incorrect {
+      color: #CC0000; }
+    .words-input input.correct {
+      color: #008000; }
 
 .goto-next h1 {
   font-weight: 600;

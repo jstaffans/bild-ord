@@ -27,6 +27,7 @@ html, body {
     background: $brown-bg;
     color: white;
     height: $title-bar-height;
+    border-bottom: 1px solid #999;
 
     div {
         font-size: 1.6em;
@@ -43,10 +44,12 @@ html, body {
 
 .game-container {
     position: absolute;
-    top: $title-bar-height;
-    bottom: 0;
+    top: $title-bar-height + 1px;
+    bottom: 80px;
+    border-bottom: 1px solid #999;
     width: 100%;
-    min-width: 960px;
+    min-width: $game-container-min-width;
+    min-height: $game-container-min-height;
 }
 
 .form-login {
@@ -131,15 +134,16 @@ html, body {
 }
 
 .words-input {
+    margin-top: -20px;
+
     input {
+        height: auto;
+        margin-left: 20px;
+        border: 0;
+        border-bottom: 2px solid black;
         font-family: $excercise-font-family;
         font-size: 3em;
-        border: 0;
         outline: none;
-        border-bottom: 2px solid black;
-        padding: 0.7em 0;
-        margin-bottom: 0.35em;
-        margin-left: 20px;
 
         &.incorrect {
             color: $red;
