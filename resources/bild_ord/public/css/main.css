@@ -57,10 +57,10 @@ html, body {
 .title-bar {
   background: #d4b381;
   color: white;
-  height: 75px; }
+  height: 65px; }
   .title-bar div {
     font-size: 1.6em;
-    padding: 0.5em; }
+    padding: 8px 15px; }
   .title-bar .topmenu {
     margin-top: 10px;
     margin-right: 10px;
@@ -69,7 +69,7 @@ html, body {
 
 .game-container {
   position: absolute;
-  top: 75px;
+  top: 65px;
   bottom: 0;
   width: 100%;
   min-width: 960px; }
@@ -99,10 +99,10 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center; }
-  .slot-guess span.correct, .slot-truth span.correct {
-    color: #008000; }
   .slot-guess span.incorrect, .slot-truth span.incorrect {
     color: #CC0000; }
+  .slot-guess span.correct, .slot-truth span.correct {
+    color: #008000; }
 
 .slot-guess span:hover {
   cursor: pointer; }

@@ -3,6 +3,8 @@
 @import "components.btn";
 @import "components.modal";
 
+$title-bar-height: 65px;
+
 body {
     font-family: $main-font-family;
 }
@@ -24,11 +26,11 @@ html, body {
 .title-bar {
     background: $brown-bg;
     color: white;
-    height: 75px;
+    height: $title-bar-height;
 
     div {
         font-size: 1.6em;
-        padding: 0.5em;
+        padding: 8px 15px;
     }
 
     .topmenu {
@@ -41,7 +43,7 @@ html, body {
 
 .game-container {
     position: absolute;
-    top: 75px;
+    top: $title-bar-height;
     bottom: 0;
     width: 100%;
     min-width: 960px;
@@ -82,14 +84,14 @@ html, body {
     justify-content: center;
 
     span {
-        &.correct {
-            color: $green;
-        }
-
         &.incorrect {
             color: $red;
         }
 
+        &.correct {
+            // TODO: quick zoom when transitioning to correct
+            color: $green;
+        }
     }
 }
 
@@ -144,6 +146,7 @@ html, body {
         }
 
         &.correct {
+            // TODO: quick zoom when transitioning to correct
             color: $green;
         }
     }
