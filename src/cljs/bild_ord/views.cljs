@@ -3,8 +3,8 @@
             [bild-ord.views.drag :as drag]
             [bild-ord.views.type :as type]
             [bild-ord.views.hint :as hint]
+            [bild-ord.views.progress :as progress]
             [bild-ord.routes :as routes]
-            [reagent.core :as reagent]
             [re-frame.core :refer [subscribe]]))
 
 (defn container
@@ -25,15 +25,6 @@
       [:div.m2 (stage texts)]
       [:div.m2
        [:a.btn.btn-primary {:href next-path} "Gå vidare"] ]])))
-
-(defn progress
-  []
-  (reagent/create-class
-    {:reagent-render (fn [component]
-                       [:div.progress-container
-                        [:div.progress-wrap
-                         {:data-progress-percent 15}
-                         "progress"]])}))
 
 (defn app
   []
@@ -58,4 +49,4 @@
                  [type/instructions]
                  (when @success? (goto-next @stage)))
           (container)))
-       [progress]])))
+       [progress/progress]])))
