@@ -36,6 +36,11 @@
   {:pre [(s/valid? ::slots slots)]}
   (every? correct? slots))
 
+(defn progress [{:keys [::slots] :as game}]
+  "Progress from 0 (initial state) to 5 (all slots correct)."
+  {:pre [(s/valid? ::slots slots)]}
+  (count (filter correct? slots)))
+
 (defn slot
   ([truth]
    {:post [(s/valid? ::slot %)]}

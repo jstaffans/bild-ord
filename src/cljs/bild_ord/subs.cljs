@@ -29,3 +29,12 @@
  :success?
  (fn [db _]
    (reaction (some-> @db :games (get (:stage @db)) game/success?))))
+
+;; Progress from 0 to 100 of the entire game
+(register-sub
+ :progress
+ (fn [db _]
+   (reaction
+    (* (+ (game/progress (-> @db :games :drag))
+          (game/progress (-> @db :games :type)))
+       10))))

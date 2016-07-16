@@ -184,7 +184,25 @@ html, body {
     align-items: center;
     justify-content: center;
 
+    .progress {
+        height: 25px;
+        border-radius: 10px;
+    }
+
     .progress-wrap {
+
+        width: 100%;
+        background: #ddd;
+        overflow: hidden;
+
+        .progress-bar {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 0;
+
+            background: lighten($green, 10%);
+        }
 
     }
 

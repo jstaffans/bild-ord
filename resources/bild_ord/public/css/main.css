@@ -171,5 +171,18 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center; }
+  .progress-container .progress {
+    height: 25px;
+    border-radius: 10px; }
+  .progress-container .progress-wrap {
+    width: 100%;
+    background: #ddd;
+    overflow: hidden; }
+    .progress-container .progress-wrap .progress-bar {
+      position: relative;
+      left: 0;
+      top: 0;
+      width: 0;
+      background: #00b300; }
 
 /*# sourceMappingURL=main.css.map */

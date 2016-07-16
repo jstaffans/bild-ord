@@ -28,8 +28,9 @@
 
 (defn app
   []
-  (let [stage (subscribe [:current-stage])
-        success? (subscribe [:success?])]
+  (let [stage            (subscribe [:current-stage])
+        success?         (subscribe [:success?])
+        current-progress (subscribe [:progress])]
     (fn []
       [:div
        (conj
@@ -49,4 +50,4 @@
                  [type/instructions]
                  (when @success? (goto-next @stage)))
           (container)))
-       [progress/progress]])))
+       [progress/progress {:percent @current-progress}]])))

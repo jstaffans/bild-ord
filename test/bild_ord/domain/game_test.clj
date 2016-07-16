@@ -98,3 +98,17 @@
       (is (false? (::game/used? (get-option after-replace "lura")))))
     (testing "new guess is removed from pile"
       (is (true? (::game/used? (get-option after-replace "sila")))))))
+
+(deftest progress-test
+  (let [initial-state             example-game
+        after-one-correct-guess   (-> example-game (guess-word 0 "lura"))
+        after-all-correct-guesses (-> example-game
+                                      (guess-word 0 "lura")
+                                      (guess-word 1 "sila")
+                                      (guess-word 2 "vila")
+                                      (guess-word 3 "gula")
+                                      (guess-word 4 "måne"))]
+    (testing "progress from zero to five correct guesses"
+      (is (= 0 (progress initial-state)))
+      (is (= 1 (progress after-one-correct-guess)))
+      (is (= 5 (progress after-all-correct-guesses))))))
