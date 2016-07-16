@@ -8,7 +8,7 @@
 (defn illustration-svg
   "Renders one of the left-hand illustrations."
   [index]
-  [:img.illustration.m2 {:src (str "/svg/" 0 "/" index ".svg")}])
+  [:img.illustration.m1 {:src (str "/svg/" 0 "/" index ".svg")}])
 
 (defn- add-drag-handler [component]
   (-> (js/$ (reagent/dom-node component))
