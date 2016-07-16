@@ -4,6 +4,7 @@
             [bild-ord.views.type :as type]
             [bild-ord.views.hint :as hint]
             [bild-ord.routes :as routes]
+            [reagent.core :as reagent]
             [re-frame.core :refer [subscribe]]))
 
 (defn container
@@ -27,29 +28,34 @@
 
 (defn progress
   []
-  [:div.clearfix.center.align-middle.progress
-   "progress"])
+  (reagent/create-class
+    {:reagent-render (fn [component]
+                       [:div.progress-container
+                        [:div.progress-wrap
+                         {:data-progress-percent 15}
+                         "progress"]])}))
 
 (defn app
   []
   (let [stage (subscribe [:current-stage])
         success? (subscribe [:success?])]
     (fn []
-      (conj
-       (condp = @stage
-         :drag (conj
-                (container)
-                [drag/slots]
-                [drag/instructions-and-pile]
-                (when @success? (goto-next @stage)))
-         :hint (conj
-                (container)
-                [hint/truths]
-                [hint/instructions])
-         :type (conj
-                (container)
-                [type/inputs]
-                [type/instructions]
-                (when @success? (goto-next @stage)))
-         (container))
-       (progress)))))
+      [:div
+       (conj
+        (condp = @stage
+          :drag (conj
+                 (container)
+                 [drag/slots]
+                 [drag/instructions-and-pile]
+                 (when @success? (goto-next @stage)))
+          :hint (conj
+                 (container)
+                 [hint/truths]
+                 [hint/instructions])
+          :type (conj
+                 (container)
+                 [type/inputs]
+                 [type/instructions]
+                 (when @success? (goto-next @stage)))
+          (container)))
+       [progress]])))
