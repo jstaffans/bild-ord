@@ -9,7 +9,6 @@
 
 (defn mount-root
   []
-  (.log js/console "Mounting root")
   (reagent/render [views/app] (.getElementById js/document "app")))
 
 (defn ^:export main []
