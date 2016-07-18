@@ -17,7 +17,7 @@
   []
   "Renders the correct words in their respective positions."
   (into [:div.col.col-3.flex.flex-column.justify.around.fill-y]
-        (map-indexed truth words/example-words)))
+        (map-indexed truth (words/words-for-group 0))))
 
 (defn instructions
   []

@@ -4,8 +4,8 @@
 
 (def default-state
   {:stage       :drag
-   :games       {:drag (game/new-game 0 words/example-words (shuffle words/example-options))
-                 :type (game/new-game 0 words/example-words)}
+   :games       {:drag (game/new-game 0 (words/words-for-group 0) (words/options-for-group 0))
+                 :type (game/new-game 0 (words/words-for-group 0))}
    :wrong-moves 0})
 
 (defn next-stage
