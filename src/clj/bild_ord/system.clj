@@ -2,6 +2,7 @@
   (:require [bild-ord.db :refer [db-component]]
             [bild-ord.endpoint.user :refer [user-endpoint]]
             [bild-ord.endpoint.game :refer [game-endpoint]]
+            [bild-ord.endpoint.overview :refer [overview-endpoint]]
             [clojure.java.io :as io]
             [com.stuartsierra.component :as component]
             [duct.component
@@ -36,11 +37,13 @@
          :http (jetty-server (:http config))
          :game-endpoint (endpoint-component game-endpoint)
          :user-endpoint (endpoint-component user-endpoint)
+         :overview-endpoint (endpoint-component overview-endpoint)
          :db (db-component (:db config))
          :ragtime (ragtime (:ragtime config)))
         (component/system-using
-         {:http          [:app]
-          :game-endpoint []
-          :user-endpoint [:db]
-          :app           [:game-endpoint :user-endpoint]
-          :ragtime       [:db]}))))
+         {:http              [:app]
+          :game-endpoint     []
+          :user-endpoint     [:db]
+          :overview-endpoint [:db]
+          :app               [:game-endpoint :user-endpoint :overview-endpoint]
+          :ragtime           [:db]}))))

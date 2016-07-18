@@ -27,3 +27,11 @@
     [:div.sm-col
      [:h1.m0 "Bild och ord"]]
     [:div.sm-col.topmenu id]]))
+
+(defn session-id
+  [request]
+  (-> request :session :identity))
+
+(defn set-session-id
+  [request id]
+  (assoc-in request [:session :identity] id))

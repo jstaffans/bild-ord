@@ -1,18 +1,11 @@
 (ns bild-ord.endpoint.user
   (:require [bild-ord.db :refer [auth-user]]
-            [bild-ord.endpoint.common :refer [page title-bar]]
+            [bild-ord.endpoint.common :refer [set-session-id page title-bar]]
             [compojure.core :refer :all]
             [ring.util
              [anti-forgery :refer [anti-forgery-field]]
              [response :refer [redirect]]]
             [slingshot.slingshot :refer [try+]]))
-
-(defn index [request]
-  (if-let [id (-> request :session :identity)]
-    (page
-      [:div
-       (title-bar id)])
-     (redirect "/login")))
 
 (defn login
   ([] (login nil))
@@ -40,13 +33,11 @@
     (try+
      (auth-user db username password)
      (-> (redirect "/")
-         (assoc-in [:session :identity] username))
+         (set-session-id username))
      (catch [:error :bild-ord.db/invalid-username-or-password] e
        (login :login-failed)))))
 
 (defn user-endpoint [config]
   (routes
-   (GET "/" [] index)
-   (GET "/login" [] (login))
-   (POST "/login" []
-     (partial authenticate (:db config)))))
+   (GET  "/login" [] (login))
+   (POST "/login" [] (partial authenticate (:db config)))))
