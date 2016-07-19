@@ -1,7 +1,9 @@
 (ns bild-ord.domain.game
   (:require #?(:clj [clojure.spec :as s]
                :cljs [cljs.spec :as s])
-            [com.rpl.specter :as specter]))
+            [medley.core :refer [boolean?]]
+            [com.rpl.specter :as specter])
+  (:refer-clojure :exclude [boolean?]))
 
 (s/def ::word string?)
 

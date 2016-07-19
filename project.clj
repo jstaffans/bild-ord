@@ -4,7 +4,9 @@
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.9.0-alpha5"]
                  [com.stuartsierra/component "0.3.1"]
-                 [compojure "1.5.0"]
+                 [jarohen/embed-nrepl "0.1.7"]
+                 [compojure "1.5.0" :exclusions [medley]]
+                 [medley "0.8.2"]
                  [duct "0.5.10"]
                  [environ "1.0.2"]
                  [meta-merge "0.1.1"]
