@@ -120,7 +120,12 @@ migrations can be applied.
 
 ## Deploying
 
-FIXME: steps to deploy
+```
+ansible-galaxy install -r ansible/requirements.yml -p ansible/roles
+
+# TODO
+```
+
 
 ## License
 
