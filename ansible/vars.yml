@@ -1,0 +1,4 @@
+leiningen_version: 2.6.1
+sqlite_dir: /var/lib/sqlite
+sqlite_dbs: [bild_ord]
+

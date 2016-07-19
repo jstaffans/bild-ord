@@ -5,11 +5,15 @@
     - include: tasks/main.yml
     - include: tasks/lein.yml
     - include: tasks/sqlite.yml
+    - include: tasks/app.yml
+  vars_files: 
+    - vars.yml
   vars:
-    leiningen_version: 2.6.1
-    sqlite_dir: /var/lib/sqlite
-    sqlite_dbs: [bild_ord]
+    - app_version: 0.1.0-SNAPSHOT
   roles:
+    - role: franklinkim.environment
+      environment_config:
+        PORT: 8080
     - role: jdauphant.nginx
       nginx_http_params:
         - access_log "/var/log/nginx/access.log"
@@ -19,5 +23,8 @@
           - server_name _
           - root "/usr/share/nginx/html"
           - index index.html
+  handlers:
+    - name: restart app server
+      service: name=bild-ord state=restarted
 
 

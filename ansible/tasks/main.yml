@@ -11,3 +11,6 @@
 - name: Set Java environment variables
   apt: name=oracle-java8-set-default state=latest
 
+- name: Create app directory
+  file: path=/opt/bild-ord state=directory
+

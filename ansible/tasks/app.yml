@@ -1,0 +1,40 @@
+- name: copy init script
+  copy:
+    src=bild-ord.sh
+    dest=/etc/init.d/bild-ord
+    owner=root
+    group=root
+    mode=0755
+  notify:
+    - restart app server
+  tags:
+    - deploy
+
+- name: copy app jar
+  copy:
+    src=../../target/uberjar/bild-ord-{{ app_version }}-standalone.jar
+    dest=/opt/bild-ord/bild-ord-{{ app_version }}.jar
+    owner=root
+    group=root
+    mode=0644
+  tags:
+    - deploy
+
+- name: link to current app release 
+  file:
+    dest=/opt/bild-ord/bild-ord-current.jar
+    src=/opt/bild-ord/bild-ord-{{ app_version }}.jar
+    owner=root
+    group=root
+    state=link
+    force=yes
+  notify:
+    - restart app server
+  tags:
+    - deploy
+
+- name: remove old deploys (keeping the two latest)
+  shell: "ls -tr /opt/bild-ord*.jar | head -n -2 | xargs rm -Rf"
+  tags:
+    - deploy
+  
