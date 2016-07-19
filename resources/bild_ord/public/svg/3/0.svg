@@ -22,7 +22,7 @@
    sodipodi:docname="0.svg"><metadata
      id="metadata3470"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs3468" /><sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -32,7 +32,7 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="640"
+     inkscape:window-width="699"
      inkscape:window-height="480"
      id="namedview3466"
      showgrid="false"
@@ -48,7 +48,7 @@
      inkscape:window-maximized="0"
      inkscape:current-layer="Layer_1" /><g
      id="g3424"
-     transform="translate(-231.19101,-354.487)"><g
+     transform="matrix(0.70727272,0,0,0.7274378,-144.05693,-239.70629)"><g
        id="g3426"><path
          d="m 310.822,421.118 c 0,-25.93 14.822,-48.384 36.446,-59.396 -9.063,-4.616 -19.315,-7.235 -30.185,-7.235 -36.799,0 -66.63,29.832 -66.63,66.631 0,36.798 29.832,66.63 66.63,66.63 10.869,0 21.121,-2.619 30.185,-7.234 -21.623,-11.012 -36.446,-33.467 -36.446,-59.396 z"
          id="path3428"

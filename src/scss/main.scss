@@ -49,6 +49,14 @@ html, body {
     width: 100%;
     min-width: $game-container-min-width;
     min-height: $game-container-min-height;
+
+    .illustration {
+        margin-left: -20px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        height: 60px;
+        width: 100%;
+    }
 }
 
 .form-login {
@@ -67,12 +75,6 @@ html, body {
 }
 
 // Elements
-
-.illustration {
-    margin-left: -20px;
-    height: 60px;
-    width: 100%;
-}
 
 .slot {
     margin-left: -40px;
@@ -172,7 +174,6 @@ html, body {
 }
 
 .progress-container {
-
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -205,5 +206,71 @@ html, body {
         }
 
     }
+}
 
+.overview {
+
+    background: $grey-bg;
+
+    .header {
+        background: $alert-blue;
+    }
+
+    .groups {
+        background: white;
+    }
+
+    a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .group {
+        display: flex;
+        align-items: center;
+        height: 2em;
+        color: #333;
+
+        .index {
+            text-align: center;
+            height: 2.5em;
+            width: 2.5em;
+            line-height: 2.5em;
+            background: $grey-bg;
+            border-radius: 3px;
+        }
+
+        .illustration {
+            height: 5em;
+            opacity: 0.8;
+        }
+
+        .description {
+            display: flex;
+            align-items: center;
+        }
+
+        &:hover {
+            .index {
+                box-shadow: inset 0 0 0 20rem darken($grey-bg, 5%);
+            }
+            .illustration {
+                opacity: 0.92;
+            }
+        }
+
+        &:active {
+            .index {
+                box-shadow: inset 0 0 0 20rem darken($grey-bg, 7%);
+            }
+            .illustration {
+                opacity: 1;
+            }
+        }
+    }
+
+    .footer {
+        color: #666;
+        background: $grey-bg;
+    }
 }

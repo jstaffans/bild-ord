@@ -28,7 +28,7 @@
        (map-indexed input @slots)))))
 
 (defn instructions
-  []
+  [group]
   [:div.col.col-5.fill-y.p3.instructions
    "Skriv nu in orden. Om du vill kan du "
-   [:a {:href (routes/stage-path 0 :hint)} "gå tillbaka."]])
+   [:a {:href (routes/stage-path group :hint)} "gå tillbaka."]])

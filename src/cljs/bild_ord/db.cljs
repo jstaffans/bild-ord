@@ -4,9 +4,15 @@
 
 (def default-state
   {:stage       :drag
-   :games       {:drag (game/new-game 0 (words/words-for-group 0) (words/options-for-group 0))
-                 :type (game/new-game 0 (words/words-for-group 0))}
+   :games       {}
+
+   ;; TODO: track wrong moves, detract from score (https://trello.com/c/PU2DgpEN)
    :wrong-moves 0})
+
+(defn new-games
+  [group]
+  {:drag (game/new-game group (words/words-for-group group) (words/options-for-group group))
+   :type (game/new-game group (words/words-for-group group))})
 
 (defn next-stage
   [stage]

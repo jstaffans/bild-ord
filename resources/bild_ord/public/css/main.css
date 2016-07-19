@@ -74,6 +74,12 @@ html, body {
   width: 100%;
   min-width: 960px;
   min-height: 500px; }
+  .game-container .illustration {
+    margin-left: -20px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 60px;
+    width: 100%; }
 
 .form-login {
   display: table;
@@ -85,11 +91,6 @@ html, body {
     min-width: 130px; }
   .form-login button {
     float: right; }
-
-.illustration {
-  margin-left: -20px;
-  height: 60px;
-  width: 100%; }
 
 .slot {
   margin-left: -40px;
@@ -184,5 +185,44 @@ html, body {
       top: 0;
       width: 0;
       background: #00b300; }
+
+.overview {
+  background: #f0f0f0; }
+  .overview .header {
+    background: #d7f3ff; }
+  .overview .groups {
+    background: white; }
+  .overview a {
+    color: #333;
+    text-decoration: none; }
+  .overview .group {
+    display: flex;
+    align-items: center;
+    height: 2em;
+    color: #333; }
+    .overview .group .index {
+      text-align: center;
+      height: 2.5em;
+      width: 2.5em;
+      line-height: 2.5em;
+      background: #f0f0f0;
+      border-radius: 3px; }
+    .overview .group .illustration {
+      height: 5em;
+      opacity: 0.8; }
+    .overview .group .description {
+      display: flex;
+      align-items: center; }
+    .overview .group:hover .index {
+      box-shadow: inset 0 0 0 20rem #e3e3e3; }
+    .overview .group:hover .illustration {
+      opacity: 0.92; }
+    .overview .group:active .index {
+      box-shadow: inset 0 0 0 20rem #dedede; }
+    .overview .group:active .illustration {
+      opacity: 1; }
+  .overview .footer {
+    color: #666;
+    background: #f0f0f0; }
 
 /*# sourceMappingURL=main.css.map */

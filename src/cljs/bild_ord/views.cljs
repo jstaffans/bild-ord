@@ -8,17 +8,17 @@
             [re-frame.core :refer [subscribe]]))
 
 (defn container
-  []
+  [group]
   [:div.clearfix.game-container
    [:div.col.col-4.flex.flex-column.justify.around.fill-y
     (for [i (range 5)]
-      ^{:key i} [common/illustration-svg i])]])
+      ^{:key i} [common/illustration-svg group i])]])
 
 (defn goto-next
-  [stage]
+  [group stage]
   (let [texts     {:drag "Du klarade första delen av spelet. Gå nu vidare till nästa del."
                    :type "Du klarade av andra delen av spelet. Du kan nu gå vidare och välja en annan grupp ord."}
-        next-path (routes/next-stage-path 0 stage)]
+        next-path (routes/next-stage-path group stage)]
     (common/modal
      [:div.goto-next
       [:h1.m2 "Bra jobbat!"]
@@ -28,7 +28,8 @@
 
 (defn app
   []
-  (let [stage            (subscribe [:current-stage])
+  (let [group            (subscribe [:current-group])
+        stage            (subscribe [:current-stage])
         success?         (subscribe [:success?])
         current-progress (subscribe [:progress])]
     (fn []
@@ -36,18 +37,17 @@
        (conj
         (condp = @stage
           :drag (conj
-                 (container)
+                 (container @group)
                  [drag/slots]
                  [drag/instructions-and-pile]
-                 (when @success? (goto-next @stage)))
+                 (when @success? (goto-next @group @stage)))
           :hint (conj
-                 (container)
-                 [hint/truths]
-                 [hint/instructions])
+                 (container @group)
+                 [hint/truths @group]
+                 [hint/instructions @group])
           :type (conj
-                 (container)
+                 (container @group)
                  [type/inputs]
-                 [type/instructions]
-                 (when @success? (goto-next @stage)))
-          (container)))
+                 [type/instructions @group]
+                 (when @success? (goto-next @group @stage)))))
        [progress/progress {:percent @current-progress}]])))
