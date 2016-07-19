@@ -7,7 +7,8 @@
             [meta-merge.core :refer [meta-merge]]
             [bild-ord.config :as config]
             [bild-ord.system :refer [new-system]]
-            [nrepl.embed :as nrepl]))
+            [nrepl.embed :as nrepl]
+            [duct.component.ragtime :refer [migrate rollback]]))
 
 (def prod-config
   {:db  {:connection-uri "jdbc:sqlite:/var/lib/sqlite/bild_ord"}
@@ -30,4 +31,6 @@
 
   (println "Starting HTTP server on port" (-> @system :http :port))
   (add-shutdown-hook ::stop-system #(swap! system component/stop))
-  (swap! system component/start))
+  (swap! system component/start)
+
+  (migrate (:ragtime @system)))
