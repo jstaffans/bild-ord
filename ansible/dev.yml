@@ -3,10 +3,21 @@
   sudo: yes
   tasks:
     - include: tasks/main.yml
+    - include: tasks/lein.yml
     - include: tasks/sqlite.yml
   vars:
     leiningen_version: 2.6.1
     sqlite_dir: /var/lib/sqlite
     sqlite_dbs: [bild_ord]
+  roles:
+    - role: jdauphant.nginx
+      nginx_http_params:
+        - access_log "/var/log/nginx/access.log"
+      nginx_sites:
+        default:
+          - listen 80
+          - server_name _
+          - root "/usr/share/nginx/html"
+          - index index.html
 
 
