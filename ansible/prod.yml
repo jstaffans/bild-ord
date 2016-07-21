@@ -6,6 +6,7 @@
     - include: tasks/lein.yml
     - include: tasks/sqlite.yml
     - include: tasks/app.yml
+      tags: [deploy]
   vars_files: 
     - vars.yml
   roles:

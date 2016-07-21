@@ -120,12 +120,18 @@ migrations can be applied.
 
 ## Deploying
 
+Prerequisite: 
+
 ```
 ansible-galaxy install -r ansible/requirements.yml -p ansible/roles
-
-# TODO
 ```
 
+Deployment of an uberjar:
+
+```
+lein uberjar
+ansible-playbook ansible/prod.yml --extra-vars "app_version=0.1.0-SNAPSHOT" --tags "deploy" --ask-sudo-pass
+```
 
 ## License
 
