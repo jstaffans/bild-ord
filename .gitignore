@@ -15,3 +15,4 @@ dev/local.clj
 *.css.map
 .vagrant
 dev.db
+*.retry

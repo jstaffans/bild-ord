@@ -2,4 +2,7 @@
   path: roles/
 - src: franklinkim.environment
   path: roles/
-
+- src: geerlingguy.firewall
+  path: roles/
+- src: tersmitten.fail2ban
+  path: roles/
