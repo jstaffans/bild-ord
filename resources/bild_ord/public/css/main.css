@@ -43,7 +43,7 @@
 body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: inherit;
   font-weight: 300; }
 
@@ -55,8 +55,10 @@ html, body {
 
 .title-bar {
   background: #d4b381;
-  color: white;
-  height: 65px; }
+  height: 55px; }
+  .title-bar a {
+    color: white;
+    text-decoration: none; }
   .title-bar div {
     font-size: 1.6em;
     padding: 8px 15px; }
@@ -68,7 +70,7 @@ html, body {
 
 .game-container {
   position: absolute;
-  top: 66px;
+  top: 55px;
   bottom: 65px;
   border-bottom: 1px solid #999;
   width: 100%;
@@ -195,6 +197,8 @@ html, body {
   .overview a {
     color: #333;
     text-decoration: none; }
+  .overview .title-bar a {
+    color: white; }
   .overview .group {
     display: flex;
     align-items: center;

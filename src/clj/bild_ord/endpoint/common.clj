@@ -24,9 +24,9 @@
   ([] (title-bar nil))
   ([id]
    [:nav.clearfix.title-bar
-    [:div.sm-col
-     [:h1.m0 "Bild och ord"]]
-    [:div.sm-col.topmenu id]]))
+    [:div.col.pt1
+     [:a.h1 {:href "/"} "Bild och ord"]]
+    [:div.col.topmenu id]]))
 
 (defn session-id
   [request]

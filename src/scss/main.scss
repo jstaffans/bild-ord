@@ -3,13 +3,12 @@
 @import "components.btn";
 @import "components.modal";
 
-$title-bar-height: 65px;
 
 body {
     font-family: $main-font-family;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: inherit;
     font-weight: 300;
 }
@@ -25,8 +24,12 @@ html, body {
 
 .title-bar {
     background: $brown-bg;
-    color: white;
     height: $title-bar-height;
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
 
     div {
         font-size: 1.6em;
@@ -43,7 +46,7 @@ html, body {
 
 .game-container {
     position: absolute;
-    top: $title-bar-height + 1px;
+    top: $title-bar-height;
     bottom: $game-container-bottom;
     border-bottom: 1px solid #999;
     width: 100%;
@@ -223,6 +226,10 @@ html, body {
     a {
         color: #333;
         text-decoration: none;
+    }
+
+    .title-bar a {
+        color: white;
     }
 
     .group {
