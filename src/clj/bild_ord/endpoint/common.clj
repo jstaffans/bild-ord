@@ -11,16 +11,17 @@
      [:title "Bild och ord"]
      (include-css "/css/base.css")
      (include-css
-      "/css/main.css?_version=19f8b1c"  ; gitignore
-      )
-     ]
+      (str "/css/main.css?"
+           "_version=130f705"    ; gitignore
+           ))]
     [:body
      (when-let [class (:class options)]
        {:class class})
      body
      (include-js
-      "/js/main.js?_version=19f8b1c"    ; gitignore
-      )
+      (str "/js/main.js?"
+           "_version=130f705"    ; gitignore
+           ))
      (when (:cljs-main options)
        [:script (str (:cljs-main options) "();")])])))
 
