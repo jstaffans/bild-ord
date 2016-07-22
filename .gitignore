@@ -13,6 +13,7 @@ dev/local.clj
 *.swp
 *.swo
 *.css.map
+main.css
 .vagrant
 dev.db
 *.retry
