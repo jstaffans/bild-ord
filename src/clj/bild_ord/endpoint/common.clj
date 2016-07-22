@@ -12,7 +12,6 @@
      (include-css "/css/base.css")
      (include-css
       (str "/css/main.css?"
-           "_version=130f705"    ; gitignore
            ))]
     [:body
      (when-let [class (:class options)]
@@ -20,7 +19,6 @@
      body
      (include-js
       (str "/js/main.js?"
-           "_version=130f705"    ; gitignore
            ))
      (when (:cljs-main options)
        [:script (str (:cljs-main options) "();")])])))
