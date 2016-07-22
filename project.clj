@@ -36,6 +36,7 @@
                  [cljsjs/jquery-ui "1.11.4-0"]
                  [kibu/pushy "0.3.6"]]
   :plugins [[lein-environ "1.0.2"]
+            [lein-shell "0.5.0"]
             [lein-gen "0.2.2"]
             [lein-cljsbuild "1.1.2"]
             [lein-scss "0.2.3"]]
@@ -46,7 +47,11 @@
   :target-path "target/%s/"
   :source-paths ["src/clj"]
   :resource-paths ["resources" "target/cljsbuild"]
-  :prep-tasks [["javac"] ["cljsbuild" "once"] ["compile"]]
+  :prep-tasks [["javac"]
+               ["cljsbuild" "once" "prod"]
+               ["scss" ":prod" "once"]
+               ["shell" "./bust-cache.sh"]
+               ["compile"]]
 
   :scss {:builds {:dev  {:source-dir "src/scss/"
                          :dest-dir   "resources/bild_ord/public/css/"
