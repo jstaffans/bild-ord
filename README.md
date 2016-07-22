@@ -120,13 +120,30 @@ migrations can be applied.
 
 ## Deploying
 
-Prerequisite: 
+### Cache busting 
 
-```
-ansible-galaxy install -r ansible/requirements.yml -p ansible/roles
+CSS and JS are cache-busted in `src/clj/bild_ord/endpoint/common.clj`. 
+The query params are not checked into version control. To perform 
+cache busting locally, first add placeholders to your working copy:
+
+```clj
+(str "/css/main.css?"
+ "_version=<git ref will be inserted here>"    ; gitignore
+ )
+
+(str "/js/main.js?"
+ "_version=<git ref will be inserted here>"    ; gitignore
+ )
 ```
 
-Deployment of an uberjar:
+### Deploying with Ansible
+
+Prerequisites:
+
+* IP address in `/etc/ansible/hosts`: `bild-ord-production ansible_host=...` 
+* `ansible-galaxy install -r ansible/requirements.yml -p ansible/roles`
+
+Building and deploying an uberjar:
 
 ```
 lein uberjar
