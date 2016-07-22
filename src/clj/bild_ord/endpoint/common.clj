@@ -10,12 +10,12 @@
     [:head
      [:title "Bild och ord"]
      (include-css "/css/base.css")
-     (include-css "/css/main.css?_version=__git_ref")]
+     (include-css "/css/main.css?_version=925c694")]
     [:body
      (when-let [class (:class options)]
        {:class class})
      body
-     (include-js "/js/main.js?_version=__git_ref")
+     (include-js "/js/main.js?_version=925c694")
      (when (:cljs-main options)
        [:script (str (:cljs-main options) "();")])])))
 
