@@ -75,7 +75,7 @@
        [:div.col.col-5.fill-y
         [:div.flex.flex-column.fill-y
          [:span.p3.instructions
-          "Dra orden till deras rätta platser."]
+          "Dra fem av orden till deras rätta platser."]
          (into [:div.px3.pb3.flex.flex-column.justify-around.words.words-drag]
                (map option random-indicies @pile))]])
      (fn [_ from-index]
