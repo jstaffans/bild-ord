@@ -12,7 +12,8 @@
 
 (defn- add-drag-handler [component]
   (-> (js/$ (reagent/dom-node component))
-      (.draggable #js {:revert true})))
+      (.draggable #js {:revert      true
+                       :containment ".game-container"})))
 
 (defn- add-drop-handler [component drop-fn]
   (.droppable
