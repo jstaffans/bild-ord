@@ -170,9 +170,11 @@ html, body {
     }
 }
 
-.goto-next {
-    height: 9em;
+.modal .content {
+    height: 9.5em;
+}
 
+.goto-next {
     h1 {
         font-weight: 600;
         color: $green;
