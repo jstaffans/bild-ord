@@ -37,11 +37,20 @@ html, body {
     }
 
     .topmenu {
-        margin-top: 10px;
+        color: white;
+        margin-top: 5px;
         margin-right: 10px;
         float: right;
         font-size: 1.4em;
+
+        &:after {
+            padding-left: 8px;
+            font-size: 0.6em;
+            vertical-align: middle;
+            content: "▼";
+        }
     }
+
 }
 
 .game-container {
