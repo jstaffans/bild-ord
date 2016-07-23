@@ -9,6 +9,9 @@
     {:lang "sv"}
     [:head
      [:title "Bild och ord"]
+     [:link {:rel "shortcut icon" :href "/favicon.ico?v=2"}]
+     [:link {:rel "icon" :sizes "16x16 32x32 48x48" :href "/favicon.ico?v=2"}]
+     [:link {:rel "apple-touch-icon-precomposed" :href "/favicon-152.png"}]
      (include-css "/css/base.css")
      (include-css
       (str "/css/main.css?"
