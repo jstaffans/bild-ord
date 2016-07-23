@@ -1,5 +1,4 @@
-(ns bild-ord.domain.words
-  (:require [com.rpl.specter :as specter]))
+(ns bild-ord.domain.words)
 
 ;; Domain logic and models around words
 
@@ -13,7 +12,9 @@
    ["bada" "meta" "jaga" "tala" "såga"] ["lada" "möta"]
    ["resa" "niga" "lysa" "leka" "leta"] ["reta" "saga"]
    ["hare" "mage" "båge" "fena" "lera"] ["mata" "såga"]
-   ["sylt" "kork" "väst" "kniv" "ost"] ["korv" "salt"]])
+   ["sylt" "kork" "väst" "kniv" "ost"] ["korv" "salt"]
+   ["lampa" "tomte" "ödla" "väska" "vante"] ["limpa" "vinter"]
+   ["spade" "skata" "groda" "staket" "snabel"] ["skuta" "gryta"]])
 
 (defn words-for-group
   [group]
