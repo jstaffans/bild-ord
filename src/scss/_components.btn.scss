@@ -5,12 +5,25 @@ $darken-3: darken($btn-color, 8%);
 
 .btn {
     font-family: inherit;
+    font-size: 1em;
+    line-height: 1.8em;
+    height: auto;
+    vertical-align: middle;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn:hover {
+    text-decoration: none;
 }
 
 .btn-primary {
     color: white;
     background-color: $btn-color;
-    border-radius: 3px;
 }
 
 .btn-primary:hover {
