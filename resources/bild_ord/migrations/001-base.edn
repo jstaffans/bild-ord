@@ -1,5 +1,10 @@
 {:up ["CREATE TABLE user (
-      id integer primary key,
-      username varchar(256) unique not null,
-      password varchar(98) not null);"]
- :down ["DROP TABLE user;"]}
+        id varchar(36) primary key,
+        username varchar(256) unique not null,
+        password varchar(98) not null);"
+      "CREATE TABLE progress (
+        user_id varchar(36) not null, 
+        game_id integer not null,
+        state text not null);"]
+ :down ["DROP TABLE user;"
+        "DROP TABLE progress;"]}
