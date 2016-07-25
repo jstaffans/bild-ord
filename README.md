@@ -123,16 +123,17 @@ migrations can be applied.
 ### Cache busting 
 
 CSS and JS are cache-busted in `src/clj/bild_ord/endpoint/common.clj`. 
-The query params are not checked into version control. To perform 
-cache busting locally, first add placeholders to your working copy:
+The query params are not checked into version control (they are ignored
+by a Git filter). To perform cache busting during deployment, first add placeholders 
+to your working copy:
 
 ```clj
 (str "/css/main.css?"
- "_version=<git ref will be inserted here>"    ; gitignore
+ "_version=placeholder"    ; gitignore
  )
 
 (str "/js/main.js?"
- "_version=<git ref will be inserted here>"    ; gitignore
+ "_version=placeholder"    ; gitignore
  )
 ```
 
@@ -148,6 +149,17 @@ Building and deploying an uberjar:
 ```
 lein uberjar
 ansible-playbook ansible/prod.yml --extra-vars "app_version=0.1.0-SNAPSHOT" --tags "deploy" --ask-sudo-pass
+```
+
+#### Vagrant 
+
+Vagrant can be used to test deployment locally:
+
+```
+vagrant up
+
+# if vagrant box is already running
+vagrant provision
 ```
 
 ## License

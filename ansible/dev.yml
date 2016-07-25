@@ -9,6 +9,7 @@
   vars_files: 
     - vars.yml
   vars:
+    # app_version is normally given as an extra var on the command line
     - app_version: 0.1.0-SNAPSHOT
   roles:
     - role: franklinkim.environment
@@ -27,11 +28,6 @@
               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
               proxy_set_header Host $http_host; 
             }
-    - role: geerlingguy.firewall
-      firewall_allowed_tcp_ports:
-        - "22"
-        - "80"
-    - role: tersmitten.fail2ban
   handlers:
     - name: restart app server
       service: name=bild-ord state=restarted
