@@ -14,7 +14,9 @@
    ["hare" "mage" "båge" "fena" "lera"] ["mata" "såga"]
    ["sylt" "kork" "väst" "kniv" "ost"] ["korv" "salt"]
    ["lampa" "tomte" "ödla" "väska" "vante"] ["limpa" "vinter"]
-   ["spade" "skata" "groda" "staket" "snabel"] ["skuta" "gryta"]])
+   ["spade" "skata" "groda" "staket" "snabel"] ["skuta" "gryta"]
+   ["startar" "spindel" "viftar" "drake" "kryper"] ["stampar" "liftar"]
+   ["eld" "tratt" "glass" "slott" "knapp"] ["trött" "skott"]])
 
 (defn words-for-group
   [group]
