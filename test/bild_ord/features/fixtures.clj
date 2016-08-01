@@ -32,7 +32,7 @@
   (db/add-user! db {:username "bobbytables" :password "password"}))
 
 (defn clean-database [db]
-  (db/truncate-users! db))
+  (db/truncate-database! db))
 
 (defrecord TestFixtures []
   component/Lifecycle
@@ -67,11 +67,30 @@
           :ragtime           [:db]
           :fixtures          [:db :ragtime]}))))
 
+(defn test-database [config]
+  (let [config (meta-merge sys/base-config config)]
+    (-> (component/system-map
+         :db (bild-ord.db/db-component (:db config))
+         :ragtime (duct.component.ragtime/ragtime (:ragtime config))
+         :fixtures (test-fixtures))
+        (component/system-using
+         {:ragtime           [:db]
+          :fixtures          [:db :ragtime]}))))
+
+(defmacro with-system [[system-sym system-config] & body]
+  `(let [~system-sym (atom ~system-config)]
+     (try
+       (swap! ~system-sym component/start)
+       ~@body
+       (finally (swap! ~system-sym component/stop)))))
+
 (defn with-server [tests]
   (let [system (atom (test-system test-config))]
-    (swap! system component/start)
-    (tests)
-    (swap! system component/stop)))
+    (try
+      (swap! system component/start)
+      (tests)
+      (finally
+        (swap! system component/stop)))))
 
 (defn with-browser [tests]
   (t/set-driver! {:browser :phantomjs})

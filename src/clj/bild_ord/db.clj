@@ -9,7 +9,9 @@
 (defprotocol UserDb
   (add-user! [this user])
   (auth-user [this username password])
-  (truncate-users! [this]))
+  (complete-group! [this username group])
+  (group-completed? [this username group])
+  (truncate-database! [this]))
 
 (hugsql/def-db-fns "bild_ord/sql/user.sql")
 
@@ -31,9 +33,18 @@
           (throw+ unauthed))
         (throw+ unauthed)))))
 
-(defn truncate-users!* [db]
+(defn complete-group!* [db username group]
   (jdbc/with-db-connection [conn (:spec db)]
-    (delete-users! conn)))
+    (upsert-progress! conn {:username username, :game-id group})))
+
+(defn group-completed?* [db username group]
+  (jdbc/with-db-connection [conn (:spec db)]
+    (= "done" (-> (get-progress conn {:username username, :game-id group}) first :state))))
+
+(defn truncate-database!* [db]
+  (jdbc/with-db-connection [conn (:spec db)]
+    (delete-users! conn)
+    (delete-progress! conn)))
 
 (dire/with-handler! #'add-user!*
   java.sql.SQLException
@@ -46,7 +57,9 @@
   UserDb
   (add-user! [this user] (add-user!* this user))
   (auth-user [this username password] (auth-user* this username password))
-  (truncate-users! [this] (truncate-users!* this)))
+  (complete-group! [this username group] (complete-group!* this username group))
+  (group-completed? [this username group] (group-completed?* this username group))
+  (truncate-database! [this] (truncate-database!* this)))
 
 (defn db-component [config]
   (map->DbComponent {:config config}))
