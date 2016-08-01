@@ -1,8 +1,15 @@
 (ns bild-ord.features.helper
-  (:require [clj-webdriver.taxi :as t]))
+  (:require [clj-webdriver.taxi :as t]
+            [bild-ord.features.fixtures :refer [test-base-url]]))
 
 
 ;; Interact
+
+(defn log-in []
+  (t/to (str test-base-url "login"))
+  (t/quick-fill-submit {"#username" "bobbytables"
+                        "#password" "password"
+                        "button" t/click}))
 
 (defn start-game [index]
   (-> (t/find-element [{:tag :a}

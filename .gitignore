@@ -16,4 +16,5 @@ dev/local.clj
 main.css
 .vagrant
 dev.db
+test.db
 *.retry

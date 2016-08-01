@@ -8,7 +8,8 @@
 
 (defprotocol UserDb
   (add-user! [this user])
-  (auth-user [this username password]))
+  (auth-user [this username password])
+  (truncate-users! [this]))
 
 (hugsql/def-db-fns "bild_ord/sql/user.sql")
 
@@ -30,6 +31,10 @@
           (throw+ unauthed))
         (throw+ unauthed)))))
 
+(defn truncate-users!* [db]
+  (jdbc/with-db-connection [conn (:spec db)]
+    (delete-users! conn)))
+
 (dire/with-handler! #'add-user!*
   java.sql.SQLException
   (fn [e & args]
@@ -40,7 +45,8 @@
 (extend-type DbComponent
   UserDb
   (add-user! [this user] (add-user!* this user))
-  (auth-user [this username password] (auth-user* this username password)))
+  (auth-user [this username password] (auth-user* this username password))
+  (truncate-users! [this] (truncate-users!* this)))
 
 (defn db-component [config]
   (map->DbComponent {:config config}))

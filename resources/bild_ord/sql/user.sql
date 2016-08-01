@@ -5,3 +5,7 @@ values (:username, :password)
 
 -- :name get-user :? :1
 select * from user where username = :username
+
+
+-- :name delete-users! :!
+delete from user
