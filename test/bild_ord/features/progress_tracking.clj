@@ -9,9 +9,10 @@
 (deftest progress-tracking-test
   (testing "Completing a game turns the index marker green"
     (log-in)
+    (is (t/exists? {:css ".todo", :text "1"}))
     (start-game 1)
     (drag-words "sol" "ros" "vas" "ram" "sil")
     (click-on "Gå vidare")
     (type-words "sol" "ros" "vas" "ram" "sil")
     (click-on "Gå vidare")
-    (is (t/exists? {:tag :div, :text "1", :class "completed"}))))
+    (is (t/exists? {:css ".done", :text "1"}))))

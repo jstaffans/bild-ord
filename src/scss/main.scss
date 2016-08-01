@@ -261,6 +261,14 @@ html, body {
             border-radius: 3px;
         }
 
+        .todo {
+            background: $grey-bg;
+        }
+
+        .done {
+            background: lighten($green, 10%);
+        }
+
         .illustration {
             height: 5em;
             opacity: 0.8;
@@ -272,8 +280,11 @@ html, body {
         }
 
         &:hover {
-            .index {
+            .todo {
                 box-shadow: inset 0 0 0 20rem darken($grey-bg, 5%);
+            }
+            .done {
+                box-shadow: inset 0 0 0 20rem lighten($green, 5%);
             }
             .illustration {
                 opacity: 0.92;
@@ -281,8 +292,11 @@ html, body {
         }
 
         &:active {
-            .index {
+            .todo {
                 box-shadow: inset 0 0 0 20rem darken($grey-bg, 7%);
+            }
+            .done {
+                box-shadow: inset 0 0 0 20rem lighten($green, 3%);
             }
             .illustration {
                 opacity: 1;
