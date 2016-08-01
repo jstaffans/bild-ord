@@ -8,7 +8,10 @@
 
 (deftest progress-tracking-test
   (testing "Completing a game turns the index marker green"
-    (t/to test-base-url)
+    (t/to (str test-base-url "login"))
+    (t/quick-fill-submit {"#username" "bobbytables"
+                          "#password" "password"
+                          "button" t/click})
     (start-game 1)
     (drag-words "sol" "ros" "vas" "ram" "sil")
     (click-on "Gå vidare")

@@ -2,6 +2,7 @@
   (:require [clj-webdriver.taxi :as t]
             [com.stuartsierra.component :as component]
             [bild-ord.system :as sys]
+            [bild-ord.features.db :as db]
             [cljs.build.api :as cljsb]))
 
 (def test-port 5744)
@@ -9,7 +10,6 @@
 (def test-base-url (str "http://" test-host ":" test-port "/"))
 (def test-config
    {:http {:port test-port}
-    :db {:connection-uri "jdbc:sqlite:dev.db"}
     :app {:defaults {:static {:files "target/compiled"}}}})
 
 (defn build-cljs []
@@ -22,8 +22,12 @@
   (build-cljs)
   (tests))
 
+(defn test-system []
+  (into (sys/new-system test-config)
+        {:db (db/test-db {:connection-uri "jdbc:sqlite:test.db"})}))
+
 (defn with-server [tests]
-  (let [system (atom (sys/new-system test-config))]
+  (let [system (atom (test-system))]
     (swap! system component/start)
     (tests)
     (swap! system component/stop)))
@@ -35,7 +39,7 @@
 
 (comment
   ;; Use this for debugging tests
-  (def system (atom (sys/new-system test-config)))
+  (def system (atom (test-system)))
   (build-cljs)
   (swap! system component/start)
   (t/set-driver! {:browser :phantomjs})
