@@ -2,7 +2,7 @@
 
 A little game designed to help young children learn to read. The idea is to familiarise
 the student with common words (in Swedish, as this game is implemented for a Swedish-language
-learning platform). 
+learning platform).
 
 The student can drag-and-drop words to connect them with the correct illustration. In addition,
 typing skills are fostered by having the student type in the words as well.
@@ -67,12 +67,12 @@ nil
 cljs.user=>
 ```
 
-#### Frontend assets 
+#### Frontend assets
 
 Stylesheets are written as SCSS files. To compile into CSS, run the following
 in a background terminal screen:
 
-```sh 
+```sh
 lein scss :dev auto
 ```
 
@@ -130,28 +130,11 @@ migrations can be applied.
 
 ## Deploying
 
-### Cache busting 
-
-CSS and JS are cache-busted in `src/clj/bild_ord/endpoint/common.clj`. 
-The query params are not checked into version control (they are ignored
-by a Git filter). To perform cache busting during deployment, first add placeholders 
-to your working copy:
-
-```clj
-(str "/css/main.css?"
- "_version=placeholder"    ; gitignore
- )
-
-(str "/js/main.js?"
- "_version=placeholder"    ; gitignore
- )
-```
-
-### Deploying with Ansible
+#### Ansible
 
 Prerequisites:
 
-* IP address in `/etc/ansible/hosts`: `bild-ord-production ansible_host=...` 
+* IP address in `/etc/ansible/hosts`: `bild-ord-production ansible_host=...`
 * `ansible-galaxy install -r ansible/requirements.yml -p ansible/roles`
 
 Building and deploying an uberjar:
@@ -161,7 +144,7 @@ lein uberjar
 ansible-playbook ansible/prod.yml --extra-vars "app_version=0.1.0-SNAPSHOT" --tags "deploy" --ask-sudo-pass
 ```
 
-#### Vagrant 
+#### Vagrant
 
 Vagrant can be used to test deployment locally:
 
@@ -181,4 +164,3 @@ This software is distributed under the [MIT license][].
 [duct]: https://github.com/weavejester/duct
 [MIT license]: https://opensource.org/licenses/MIT
 [ragtime]: https://github.com/weavejester/ragtime
-
