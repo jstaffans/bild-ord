@@ -14,7 +14,15 @@
    ["hare" "mage" "båge" "fena" "lera"] ["mata" "såga"]
    ["sylt" "kork" "väst" "kniv" "ost"] ["korv" "salt"]
    ["lampa" "tomte" "ödla" "väska" "vante"] ["limpa" "vinter"]
-   ["spade" "skata" "groda" "staket" "snabel"] ["skuta" "gryta"]])
+   ["spade" "skata" "groda" "staket" "snabel"] ["skuta" "gryta"]
+   ["startar" "spindel" "viftar" "drake" "kryper"] ["stampar" "liftar"]
+   ["eld" "tratt" "glass" "slott" "knapp"] ["trött" "skott"]
+   ["tåg" "boll" "sover" "klocka" "måste"] ["många" "troll"]
+   ["läser" "pengar" "verkstad" "väcker" "kläder"] ["lovar" "tretton"]
+   ["ringer" "regn" "bank" "genast" "korg"] ["tank" "torg"]
+   ["ljud" "hjälpa" "hjälm" "gjorde" "hjul"] ["genom" "jaga"]
+   ["kylskåp" "tjock" "tjugo" "sked" "sjuk"] ["sju" "skiner"]
+   ["själv" "stjärna" "skjorta" "skjuter" "växer"] ["stjärt" "växter"]])
 
 (defn words-for-group
   [group]

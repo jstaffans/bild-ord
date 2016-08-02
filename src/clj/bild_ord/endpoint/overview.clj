@@ -46,7 +46,7 @@
       #_[:div.fit.mx2.mt2.p2.header ""]
       [:div.clearfix.px4.py3.groups
        [:div.col.lg-col-6.md-col-12.sm-col-12 (column 0 8 db current-user)]
-       [:div.col.lg-col-6.md-col-12.sm-col-12 (column 8 12 db current-user)]]
+       [:div.col.lg-col-6.md-col-12.sm-col-12 (column 8 16 db current-user)]]
       [:div.flex.fit.p2.footer
        [:div.flex-auto
         ""]
