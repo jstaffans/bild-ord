@@ -14,17 +14,24 @@
     (for [i (range 5)]
       ^{:key i} [common/illustration-svg group i])]])
 
-(defn goto-next
+(defn goto-type
   [group stage]
-  (let [texts     {:drag "Du klarade första delen av spelet. Gå nu vidare till nästa del."
-                   :type "Du klarade av andra delen av spelet. Du kan nu gå vidare och välja en annan grupp ord."}
-        next-path (routes/next-stage-path group stage)]
+  (let [next-path (routes/next-stage-path group stage)]
     (common/modal
      [:div.goto-next
       [:h1.m2 "Bra jobbat!"]
-      [:div.m2 (stage texts)]
+      [:div.m2 "Du klarade första delen av spelet. Gå nu vidare till nästa del."]
       [:div.m2
        [:a.btn.btn-primary {:href next-path} "Gå vidare"] ]])))
+
+(defn goto-done
+  [group]
+  (common/modal
+   [:div.goto-next
+    [:h1.m2 "Bra jobbat!"]
+    [:div.m2 "Du klarade av andra delen av spelet. Du kan nu gå vidare och välja en annan grupp ord."]
+    [:div.m2
+     [:a.btn.btn.btn-primary {:href (routes/complete-group-path group)} "Gå vidare"] ]]))
 
 (defn app
   []
@@ -40,7 +47,7 @@
                  (container @group)
                  [drag/slots]
                  [drag/instructions-and-pile]
-                 (when @success? (goto-next @group @stage)))
+                 (when @success? (goto-type @group @stage)))
           :hint (conj
                  (container @group)
                  [hint/truths @group]
@@ -49,5 +56,5 @@
                  (container @group)
                  [type/inputs]
                  [type/instructions @group]
-                 (when @success? (goto-next @group @stage)))))
+                 (when @success? (goto-done @group)))))
        [progress/progress {:percent @current-progress}]])))

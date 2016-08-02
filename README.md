@@ -94,6 +94,16 @@ But you can also run tests through Leiningen.
 lein test
 ```
 
+#### Feature tests
+
+These end-to-end tests in `test/features` use the clj-webdriver wrapper around
+Selenium which in turn drives PhantomJS. You'll need to have the `phantomjs` binary
+available on your path. You can get it with the node package manager. For example:
+
+```sh
+npm install -g phantomjs
+```
+
 ### Migrations
 
 Migrations are handled by [ragtime] []. Migration files are stored in

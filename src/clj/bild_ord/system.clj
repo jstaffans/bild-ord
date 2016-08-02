@@ -42,7 +42,7 @@
          :ragtime (ragtime (:ragtime config)))
         (component/system-using
          {:http              [:app]
-          :game-endpoint     []
+          :game-endpoint     [:db]
           :user-endpoint     [:db]
           :overview-endpoint [:db]
           :app               [:game-endpoint :user-endpoint :overview-endpoint]

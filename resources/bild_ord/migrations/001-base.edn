@@ -1,10 +1,11 @@
 {:up ["CREATE TABLE user (
-        id varchar(36) primary key,
+        id integer primary key,
         username varchar(256) unique not null,
         password varchar(98) not null);"
       "CREATE TABLE progress (
-        user_id varchar(36) not null, 
+        user_id integer not null, 
         game_id integer not null,
-        state text not null);"]
+        state text not null,
+        UNIQUE (user_id, game_id) ON CONFLICT REPLACE);"]
  :down ["DROP TABLE user;"
         "DROP TABLE progress;"]}
