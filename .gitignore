@@ -17,3 +17,4 @@ main.css
 .vagrant
 dev.db
 *.retry
+/resources/cache_version
