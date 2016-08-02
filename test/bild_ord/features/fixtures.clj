@@ -60,7 +60,7 @@
          :fixtures (test-fixtures))
         (component/system-using
          {:http              [:app]
-          :game-endpoint     []
+          :game-endpoint     [:db]
           :user-endpoint     [:db]
           :overview-endpoint [:db]
           :app               [:game-endpoint :user-endpoint :overview-endpoint]
@@ -99,7 +99,7 @@
 
 (comment
   ;; Use this for debugging tests
-  (def system (atom (test-system)))
+  (def system (atom (test-system test-config)))
   (build-cljs)
   (swap! system component/start)
   (t/set-driver! {:browser :phantomjs})

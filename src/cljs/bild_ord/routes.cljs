@@ -30,6 +30,9 @@
     (bidi/path-for routes :game-stage :group group :stage next-stage)
     "/"))
 
+(defn complete-group-path [group]
+  (str "/game/group/" group "/complete"))
+
 (defn init
   []
   (pushy/start! history))
