@@ -1,5 +1,17 @@
 (ns bild-ord.endpoint.common
-  (:require [hiccup.page :refer [html5 include-js include-css]]))
+  (:require [clojure.java.io :as io]
+            [clojure.string :as st]
+            [hiccup.page :refer [html5 include-js include-css]]))
+
+(defn current-version []
+  (try
+    (-> "cache_verson" io/resource slurp st/trim-newline)
+    (catch java.lang.IllegalArgumentException e
+      (println "Couldn't read from /resource/cache_version file")
+      "any")))
+
+(defn versioned-resource [path]
+  (str path "?_version=" (current-version)))
 
 (defn page
   "Base page layout"
@@ -12,15 +24,13 @@
      [:link {:rel "apple-touch-icon-precomposed" :href "/favicon-152.png"}]
      (include-css "/css/base.css")
      (include-css
-      (str "/css/main.css?"
-           ))]
+      (versioned-resource "/css/main.css"))]
     [:body
      (when-let [class (:class options)]
        {:class class})
      body
      (include-js
-      (str "/js/main.js?"
-           ))
+      (versioned-resource "/js/main.js"))
      (when (:cljs-main options)
        [:script (str (:cljs-main options) "();")])])))
 
