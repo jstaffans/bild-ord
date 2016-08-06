@@ -12,7 +12,7 @@
   ([error]
    (page
     [:div
-     (title-bar)
+     (title-bar nil {:hide-actions true})
      [:div.form-login
       (when error
         [:div "Error"])
