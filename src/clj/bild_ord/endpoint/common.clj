@@ -5,7 +5,7 @@
 
 (defn current-version []
   (try
-    (-> "cache_verson" io/resource slurp st/trim-newline)
+    (-> "cache_version" io/resource slurp st/trim-newline)
     (catch java.lang.IllegalArgumentException e
       (println "Couldn't read from /resource/cache_version file")
       "any")))
