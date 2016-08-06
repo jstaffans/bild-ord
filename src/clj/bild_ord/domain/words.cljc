@@ -17,6 +17,8 @@
    ["spade" "skata" "groda" "staket" "snabel"] ["skuta" "gryta"]
    ["startar" "spindel" "viftar" "drake" "kryper"] ["stampar" "liftar"]
    ["eld" "tratt" "glass" "slott" "knapp"] ["trött" "skott"]
+   ["krona" "slickar" "faller" "krattar" "spinner"] ["fyller" "skrattar"]
+   ["dricker" "krockar" "trumma" "trollet" "snäcka"] ["trycker" "brumma"]
    ["tåg" "boll" "sover" "klocka" "måste"] ["många" "troll"]
    ["läser" "pengar" "verkstad" "väcker" "kläder"] ["lovar" "tretton"]
    ["ringer" "regn" "bank" "genast" "korg"] ["tank" "torg"]
