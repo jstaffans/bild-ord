@@ -7,12 +7,6 @@ learning platform).
 The student can drag-and-drop words to connect them with the correct illustration. In addition,
 typing skills are fostered by having the student type in the words as well.
 
-**Status:** Under development.
-
-UI mockups:
-
-
-
 ## Developing
 
 The application is written in Clojure and ClojureScript and is based on the [duct][]
@@ -76,8 +70,6 @@ in a background terminal screen:
 lein scss :dev auto
 ```
 
-
-
 ### Testing
 
 Testing is fastest through the REPL, as you avoid environment startup
@@ -114,15 +106,15 @@ To update the database to the latest migration, open the REPL and run:
 
 ```clojure
 user=> (migrate)
-Applying 20150815144312-create-users
-Applying 20150815145033-create-posts
+Applying 001-base 
+...
 ```
 
 To rollback the last migration, run:
 
 ```clojure
 user=> (rollback)
-Rolling back 20150815145033-create-posts
+Rolling back 001-base
 ```
 
 Note that the system needs to be setup with `(init)` or `(go)` before
@@ -141,7 +133,7 @@ Building and deploying an uberjar:
 
 ```
 lein uberjar
-ansible-playbook ansible/prod.yml --extra-vars "app_version=0.1.0-SNAPSHOT" --tags "deploy" --ask-sudo-pass
+ansible-playbook ansible/prod.yml --extra-vars "app_version=0.1.0-SNAPSHOT" --tags "deploy" --private-key ... --ask-sudo-pass
 ```
 
 #### Vagrant
