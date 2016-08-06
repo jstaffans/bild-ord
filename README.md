@@ -147,6 +147,11 @@ vagrant up
 vagrant provision
 ```
 
+## Contributors 
+
+* Johannes Staffans
+* Robin Gower
+
 ## License
 
 Copyright © 2016 Johannes Staffans
