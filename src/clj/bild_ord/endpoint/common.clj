@@ -35,17 +35,21 @@
        [:script (str (:cljs-main options) "();")])])))
 
 (defn title-bar
-  "Top title bar, includes user menu actions"
-  ([id] (title-bar id nil))
-  ([id options]
-   [:nav.clearfix.title-bar
-    [:div.col.pt1
-     [:a.h1 {:href "/"} "Bild och ord"]]
-    (when (not (:hide-actions options))
-      (if id
-        [:div.col.actions.menu id]
-        [:div.col.actions
-         [:a {:href "/login"} "Logga in"]]))]))
+  "Top title bar"
+  []
+  [:nav.clearfix.title-bar
+   [:div.col.pt1
+    [:a.h1 {:href "/"} "Bild och ord"]]])
+
+(defn title-bar-with-actions
+  "Title bar that includes actions, such as login/logout"
+  [id]
+  (conj
+   (title-bar)
+   (if id
+     [:div.col.actions.menu id]
+     [:div.col.actions
+      [:a {:href "/login"} "Logga in"]])))
 
 (defn session-id
   [request]

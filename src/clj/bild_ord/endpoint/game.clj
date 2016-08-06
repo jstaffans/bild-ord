@@ -1,6 +1,6 @@
 (ns bild-ord.endpoint.game
   (:require [compojure.core :refer :all]
-            [bild-ord.endpoint.common :refer [session-id page title-bar]]
+            [bild-ord.endpoint.common :refer [session-id page title-bar-with-actions]]
             [bild-ord.db :as db]
             [ring.util.response :refer [redirect]]))
 
@@ -11,7 +11,7 @@
 (defn game [request]
   (page
    [:div
-    (title-bar (session-id request))
+    (title-bar-with-actions (session-id request))
     (game-content)]
    {:cljs-main "bild_ord.app.main"}))
 

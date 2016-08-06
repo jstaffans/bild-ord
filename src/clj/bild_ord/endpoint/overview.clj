@@ -1,6 +1,6 @@
 (ns bild-ord.endpoint.overview
   (:require [bild-ord.domain.words :as words]
-            [bild-ord.endpoint.common :refer [page session-id title-bar]]
+            [bild-ord.endpoint.common :refer [page session-id title-bar-with-actions]]
             [bild-ord.db :as db]
             [clojure.string :as string]
             [compojure.core :refer :all]))
@@ -42,7 +42,7 @@
   (let [current-user (session-id request)]
     (page
      [:div
-      (title-bar current-user)
+      (title-bar-with-actions current-user)
       #_[:div.fit.mx2.mt2.p2.header ""]
       [:div.clearfix.px4.py3.groups
        [:div.col.lg-col-6.md-col-12.sm-col-12 (column 0 8 db current-user)]

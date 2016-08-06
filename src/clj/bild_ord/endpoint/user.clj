@@ -12,10 +12,11 @@
   ([error]
    (page
     [:div
-     (title-bar nil {:hide-actions true})
+     (title-bar)
      [:div.form-login
       (when error
-        [:div "Error"])
+        [:div.error
+         "Inloggningen misslyckades. Antingen så finns användarnamnet inte, eller så var lösenordet fel. Försök igen."])
       [:form {:action "/login" :method "POST"}
        [:div.control-group
         [:label.label {:for "username"} "Användarnamn"]
