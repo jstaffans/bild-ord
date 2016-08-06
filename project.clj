@@ -1,6 +1,6 @@
 (defproject bild-ord "0.1.0-SNAPSHOT"
   :description "Swedish-language word game"
-  :url "http://example.com/FIXME"
+  :url "http://bildord.kjellstaffans.fi"
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.9.0-alpha5"]
                  [com.stuartsierra/component "0.3.1"]
