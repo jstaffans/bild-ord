@@ -50,3 +50,7 @@
 (defn set-session-id
   [request id]
   (assoc-in request [:session :identity] id))
+
+(defn clear-session-id
+  [request]
+  (assoc-in request [:session :identity] nil))

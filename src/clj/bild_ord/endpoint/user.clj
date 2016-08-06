@@ -1,6 +1,6 @@
 (ns bild-ord.endpoint.user
   (:require [bild-ord.db :refer [auth-user]]
-            [bild-ord.endpoint.common :refer [set-session-id page title-bar]]
+            [bild-ord.endpoint.common :refer [set-session-id clear-session-id page title-bar]]
             [compojure.core :refer :all]
             [ring.util
              [anti-forgery :refer [anti-forgery-field]]
@@ -37,7 +37,12 @@
      (catch [:error :bild-ord.db/invalid-username-or-password] e
        (login :login-failed)))))
 
+(defn logout [_]
+  (-> (redirect "/")
+      clear-session-id))
+
 (defn user-endpoint [config]
   (routes
    (GET  "/login" [] (login))
-   (POST "/login" [] (partial authenticate (:db config)))))
+   (POST "/login" [] (partial authenticate (:db config)))
+   (GET "/logout" [] logout)))
