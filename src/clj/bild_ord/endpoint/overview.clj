@@ -43,14 +43,25 @@
     (page
      [:div
       (title-bar-with-actions current-user)
-      #_[:div.fit.mx2.mt2.p2.header ""]
-      [:div.clearfix.px4.py3.groups
+
+      [:div.clearfix.mb3]
+
+      [:div.col.col-1 \u00A0]
+      [:div.col.col-10.groups
        [:div.col.lg-col-6.md-col-12.sm-col-12 (column 0 8 db current-user)]
-       [:div.col.lg-col-6.md-col-12.sm-col-12 (column 8 16 db current-user)]]
-      [:div.flex.fit.p2.footer
-       [:div.flex-auto
-        ""]
-       [:div "© 2016 Kjell Staffans"]]]
+       [:div.col.lg-col-1.md-hide.sm-hide \u00A0]
+       [:div.col.lg-col-5.md-col-12.sm-col-12 (column 8 16 db current-user)]]
+      [:div.col.col-1 \u00A0]
+
+      [:div.clearfix.mt3]
+
+      [:div.col.col-1.p2.footer \u00A0]
+      [:div.col.col-10.p2.footer
+       [:div.flex.fit
+        [:div.flex-auto
+         ""]
+        [:div "© 2016 Kjell Staffans"]]]
+      [:div.col.col-1.p2.footer \u00A0]]
      {:class "overview"})))
 
 (defn overview-endpoint [config]

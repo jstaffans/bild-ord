@@ -38,20 +38,25 @@
   "Top title bar"
   []
   [:nav.clearfix.title-bar
-   [:div.col.pt1
+   [:div.col.col-1]
+   [:div.col.col-11
     [:a.h1 {:href "/"} "Bild och ord"]]])
 
 (defn title-bar-with-actions
   "Title bar that includes actions, such as login/logout"
   [id]
-  (conj
-   (title-bar)
-   (if id
-     [:div.col.actions.menu-header {:id "menu-header"} id
-      [:div.absolute.menu
-       [:a {:href "/logout" } "Logga ut"]]]
-     [:div.col.actions
-      [:a {:href "/login"} "Logga in"]])))
+  [:nav.clearfix.title-bar
+   [:div.col.col-1]
+   [:div.col.col-7
+    [:a.h1 {:href "/"} "Bild och ord"]]
+   [:div.col.col-3
+    (if id
+      [:div.right.actions.menu-header {:id "menu-header"} id
+       [:div.absolute.menu
+        [:a {:href "/logout" } "Logga ut"]]]
+      [:div.col.actions
+       [:a {:href "/login"} "Logga in"]])]
+   [:div.col.col-1]])
 
 (defn session-id
   [request]

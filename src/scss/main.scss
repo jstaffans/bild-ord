@@ -32,16 +32,14 @@ html, body {
     }
 
     div {
-        font-size: 1.6em;
+        font-size: 1.6rem;
         padding: 8px 15px;
     }
 
     .actions {
         color: white;
-        margin-top: 5px;
-        margin-right: 10px;
         float: right;
-        font-size: 1.4em;
+        font-size: 1.3rem;
         cursor: pointer;
         min-width: 100px;
 
@@ -257,7 +255,7 @@ html, body {
 
 .overview {
 
-    background: $grey-bg;
+    background: white;
 
     .header {
         background: $alert-blue;
@@ -279,7 +277,7 @@ html, body {
     .group {
         display: flex;
         align-items: center;
-        height: 2em;
+        height: 3em;
         color: #333;
 
         .index {
@@ -289,6 +287,7 @@ html, body {
             line-height: 2.5em;
             background: $grey-bg;
             border-radius: 3px;
+            z-index: 1;
         }
 
         .todo {
@@ -301,9 +300,11 @@ html, body {
         }
 
         .illustration {
-            height: 5em;
+            height: 6em;
             opacity: 0.8;
         }
+
+
 
         .description {
             display: flex;
@@ -338,5 +339,75 @@ html, body {
     .footer {
         color: #666;
         background: $grey-bg;
+    }
+}
+
+@media (min-width: $large-breakpoint-1) {
+    .overview .group {
+
+        height: 6em;
+
+        .index {
+            height: 3em;
+            width: 3em;
+            line-height: 3em;
+            font-size: 2em;
+        }
+
+        .illustration {
+            height: 8em;
+        }
+    }
+}
+
+@media (min-width: $large-breakpoint-2) {
+    .overview .group {
+
+        height: 8em;
+
+        .index {
+            height: 4em;
+            width: 4em;
+            line-height: 4em;
+            font-size: 2em;
+        }
+
+        .illustration {
+            height: 10em;
+        }
+    }
+
+    .words {
+        font-size: 5em;
+    }
+
+    .words-input input {
+        font-size: 5em;
+    }
+}
+
+@media (min-width: $large-breakpoint-3) {
+    .overview .group {
+
+        height: 10em;
+
+        .index {
+            height: 5em;
+            width: 5em;
+            line-height: 5em;
+            font-size: 2em;
+        }
+
+        .illustration {
+            height: 11em;
+        }
+    }
+
+    .words {
+        font-size: 6em;
+    }
+
+    .words-input input {
+        font-size: 6em;
     }
 }
