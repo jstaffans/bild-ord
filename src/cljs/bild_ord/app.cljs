@@ -7,6 +7,10 @@
             [re-frame.core :refer [dispatch-sync]]
             [reagent.core :as reagent]))
 
+;; hook up the nav bar actions, visible on every page
+(when-let [menu-element (.getElementById js/document "menu-header")]
+  (.addEventListener menu-element "click" #(-> menu-element .-classList (.toggle "open"))))
+
 (defn mount-root
   []
   (reagent/render [views/app] (.getElementById js/document "app")))

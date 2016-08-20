@@ -47,7 +47,9 @@
   (conj
    (title-bar)
    (if id
-     [:div.col.actions.menu id]
+     [:div.col.actions.menu-header {:id "menu-header"} id
+      [:div.absolute.menu
+       [:a {:href "/logout" } "Logga ut"]]]
      [:div.col.actions
       [:a {:href "/login"} "Logga in"]])))
 
