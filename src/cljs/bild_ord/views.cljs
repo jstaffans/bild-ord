@@ -10,9 +10,11 @@
 (defn container
   [group]
   [:div.clearfix.game-container
-   [:div.col.col-4.flex.flex-column.justify.around.fill-y
+   [:div.col.col-1 \u00A0]
+   [:div.col.col-2.flex.flex-column.justify.around.fill-y
     (for [i (range 5)]
-      ^{:key i} [common/illustration-svg group i])]])
+      ^{:key i} [common/illustration-svg group i])]
+   [:div.col.col-1 \u00A0]])
 
 (defn goto-type
   [group stage]

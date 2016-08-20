@@ -9,34 +9,21 @@
   [group index]
   [:img.illustration.mx2 {:src (str "/svg/" group "/" index ".svg")}])
 
-(defn group-description
-  [group]
-  (str
-   (string/join
-    ", "
-    (take 2 (words/words-for-group group)))
-   " …"))
-
 (defn group-state [db group user]
   (if (db/group-completed? db user group) ".done" ".todo"))
 
 (defn group-index-marker [db group user]
-  (let [defaults "div.col-1.h2.mr2.index"
+  (let [defaults "div.h2.index"
         state (group-state db group user)
         tag (-> defaults (str state) keyword)]
     [tag (inc group)]))
 
-(defn column
-  [group-from group-to db user]
-  (for [group (range group-from group-to)]
-    [:a {:href (str "/game/group/" group "/stage/drag")}
-     [:div.clearfix.p2.mb3.group
-      (group-index-marker db group user)
-      [:div.col-8.description
-       (illustration group 0)
-       (illustration group 1)
-       (illustration group 2)
-       [:span " …"]]]]) )
+(defn group
+  [db user index]
+  [:a {:href (str "/game/group/" index "/stage/drag")}
+   [:div.group
+    (group-index-marker db index user)
+    (illustration index 0)]])
 
 (defn overview [db request]
   (let [current-user (session-id request)]
@@ -44,24 +31,20 @@
      [:div
       (title-bar-with-actions current-user)
 
-      [:div.clearfix.mb3]
+      [:div.clearfix
+       [:div.col.col-12.groups.flex.flex-wrap.justify-between
+        (for [i (range 0 20)]
+          (group db current-user i))
+        [:div.col-2]
+        [:div.col-2]]]
 
-      [:div.col.col-1 \u00A0]
-      [:div.col.col-10.groups
-       [:div.col.lg-col-6.md-col-12.sm-col-12 (column 0 8 db current-user)]
-       [:div.col.lg-col-1.md-hide.sm-hide \u00A0]
-       [:div.col.lg-col-5.md-col-12.sm-col-12 (column 8 16 db current-user)]]
-      [:div.col.col-1 \u00A0]
+      [:div.clearfix
+       [:div.col.col-1.p2.footer]
+       [:div.col.col-10.p2.footer
+        [:div.flex.fit [:div.flex-auto ""]
+         [:div "© 2016 Kjell Staffans"]]]
+       [:div.col.col-1.p2.footer]]]
 
-      [:div.clearfix.mt3]
-
-      [:div.col.col-1.p2.footer \u00A0]
-      [:div.col.col-10.p2.footer
-       [:div.flex.fit
-        [:div.flex-auto
-         ""]
-        [:div "© 2016 Kjell Staffans"]]]
-      [:div.col.col-1.p2.footer \u00A0]]
      {:class "overview"})))
 
 (defn overview-endpoint [config]

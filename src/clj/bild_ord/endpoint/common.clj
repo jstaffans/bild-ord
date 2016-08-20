@@ -47,16 +47,15 @@
   [id]
   [:nav.clearfix.title-bar
    [:div.col.col-1]
-   [:div.col.col-7
+   [:div.col.col-9
     [:a.h1 {:href "/"} "Bild och ord"]]
-   [:div.col.col-3
+   [:div.col.col-2
     (if id
       [:div.right.actions.menu-header {:id "menu-header"} id
        [:div.absolute.menu
         [:a {:href "/logout" } "Logga ut"]]]
       [:div.col.actions
-       [:a {:href "/login"} "Logga in"]])]
-   [:div.col.col-1]])
+       [:a {:href "/login"} "Logga in"]])]])
 
 (defn session-id
   [request]

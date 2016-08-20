@@ -38,7 +38,6 @@ html, body {
 
     .actions {
         color: white;
-        float: right;
         font-size: 1.3rem;
         cursor: pointer;
         min-width: 100px;
@@ -88,11 +87,8 @@ html, body {
     min-height: $game-container-min-height;
 
     .illustration {
-        margin-left: -20px;
-        margin-top: 2px;
-        margin-bottom: 2px;
         height: 60px;
-        width: 100%;
+        margin-left: -33%;
     }
 }
 
@@ -116,6 +112,7 @@ html, body {
 }
 
 // Elements
+
 
 .slot {
     margin-left: -40px;
@@ -249,20 +246,22 @@ html, body {
 
             background: lighten($green, 10%);
         }
-
     }
 }
 
 .overview {
 
-    background: white;
+    background: $grey-bg;
 
     .header {
         background: $alert-blue;
     }
 
     .groups {
+        padding-left: 8.333%;
+        padding-right: 8.333%;
         background: white;
+        padding-top: 2em;
     }
 
     a {
@@ -275,10 +274,12 @@ html, body {
     }
 
     .group {
+        padding-left: 15px;
         display: flex;
         align-items: center;
-        height: 3em;
+        height: 10em;
         color: #333;
+        margin-bottom: 4em;
 
         .index {
             text-align: center;
@@ -300,11 +301,9 @@ html, body {
         }
 
         .illustration {
-            height: 6em;
+            height: 12em;
             opacity: 0.8;
         }
-
-
 
         .description {
             display: flex;
@@ -342,41 +341,7 @@ html, body {
     }
 }
 
-@media (min-width: $large-breakpoint-1) {
-    .overview .group {
-
-        height: 6em;
-
-        .index {
-            height: 3em;
-            width: 3em;
-            line-height: 3em;
-            font-size: 2em;
-        }
-
-        .illustration {
-            height: 8em;
-        }
-    }
-}
-
 @media (min-width: $large-breakpoint-2) {
-    .overview .group {
-
-        height: 8em;
-
-        .index {
-            height: 4em;
-            width: 4em;
-            line-height: 4em;
-            font-size: 2em;
-        }
-
-        .illustration {
-            height: 10em;
-        }
-    }
-
     .words {
         font-size: 5em;
     }
@@ -387,22 +352,6 @@ html, body {
 }
 
 @media (min-width: $large-breakpoint-3) {
-    .overview .group {
-
-        height: 10em;
-
-        .index {
-            height: 5em;
-            width: 5em;
-            line-height: 5em;
-            font-size: 2em;
-        }
-
-        .illustration {
-            height: 11em;
-        }
-    }
-
     .words {
         font-size: 6em;
     }
