@@ -302,7 +302,6 @@ html, body {
 
         .illustration {
             height: 12em;
-            opacity: 0.8;
         }
 
         .description {
@@ -317,9 +316,6 @@ html, body {
             .done {
                 box-shadow: inset 0 0 0 20rem lighten($green, 5%);
             }
-            .illustration {
-                opacity: 0.92;
-            }
         }
 
         &:active {
@@ -328,9 +324,6 @@ html, body {
             }
             .done {
                 box-shadow: inset 0 0 0 20rem lighten($green, 3%);
-            }
-            .illustration {
-                opacity: 1;
             }
         }
     }
