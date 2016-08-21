@@ -24,11 +24,11 @@
   (let [slots (subscribe [:slots])]
     (fn []
       (into
-       [:div.col.col-3.flex.flex-column.fill-y.words-input]
+       [:div.col.col-2.flex.flex-column.fill-y.words-input]
        (map-indexed input @slots)))))
 
 (defn instructions
   [group]
-  [:div.col.col-5.fill-y.p3.instructions
+  [:div.col.col-6.fill-y.p3.instructions
    "Skriv nu in orden. Om du vill kan du "
    [:a {:href (routes/stage-path group :hint)} "gå tillbaka."]])

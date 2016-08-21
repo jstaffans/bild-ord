@@ -51,10 +51,10 @@
     [:a.h1 {:href "/"} "Bild och ord"]]
    [:div.col.col-2
     (if id
-      [:div.right.actions.menu-header {:id "menu-header"} id
+      [:div.actions.menu-header {:id "menu-header"} id
        [:div.absolute.menu
         [:a {:href "/logout" } "Logga ut"]]]
-      [:div.col.actions
+      [:div.actions
        [:a {:href "/login"} "Logga in"]])]])
 
 (defn session-id

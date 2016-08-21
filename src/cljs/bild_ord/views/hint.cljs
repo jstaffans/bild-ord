@@ -16,12 +16,12 @@
 (defn truths
   [group]
   "Renders the correct words in their respective positions."
-  (into [:div.col.col-3.flex.flex-column.justify.around.fill-y]
+  (into [:div.col.col-2.flex.flex-column.justify.around.fill-y]
         (map-indexed truth (words/words-for-group group))))
 
 (defn instructions
   [group]
-  [:div.col.col-5.fill-y.p3.instructions
+  [:div.col.col-6.fill-y.p3.instructions
    [:a
     {:href (routes/next-stage-path group :hint)}
     "Gå vidare och fortsätt med att skriva in orden."]])

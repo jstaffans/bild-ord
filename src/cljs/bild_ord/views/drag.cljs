@@ -62,7 +62,7 @@
   "Renders the slots column: either droppable boxes or responses."
   (let [slots (subscribe [:slots])]
     (fn []
-      (into [:div.col.col-3.flex.flex-column.justify.around.fill-y]
+      (into [:div.col.col-2.flex.flex-column.justify.around.fill-y]
             (map-indexed slot @slots)))))
 
 (defn instructions-and-pile
@@ -72,7 +72,7 @@
         random-indicies (-> @pile count range shuffle)]
     (droppable
      (fn []
-       [:div.col.col-5.fill-y
+       [:div.col.col-6.fill-y
         [:div.flex.flex-column.fill-y
          [:span.p3.instructions
           "Dra fem av orden till deras rätta platser."]

@@ -7,7 +7,7 @@
 
 (defn illustration
   [group index]
-  [:img.illustration.mx2 {:src (str "/svg/" group "/" index ".svg")}])
+  [:img.illustration {:src (str "/svg/" group "/" index ".svg")}])
 
 (defn group-state [db group user]
   (if (db/group-completed? db user group) ".done" ".todo"))
