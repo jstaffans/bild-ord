@@ -33,7 +33,7 @@ html, body {
 
     div {
         font-size: 1.6rem;
-        padding: 8px 15px;
+        padding: 8px 0;
     }
 
     .actions {
@@ -274,7 +274,7 @@ html, body {
     }
 
     .group {
-        padding-left: 15px;
+        padding-right: 10px;
         display: flex;
         align-items: center;
         height: 10em;
