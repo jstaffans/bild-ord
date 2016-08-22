@@ -23,7 +23,7 @@ html, body {
 // Sections
 
 .title-bar {
-    background: $brown-bg;
+    background: $dark-bg;
     height: $title-bar-height;
 
     a {
@@ -144,6 +144,7 @@ html, body {
 .words {
     font-size: 3em;
     font-family: $excercise-font-family;
+    color: $excercise-font-color;
 }
 
 .words-drag {
@@ -166,6 +167,7 @@ html, body {
 .instructions {
     background: $grey-bg;
     font-size: 1.2em;
+    color: $excercise-font-color;
 
     a, a:active, a:visited {
         color: $link;

@@ -1,7 +1,7 @@
-$btn-color: $brown-dark;
-$darken-1: darken($btn-color, 5%);
-$darken-2: darken($btn-color, 7%);
-$darken-3: darken($btn-color, 8%);
+$btn-color: $dark;
+$darken-1: darken($btn-color, 2%);
+$darken-2: darken($btn-color, 4%);
+$darken-3: darken($btn-color, 5%);
 
 .btn {
     font-family: inherit;

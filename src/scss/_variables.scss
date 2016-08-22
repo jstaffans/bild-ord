@@ -1,20 +1,19 @@
 $main-font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
 
 $excercise-font-family: Georgia, Times, 'Times New Roman', serif;
+$excercise-font-color: #556770;
 
-$brown: #d4b381;
-$brown-bg: $brown;
-$grey-bg: #f0f0f0;
+$dark: #556770;
+$dark-bg: $dark;
+$grey-bg: #e8eff3;
 $grey-fg: #6c7a87;
-$green: #008000;
-$red: #CC0000;
+$green: #009e3c;
+$red: #e4133a;
 $link: #275427;
 
 $alert-blue: rgb(215, 243, 255);
 
-$brown-dark: darken($brown, 15%);
-
-$title-bar-height: 55px;
+$title-bar-height: 58px;
 
 $game-container-min-width: 960px;
 $game-container-min-height: 500px;
