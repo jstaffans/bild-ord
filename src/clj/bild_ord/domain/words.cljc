@@ -38,3 +38,7 @@
       (nth group)
       flatten
       shuffle))
+
+(defn random-words
+  [n]
+  (->> word-groups flatten shuffle (take n)))
