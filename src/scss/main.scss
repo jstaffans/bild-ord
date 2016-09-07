@@ -20,6 +20,10 @@ html, body {
     padding: 0;
 }
 
+a, a:active, a:visited {
+    color: $link;
+}
+
 // Sections
 
 .title-bar {
@@ -169,9 +173,6 @@ html, body {
     font-size: 1.2em;
     color: $excercise-font-color;
 
-    a, a:active, a:visited {
-        color: $link;
-    }
 }
 
 .words-input {

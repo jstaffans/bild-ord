@@ -25,7 +25,10 @@
         [:label.label {:for "password"} "Lösenord"]
         [:input.input {:id "password" :name "password" :type "password"}]]
        [:button.btn.btn-primary "Logga in"]
-       (anti-forgery-field)]]])))
+       (anti-forgery-field)]]
+     [:div.center
+      "Har du inget konto ännu? Registrera dig "
+      [:a {:href "#"} "här!"]]])))
 
 (defn authenticate [db request]
   (let [username (get-in request [:form-params "username"])
