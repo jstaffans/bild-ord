@@ -51,7 +51,7 @@
   (fn [e & args]
     (condp (partial re-seq) (.getMessage e)
       #"UNIQUE.*user\.username"
-      (throw+ {:error :username-taken :username (select-keys (second args) [:username])}))))
+      (throw+ {:error ::username-taken :username (select-keys (second args) [:username])}))))
 
 (extend-type DbComponent
   UserDb
