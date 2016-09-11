@@ -34,10 +34,7 @@
       [:div.clearfix
        [:div.col.col-12.groups.flex.flex-wrap.justify-between
         (for [i (range 0 22)]
-          (group db current-user i))
-        [:div.col-2]
-        [:div.col-2]]]
-
+          (group db current-user i))]]
       [:div.clearfix
        [:div.col.col-1.p2.footer]
        [:div.col.col-10.p2.footer
