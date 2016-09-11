@@ -256,8 +256,13 @@ a, a:active, a:visited {
 
     background: $grey-bg;
 
-    .header {
+    .alert {
+        padding: 1.5em 8.333% 1.5em 8.333%;
         background: $alert-blue;
+
+        a {
+            text-decoration: underline;
+        }
     }
 
     .groups {

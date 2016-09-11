@@ -30,8 +30,13 @@
     (page
      [:div
       (title-bar-with-actions current-user)
-
       [:div.clearfix
+       (when (not current-user)
+         [:div.alert
+          [:a {:href "/login"} "Logga in"]
+          " om du vill att ditt avancemang ska sparas. "
+          "Du kan också "
+          [:a {:href "#"} "ladda ner"]" en översiktsblankett om du vill hålla koll manuellt."])
        [:div.col.col-12.groups.flex.flex-wrap.justify-between
         (for [i (range 0 22)]
           (group db current-user i))]]
