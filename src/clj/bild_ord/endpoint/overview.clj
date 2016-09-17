@@ -34,21 +34,37 @@
        (when (not current-user)
          [:div.alert
           [:a {:href "/login"} "Logga in"]
-          " om du vill att ditt avancemang ska sparas. "
-          "Du kan också "
-          [:a {:href "#"} "ladda ner"]" en översiktsblankett om du vill hålla koll manuellt."])
+          " eller "
+          [:a {:href "/bild_ord.pdf" :target "_blank"} "ladda ner en översiktsblankett"]
+          " för att hålla koll på vilka övningar du redan gjort."])
        [:div.col.col-12.groups.flex.flex-wrap.justify-between
         (for [i (range 0 22)]
           (group db current-user i))]]
       [:div.clearfix
        [:div.col.col-1.p2.footer]
-       [:div.col.col-10.p2.footer
+       [:div.col.col-10.py2.footer
+        [:div.left
+         [:a {:href "/om"} "Om bild och ord"]]
         [:div.flex.fit [:div.flex-auto ""]
          [:div "© 2016 Kjell Staffans"]]]
        [:div.col.col-1.p2.footer]]]
 
      {:class "overview"})))
 
+(defn about [request]
+  (let [current-user (session-id request)]
+    (page
+     [:div
+      (title-bar-with-actions current-user)
+      [:div.clearfix.about
+       [:h1 "Om bild och ord"]
+       [:p
+        "Denna applikation är en del av det undervisningsmaterial som finns till förfogande på "
+        [:a {:href "http://www.kjellstaffans.fi"} "Kjell Staffans hemsida."]
+        " Allt material är © 2016 Kjell Staffans och får inte användas eller laddas ner i kommersiellt syfte."]
+       [:p "Applikationen har utvecklats med stöd av Svenska Kulturfonden, X, Y, ..."]]])))
+
 (defn overview-endpoint [config]
   (routes
-   (GET  "/" [] (partial overview (:db config)))))
+   (GET  "/" [] (partial overview (:db config)))
+   (GET "/om" [] about)))

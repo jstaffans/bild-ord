@@ -342,6 +342,16 @@ a, a:active, a:visited {
     }
 }
 
+.about {
+    padding-left: 8.333%;
+    padding-right: 8.333%;
+    background: white;
+
+    a {
+        text-decoration: underline;
+    }
+}
+
 @media (min-width: $large-breakpoint-2) {
     .words {
         font-size: 5em;
