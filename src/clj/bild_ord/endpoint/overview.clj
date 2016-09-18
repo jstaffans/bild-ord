@@ -35,7 +35,7 @@
          [:div.alert
           [:a {:href "/login"} "Logga in"]
           " eller "
-          [:a {:href "/bild_ord.pdf" :target "_blank"} "ladda ner en översiktsblankett"]
+          [:a {:href "/bild_ord.pdf" :target "_blank"} "skriv ut en översiktsblankett"]
           " för att hålla koll på vilka övningar du redan gjort."])
        [:div.col.col-12.groups.flex.flex-wrap.justify-between
         (for [i (range 0 22)]
@@ -62,7 +62,8 @@
         "Denna applikation är en del av det undervisningsmaterial som finns till förfogande på "
         [:a {:href "http://www.kjellstaffans.fi"} "Kjell Staffans hemsida."]
         " Allt material är © 2016 Kjell Staffans och får inte användas eller laddas ner i kommersiellt syfte."]
-       [:p "Applikationen har utvecklats med stöd av Svenska Kulturfonden, X, Y, ..."]]])))
+       [:p (str "Applikationen har utvecklats med stöd av Svenska Kulturfonden, Aktiastiftelsen i Vasa, "
+                "Svensk-Österbottniska Samfundet r.f. och Samarbetsförbundet kring funktionshinder r.f.")]]])))
 
 (defn overview-endpoint [config]
   (routes
