@@ -339,6 +339,22 @@ a, a:active, a:visited {
     .footer {
         color: #666;
         background: $grey-bg;
+
+        ul {
+            margin: 0;
+            list-style-type: none;
+
+            li {
+                display: inline-block;
+                padding-right: 10px;
+                margin-right: 10px;
+                border-right: 1px solid #666;
+
+                &:last-child {
+                    border: none;
+                }
+            }
+        }
     }
 }
 

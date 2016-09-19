@@ -43,8 +43,11 @@
       [:div.clearfix
        [:div.col.col-1.p2.footer]
        [:div.col.col-10.py2.footer
-        [:div.left
-         [:a {:href "/om"} "Om bild och ord"]]
+        [:ul.left
+         [:li
+          [:a {:href "/bild_ord.pdf"} "Översiktsblankett"]]
+         [:li
+          [:a {:href "/om"} "Om bild och ord"]]]
         [:div.flex.fit [:div.flex-auto ""]
          [:div "© 2016 Kjell Staffans"]]]
        [:div.col.col-1.p2.footer]]]
