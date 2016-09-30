@@ -36,7 +36,6 @@ a, a:active, a:visited {
     }
 
     div {
-        font-size: 1.6rem;
         padding: 8px 0;
     }
 
@@ -44,41 +43,59 @@ a, a:active, a:visited {
         color: white;
         font-size: 1.3rem;
         cursor: pointer;
-        min-width: 100px;
+        margin: 0;
+        list-style-type: none;
+        min-width: 300px;
+        padding-left: 0;
+        margin-right: 30px;
+        text-align: right;
 
-        &.menu-header:after {
-            padding-left: 8px;
-            font-size: 0.6em;
-            vertical-align: middle;
-            content: "▼";
-        }
+        li {
+            display: inline-block;
+            padding-right: 20px;
+            margin-right: 20px;
+            border-right: 1px solid #ccc;
 
-        &.open.menu-header:after {
-            content: "▲";
-        }
+            &:last-child {
+                border: none;
+                margin-right: 0;
+                padding-right: 0;
+            }
 
-        .menu {
-            display: none;
+            .menu-header:after {
+                padding-left: 8px;
+                font-size: 0.6em;
+                vertical-align: middle;
+                content: "▼";
+            }
 
-            z-index: 1;
-            font-size: 0.8em;
-            margin-top: 8px;
-            background: white;
-            border: 1px solid $grey-bg;
-            padding: 10px;
-            width: 125px;
-            margin-left: -11px;
+            .open.menu-header:after {
+                content: "▲";
+            }
 
-            a {
-                color: $grey-fg;
+            .menu {
+                display: none;
+
+                z-index: 1;
+                font-size: 0.8em;
+                margin-top: 8px;
+                background: white;
+                border: 1px solid $grey-bg;
+                padding: 10px;
+                width: 125px;
+                margin-left: -11px;
+
+                a {
+                    color: $grey-fg;
+                }
+            }
+
+            .open .menu {
+                display: block;
+                text-align: left;
             }
         }
-
-        &.open .menu {
-            display: block;
-        }
     }
-
 }
 
 .game-container {
@@ -339,9 +356,11 @@ a, a:active, a:visited {
     .footer {
         color: #666;
         background: $grey-bg;
+        padding-bottom: 40px;
 
         ul {
             margin: 0;
+            padding-left: 0;
             list-style-type: none;
 
             li {

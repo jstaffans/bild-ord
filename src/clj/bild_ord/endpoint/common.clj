@@ -47,15 +47,19 @@
   [id]
   [:nav.clearfix.title-bar
    [:div.col.col-1]
-   [:div.col.col-9
+   [:div.col.col-3
     [:a.h1 {:href "/"} "Bild och ord"]]
-   [:div.col.col-2
-    (if id
-      [:div.actions.menu-header {:id "menu-header"} id
-       [:div.absolute.menu
-        [:a {:href "/logout" } "Logga ut"]]]
-      [:div.actions
-       [:a {:href "/login"} "Logga in"]])]])
+   [:div.col.col-7
+    [:ul.right.actions
+     [:li [:a {:href "http://www.kjellstaffans.fi/material/bild-och-ord-pa-natet/"} "Instruktioner"]]
+     [:li
+      (if id
+        [:div.menu-header {:id "menu-header"} id
+         [:div.absolute.menu
+          [:a {:href "/logout" } "Logga ut"]]]
+        [:div
+         [:a {:href "/login"} "Logga in"]])]]]
+   [:div.col.col-1]])
 
 (defn session-id
   [request]
