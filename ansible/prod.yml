@@ -14,7 +14,7 @@
     - role: franklinkim.environment
       environment_config:
         PORT: 8080
-        GA_TOKEN: {{ ga_token }} 
+        GA_TOKEN: "{{ ga_token }}"
     - role: jdauphant.nginx
       nginx_http_params:
         - access_log "/var/log/nginx/access.log"
