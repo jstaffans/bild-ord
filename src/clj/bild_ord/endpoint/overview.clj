@@ -25,9 +25,10 @@
     (group-index-marker db index user)
     (illustration index 0)]])
 
-(defn overview [db request]
+(defn overview [ga db request]
   (let [current-user (session-id request)]
     (page
+     ga
      [:div
       (title-bar-with-actions current-user)
       [:div.clearfix
@@ -54,9 +55,10 @@
 
      {:class "overview"})))
 
-(defn about [request]
+(defn about [ga request]
   (let [current-user (session-id request)]
     (page
+     ga
      [:div
       (title-bar-with-actions current-user)
       [:div.clearfix.about
@@ -70,5 +72,5 @@
 
 (defn overview-endpoint [config]
   (routes
-   (GET  "/" [] (partial overview (:db config)))
-   (GET "/om" [] about)))
+   (GET  "/" [] (partial overview (:ga config) (:db config)))
+   (GET "/om" [] (partial about (:ga config)))))

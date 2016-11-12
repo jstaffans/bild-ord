@@ -8,8 +8,9 @@
   "Placeholder element for the Reagent app"
   [:div#app])
 
-(defn game [request]
+(defn game [ga request]
   (page
+   ga
    [:div
     (title-bar-with-actions (session-id request))
     (game-content)]
@@ -23,6 +24,6 @@
 (defn game-endpoint [config]
   (routes
    (GET "/game/group/:group/stage/:stage" [_ _]
-        game)
+        (partial (:ga config)))
    (GET "/game/group/:group/complete" [group]
         (partial complete-game (:db config) group))))

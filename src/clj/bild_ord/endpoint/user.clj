@@ -12,8 +12,9 @@
             [slingshot.slingshot :refer [try+]]))
 
 (defn login
-  [request]
+  [ga request]
   (page
+   ga
    [:div
     (title-bar)
     [:div.user-form
@@ -38,9 +39,10 @@
        [:a {:href "/register"} "här!"]])]))
 
 (defn register
-  [request]
+  [ga request]
   (let [password (string/join "-" (random-words 3))]
     (page
+     ga
      [:div
       (title-bar)
       [:div.user-form
@@ -89,10 +91,10 @@
 
 (defn user-endpoint [config]
   (routes
-   (GET  "/login" [] login)
+   (GET  "/login" [] (partial login (:ga config)))
    (POST "/login" [] (partial authenticate (:db config)))
 
-   (GET "/register" [] register)
+   (GET "/register" [] (partial register (:ga config)))
    (POST "/register" [] (partial create-user (:db config)))
 
    (GET "/logout" [] logout)))

@@ -23,6 +23,7 @@
                  [com.layerware/hugsql "0.4.7"]
                  [buddy "1.0.0"]
                  [dire "0.5.4"]
+                 [ginsite "0.1.1"]
 
                  [ring-webjars "0.1.1"]
                  [org.webjars/jquery-ui-themes "1.11.4"]

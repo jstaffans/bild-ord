@@ -1,8 +1,9 @@
 (ns bild-ord.system
   (:require [bild-ord.db :refer [db-component]]
-            [bild-ord.endpoint.user :refer [user-endpoint]]
-            [bild-ord.endpoint.game :refer [game-endpoint]]
-            [bild-ord.endpoint.overview :refer [overview-endpoint]]
+            [bild-ord.endpoint
+             [game :refer [game-endpoint]]
+             [overview :refer [overview-endpoint]]
+             [user :refer [user-endpoint]]]
             [clojure.java.io :as io]
             [com.stuartsierra.component :as component]
             [duct.component
@@ -10,15 +11,16 @@
              [handler :refer [handler-component]]
              [hikaricp :refer [hikaricp]]
              [ragtime :refer [ragtime]]]
-            [ragtime.jdbc :as jdbc]
             [duct.middleware
              [not-found :refer [wrap-not-found]]
              [route-aliases :refer [wrap-route-aliases]]]
             [meta-merge.core :refer [meta-merge]]
+            [ragtime.jdbc :as jdbc]
             [ring.component.jetty :refer [jetty-server]]
             [ring.middleware
              [defaults :refer [site-defaults wrap-defaults]]
-             [webjars :refer [wrap-webjars]]]))
+             [webjars :refer [wrap-webjars]]]
+            [bild-ord.ga :refer [ga-component]]))
 
 (def base-config
   {:app     {:middleware [[wrap-not-found :not-found]
@@ -35,6 +37,7 @@
     (-> (component/system-map
          :app (handler-component (:app config))
          :http (jetty-server (:http config))
+         :ga (ga-component (:ga config))
          :game-endpoint (endpoint-component game-endpoint)
          :user-endpoint (endpoint-component user-endpoint)
          :overview-endpoint (endpoint-component overview-endpoint)
@@ -42,8 +45,8 @@
          :ragtime (ragtime (:ragtime config)))
         (component/system-using
          {:http              [:app]
-          :game-endpoint     [:db]
-          :user-endpoint     [:db]
-          :overview-endpoint [:db]
+          :game-endpoint     [:ga :db]
+          :user-endpoint     [:ga :db]
+          :overview-endpoint [:ga :db]
           :app               [:game-endpoint :user-endpoint :overview-endpoint]
           :ragtime           [:db]}))))

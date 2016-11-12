@@ -1,7 +1,8 @@
 (ns bild-ord.endpoint.common
   (:require [clojure.java.io :as io]
             [clojure.string :as st]
-            [hiccup.page :refer [html5 include-js include-css]]))
+            [hiccup.page :refer [html5 include-js include-css]]
+            [gin.site :refer [sentinel]]))
 
 (defn current-version []
   (try
@@ -15,8 +16,8 @@
 
 (defn page
   "Base page layout"
-  ([body] (page body {}))
-  ([body options]
+  ([ga body] (page body {}))
+  ([ga body options]
    (html5
     {:lang "sv"}
     [:head
@@ -24,7 +25,9 @@
      [:link {:rel "apple-touch-icon-precomposed" :href "/favicon-152.png"}]
      (include-css "/css/base.css")
      (include-css
-      (versioned-resource "/css/main.css"))]
+      (versioned-resource "/css/main.css"))
+     (sentinel (:token ga))
+     ]
     [:body
      (when-let [class (:class options)]
        {:class class})
