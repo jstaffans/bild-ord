@@ -8,13 +8,14 @@
   "Placeholder element for the Reagent app"
   [:div#app])
 
-(defn game [ga request]
+(defn game [ga group request]
   (page
    ga
    [:div
     (title-bar-with-actions (session-id request))
     (game-content)]
-   {:cljs-main "bild_ord.app.main"}))
+   {:title (str "Bild och ord - grupp " (inc group))
+    :cljs-main "bild_ord.app.main"}))
 
 (defn complete-game [db group request]
   (when-let [username (session-id request)]
@@ -23,7 +24,7 @@
 
 (defn game-endpoint [config]
   (routes
-   (GET "/game/group/:group/stage/:stage" [_ _]
-        (partial game (:ga config)))
+   (GET "/game/group/:group/stage/:stage" [group _]
+        (partial game (:ga config) (Integer/parseInt group)))
    (GET "/game/group/:group/complete" [group]
         (partial complete-game (:db config) group))))

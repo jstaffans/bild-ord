@@ -21,7 +21,7 @@
    (html5
     {:lang "sv"}
     [:head
-     [:title "Bild och ord"]
+     [:title (or (:title options) "Bild och ord")]
      [:link {:rel "apple-touch-icon-precomposed" :href "/favicon-152.png"}]
      (include-css "/css/base.css")
      (include-css
