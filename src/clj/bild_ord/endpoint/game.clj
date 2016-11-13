@@ -24,6 +24,6 @@
 (defn game-endpoint [config]
   (routes
    (GET "/game/group/:group/stage/:stage" [_ _]
-        (partial (:ga config)))
+        (partial game (:ga config)))
    (GET "/game/group/:group/complete" [group]
         (partial complete-game (:db config) group))))
