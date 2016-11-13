@@ -22,7 +22,7 @@ start () {
   if [ ! -f $WORK_DIR/pid ]; then
     start-stop-daemon --start --quiet --background \
       --make-pidfile --pidfile $WORK_DIR/bild-ord.pid --chuid "$USER" \
-      --startas /bin/bash -- -c "exec env PORT=$PORT $DAEMON $DAEMON_ARGS > /var/log/bild-ord.log 2>&1"
+      --startas /bin/bash -- -c "exec env PORT=$PORT GA_TOKEN=$GA_TOKEN $DAEMON $DAEMON_ARGS > /var/log/bild-ord.log 2>&1"
   else
     echo "bild-ord is already running..."
   fi
