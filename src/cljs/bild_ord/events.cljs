@@ -1,7 +1,21 @@
 (ns bild-ord.events
-  (:require [re-frame.core :refer [reg-event-db]]
+  (:require [re-frame.core :refer [after reg-event-db]]
             [bild-ord.db :refer [new-games default-state valid-stage?]]
             [bild-ord.domain.game :as game]))
+
+(defn track-drag-guess
+  [db _]
+  (when (= :drag (:stage db))
+    (let [slot (-> db :games :drag ::game/slots (nth (:last-guess db)))]
+      (.ga js/window
+           "send"
+           "event"
+           "Spel"
+           "Ord förflyttat"
+           (if (game/correct? slot) "Rätt" "Fel")
+           (inc (:last-guess db))))))
+
+(def track-guess (after track-drag-guess))
 
 (reg-event-db
   :initialise-db
@@ -19,9 +33,11 @@
 
 (reg-event-db
  :guess-word
+ [track-guess]
  (fn [db [_ index word]]
    (-> db
-       (update-in [:games (:stage db)] #(game/guess-word % index word)))))
+       (update-in [:games (:stage db)] #(game/guess-word % index word))
+       (assoc :last-guess index))))
 
 (reg-event-db
  :cancel-guess
