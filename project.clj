@@ -35,6 +35,7 @@
                  [bidi "2.0.9"]
                  [cljsjs/jquery "1.12.2-0"]
                  [cljsjs/jquery-ui "1.11.4-0"]
+                 [cljsjs/google-analytics "2015.04.13-0"]
                  [kibu/pushy "0.3.6"]]
   :plugins [[lein-environ "1.0.2"]
             [lein-shell "0.5.0"]
