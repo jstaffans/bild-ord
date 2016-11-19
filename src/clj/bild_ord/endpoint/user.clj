@@ -89,12 +89,12 @@
   (-> (redirect "/")
       clear-session-id))
 
-(defn user-endpoint [config]
+(defn user-endpoint [ga config]
   (routes
-   (GET  "/login" [] (partial login (:ga config)))
+   (GET  "/login" [] (partial login ga))
    (POST "/login" [] (partial authenticate (:db config)))
 
-   (GET "/register" [] (partial register (:ga config)))
+   (GET "/register" [] (partial register ga))
    (POST "/register" [] (partial create-user (:db config)))
 
    (GET "/logout" [] logout)))

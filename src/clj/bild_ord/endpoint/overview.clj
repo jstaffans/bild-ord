@@ -70,7 +70,7 @@
        [:p (str "Applikationen har utvecklats med stöd av Svenska Kulturfonden, Aktiastiftelsen i Vasa, "
                 "Svensk-Österbottniska Samfundet r.f. och Samarbetsförbundet kring funktionshinder r.f.")]]])))
 
-(defn overview-endpoint [config]
+(defn overview-endpoint [ga config]
   (routes
-   (GET  "/" [] (partial overview (:ga config) (:db config)))
-   (GET "/om" [] (partial about (:ga config)))))
+   (GET  "/" [] (partial overview ga (:db config)))
+   (GET "/om" [] (partial about ga))))

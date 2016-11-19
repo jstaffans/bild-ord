@@ -22,9 +22,9 @@
     (db/complete-group! db username group))
   (redirect "/"))
 
-(defn game-endpoint [config]
+(defn game-endpoint [ga config]
   (routes
    (GET "/game/group/:group/stage/:stage" [group _]
-        (partial game (:ga config) (Integer/parseInt group)))
+        (partial game ga (Integer/parseInt group)))
    (GET "/game/group/:group/complete" [group]
         (partial complete-game (:db config) group))))

@@ -19,8 +19,7 @@
             [ring.component.jetty :refer [jetty-server]]
             [ring.middleware
              [defaults :refer [site-defaults wrap-defaults]]
-             [webjars :refer [wrap-webjars]]]
-            [bild-ord.ga :refer [ga-component]]))
+             [webjars :refer [wrap-webjars]]]))
 
 (def base-config
   {:app     {:middleware [[wrap-not-found :not-found]
@@ -37,16 +36,15 @@
     (-> (component/system-map
          :app (handler-component (:app config))
          :http (jetty-server (:http config))
-         :ga (ga-component (:ga config))
-         :game-endpoint (endpoint-component game-endpoint)
-         :user-endpoint (endpoint-component user-endpoint)
-         :overview-endpoint (endpoint-component overview-endpoint)
+         :game-endpoint (endpoint-component (partial game-endpoint (:ga config)))
+         :user-endpoint (endpoint-component (partial user-endpoint (:ga config)))
+         :overview-endpoint (endpoint-component (partial overview-endpoint (:ga config)))
          :db (db-component (:db config))
          :ragtime (ragtime (:ragtime config)))
         (component/system-using
          {:http              [:app]
-          :game-endpoint     [:ga :db]
-          :user-endpoint     [:ga :db]
-          :overview-endpoint [:ga :db]
+          :game-endpoint     [:db]
+          :user-endpoint     [:db]
+          :overview-endpoint [:db]
           :app               [:game-endpoint :user-endpoint :overview-endpoint]
           :ragtime           [:db]}))))
