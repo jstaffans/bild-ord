@@ -1,4 +1,4 @@
-(ns bild-ord.handlers
+(ns bild-ord.events
   (:require [re-frame.core :refer [reg-event-db]]
             [bild-ord.db :refer [new-games default-state valid-stage?]]
             [bild-ord.domain.game :as game]))

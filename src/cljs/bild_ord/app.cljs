@@ -1,6 +1,6 @@
 (ns bild-ord.app
   (:require [bidi.bidi :as bidi]
-            bild-ord.handlers
+            bild-ord.events
             [bild-ord.routes :as routes]
             bild-ord.subs
             [bild-ord.views :as views]
