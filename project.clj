@@ -29,9 +29,8 @@
                  [org.webjars/jquery-ui-themes "1.11.4"]
 
                  [org.clojure/clojurescript "1.9.36"]
-                 [reagent "0.5.1" :exclusions [cljsjs/react]]
-                 [cljsjs/react-with-addons "0.13.3-0"]
-                 [re-frame "0.7.0-alpha-2"]
+                 [reagent "0.6.0"]
+                 [re-frame "0.8.0"]
                  [bidi "2.0.9"]
                  [cljsjs/jquery "1.12.2-0"]
                  [cljsjs/jquery-ui "1.11.4-0"]
