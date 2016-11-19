@@ -1,40 +1,39 @@
 (ns bild-ord.subs
   (:require-macros [reagent.ratom :refer [reaction]])
-  (:require [re-frame.core :refer [reg-sub-raw]]
+  (:require [re-frame.core :refer [reg-sub]]
             [bild-ord.domain.game :as game]))
 
-(reg-sub-raw
+(reg-sub
  :slots
  (fn [db _]
-   (reaction (-> @db :games (get (:stage @db)) ::game/slots))))
+   (-> db :games (get (:stage db)) ::game/slots)))
 
 ;; Keeps track of the words available to try.
 ;; Only for the dragging stage of a game.
-(reg-sub-raw
+(reg-sub
  :pile
  (fn [db _]
-   (reaction (-> @db :games :drag ::game/pile))))
+   (-> db :games :drag ::game/pile)))
 
-(reg-sub-raw
+(reg-sub
  :current-group
  (fn [db _]
-   (reaction (:group @db))))
+   (:group db)))
 
-(reg-sub-raw
+(reg-sub
  :current-stage
  (fn [db _]
-   (reaction (:stage @db))))
+   (:stage db)))
 
-(reg-sub-raw
+(reg-sub
  :success?
  (fn [db _]
-   (reaction (some-> @db :games (get (:stage @db)) game/success?))))
+   (some-> db :games (get (:stage db)) game/success?)))
 
 ;; Progress from 0 to 100 of the entire game
-(reg-sub-raw
+(reg-sub
  :progress
  (fn [db _]
-   (reaction
-    (* (+ (game/progress (-> @db :games :drag))
-          (game/progress (-> @db :games :type)))
-       10))))
+   (* (+ (game/progress (-> db :games :drag))
+          (game/progress (-> db :games :type)))
+       10)))
