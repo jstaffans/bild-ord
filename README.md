@@ -133,7 +133,7 @@ Building and deploying an uberjar:
 
 ```
 lein uberjar
-ansible-playbook ansible/prod.yml --extra-vars "app_version=0.1.0-SNAPSHOT" --tags "deploy" --private-key ... --ask-sudo-pass
+ansible-playbook ansible/prod.yml --extra-vars "app_version=0.1.0-SNAPSHOT" --tags "deploy" --private-key ... --ask-sudo-pass --ask-vault-pass
 ```
 
 #### Vagrant
