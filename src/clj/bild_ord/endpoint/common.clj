@@ -16,7 +16,7 @@
 
 (defn page
   "Base page layout"
-  ([ga body] (page body {}))
+  ([ga body] (page ga body {}))
   ([ga body options]
    (html5
     {:lang "sv"}

@@ -65,7 +65,7 @@
        "Har du redan ett konto? Logga in "
        [:a {:href "/login"} "här!"]]])))
 
-(defn authenticate [db request]
+(defn authenticate [ga db request]
   (let [username (get-in request [:form-params "username"])
         password (get-in request [:form-params "password"])
         session (:session request)]
@@ -74,7 +74,7 @@
      (-> (redirect "/")
          (set-session-id username))
      (catch [:error :bild-ord.db/invalid-username-or-password] e
-       (login {:error :login-failed})))))
+       (login ga {:error :login-failed})))))
 
 (defn create-user [db request]
   (let [username (get-in request [:form-params "username"])
@@ -92,7 +92,7 @@
 (defn user-endpoint [ga config]
   (routes
    (GET  "/login" [] (partial login ga))
-   (POST "/login" [] (partial authenticate (:db config)))
+   (POST "/login" [] (partial authenticate ga (:db config)))
 
    (GET "/register" [] (partial register ga))
    (POST "/register" [] (partial create-user (:db config)))
