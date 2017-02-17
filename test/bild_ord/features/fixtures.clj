@@ -52,9 +52,9 @@
     (-> (component/system-map
          :app (duct.component.handler/handler-component (:app config))
          :http (ring.component.jetty/jetty-server (:http config))
-         :game-endpoint (duct.component.endpoint/endpoint-component game-endpoint)
-         :user-endpoint (duct.component.endpoint/endpoint-component user-endpoint)
-         :overview-endpoint (duct.component.endpoint/endpoint-component overview-endpoint)
+         :game-endpoint (duct.component.endpoint/endpoint-component (partial game-endpoint nil))
+         :user-endpoint (duct.component.endpoint/endpoint-component (partial user-endpoint nil))
+         :overview-endpoint (duct.component.endpoint/endpoint-component (partial overview-endpoint nil))
          :db (bild-ord.db/db-component (:db config))
          :ragtime (duct.component.ragtime/ragtime (:ragtime config))
          :fixtures (test-fixtures))
