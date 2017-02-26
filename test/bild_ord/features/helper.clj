@@ -51,7 +51,7 @@
 
 (defn type-word [text position]
   (t/input-text (find-input position)
-                text))
+                (str "_" text)))
 
 (defn type-words [& words]
   (doall (map-indexed (fn [i w] (type-word w i)) words)))
