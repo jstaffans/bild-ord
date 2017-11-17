@@ -5,404 +5,422 @@
 
 
 body {
-    font-family: $main-font-family;
+  font-family: $main-font-family;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: inherit;
-    font-weight: 300;
+  font-family: inherit;
+  font-weight: 300;
 }
 
 html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  font-size: 14px;
+
+  @media(min-width: $small-breakpoint) {
+    font-size: 16px;
+  }
 }
 
 a, a:active, a:visited {
-    color: $link;
+  color: $link;
 }
 
 // Sections
 
 .title-bar {
-    background: $dark-bg;
+  background: $dark-bg;
+  height: $title-bar-height-sm;
+  padding-left: 30px;
+
+  @media(min-width: $small-breakpoint) {
     height: $title-bar-height;
+  }
 
-    a {
-        color: white;
-        text-decoration: none;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  div {
+    padding: 8px 0;
+  }
+
+  .actions {
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 0;
+    list-style-type: none;
+    padding-left: 0;
+    text-align: right;
+    margin-right: 30px;
+
+    @media(min-width: $small-breakpoint) {
+      font-size: 1.3rem;
     }
 
-    div {
-        padding: 8px 0;
-    }
+    li {
+      display: inline-block;
+      padding-right: 10px;
+      margin-right: 10px;
+      border-right: 1px solid #ccc;
 
-    .actions {
-        color: white;
-        font-size: 1.3rem;
-        cursor: pointer;
-        margin: 0;
-        list-style-type: none;
-        min-width: 300px;
-        padding-left: 0;
-        margin-right: 30px;
-        text-align: right;
+      @media(min-width: $small-breakpoint) {
+        padding-right: 20px;
+        margin-right: 20px;
+      }
 
-        li {
-            display: inline-block;
-            padding-right: 20px;
-            margin-right: 20px;
-            border-right: 1px solid #ccc;
+      &:last-child {
+        border: none;
+        margin-right: 0;
+        padding-right: 0;
+      }
 
-            &:last-child {
-                border: none;
-                margin-right: 0;
-                padding-right: 0;
-            }
+      .menu-header:after {
+        padding-left: 8px;
+        font-size: 0.6rem;
+        vertical-align: middle;
+        content: "▼";
+      }
 
-            .menu-header:after {
-                padding-left: 8px;
-                font-size: 0.6em;
-                vertical-align: middle;
-                content: "▼";
-            }
+      .open.menu-header:after {
+        content: "▲";
+      }
 
-            .open.menu-header:after {
-                content: "▲";
-            }
+      .menu {
+        display: none;
 
-            .menu {
-                display: none;
+        z-index: 1;
+        font-size: 1rem;
+        margin-top: 8px;
+        background: white;
+        border: 1px solid $grey-bg;
+        padding: 10px;
+        width: 125px;
+        margin-left: -11px;
 
-                z-index: 1;
-                font-size: 0.8em;
-                margin-top: 8px;
-                background: white;
-                border: 1px solid $grey-bg;
-                padding: 10px;
-                width: 125px;
-                margin-left: -11px;
-
-                a {
-                    color: $grey-fg;
-                }
-            }
-
-            .open .menu {
-                display: block;
-                text-align: left;
-            }
+        a {
+          color: $grey-fg;
         }
+      }
+
+      .open .menu {
+        display: block;
+        text-align: left;
+      }
     }
+  }
 }
 
 .game-container {
-    position: absolute;
-    top: $title-bar-height;
-    bottom: $game-container-bottom;
-    border-bottom: 1px solid #999;
-    width: 100%;
-    min-width: $game-container-min-width;
-    min-height: $game-container-min-height;
+  position: absolute;
+  top: 2*$title-bar-height-sm + $progress-height;
+  @media(min-width: $small-breakpoint) {
+    top: $title-bar-height + $progress-height;
+  }
+  bottom: 0;
+  width: 100%;
+  min-width: $game-container-min-width;
+  min-height: $game-container-min-height;
 
-    .illustration {
-        height: 60px;
-        margin-left: -55%;
-    }
+  .illustration {
+    height: 60px;
+    margin-left: -55%;
+  }
 }
 
 .user-form {
-    display: table;
-    margin: 20px auto;
-    .control-group {
-        margin: 15px 0;
-    }
-    label {
-        display: inline-block;
-        min-width: 130px;
-    }
-    button {
-        float: right;
-    }
+  display: table;
+  margin: 20px auto;
+  .control-group {
+    margin: 15px 0;
+  }
+  label {
+    display: inline-block;
+    min-width: 130px;
+  }
+  button {
+    float: right;
+  }
 
-    .error {
-        max-width: 300px;
-    }
+  .error {
+    max-width: 300px;
+  }
 }
 
 // Elements
 
 
 .slot {
-    margin-left: -33%;
-    height: 60px;
-    width: 100%;
+  margin-left: -33%;
+  height: 60px;
+  width: 100%;
 }
 
 .slot-guess, .slot-truth {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    span {
-        &.incorrect {
-            color: $red;
-        }
-
-        &.correct {
-            // TODO: quick zoom when transitioning to correct
-            color: $green;
-        }
+  span {
+    &.incorrect {
+      color: $red;
     }
+
+    &.correct {
+      // TODO: quick zoom when transitioning to correct
+      color: $green;
+    }
+  }
 }
 
 .slot-guess span:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .words {
-    font-size: 3em;
-    font-family: $excercise-font-family;
-    color: $excercise-font-color;
+  font-size: 3rem;
+  font-family: $excercise-font-family;
+  color: $excercise-font-color;
 }
 
+
 .words-drag {
-    background: $grey-bg;
 
-    .word {
-        &:hover {
-            cursor: pointer;
-        }
+  .word {
+    &:hover {
+      cursor: pointer;
     }
+  }
 
-    .r0 { margin-left: 10%; }
-    .r1 { margin-left: 18%; }
-    .r2 { margin-left: 28%; }
-    .r3 { margin-left: 38%; }
-    .r4 { margin-left: 48%; }
-    .r5 { margin-left: 56%; }
+  .r0 { margin-left: 10%; }
+  .r1 { margin-left: 18%; }
+  .r2 { margin-left: 28%; }
+  .r3 { margin-left: 38%; }
+  .r4 { margin-left: 48%; }
+  .r5 { margin-left: 56%; }
 }
 
 .instructions {
-    background: $grey-bg;
-    font-size: 1.2em;
-    color: $excercise-font-color;
-
+  font-size: 1.6rem;
+  color: $excercise-font-color;
 }
 
 .words-input {
-    margin-top: -20px;
+  margin-top: -30px;
 
-    input {
-        height: auto;
-        margin-left: -33%;
-        border: 0;
-        border-bottom: 2px solid black;
-        font-family: $excercise-font-family;
-        font-size: 3em;
-        outline: none;
+  input {
+    height: auto;
+    margin-left: -25%;
+    
+    border: 0;
+    border-bottom: 2px solid black;
+    font-family: $excercise-font-family;
+    font-size: 2.5rem;
+    outline: none;
 
-        &.incorrect {
-            color: $red;
-        }
-
-        &.correct {
-            // TODO: quick zoom when transitioning to correct
-            color: $green;
-        }
+    @media(min-width: $small-breakpoint) {
+      margin-left: -33%;
     }
+
+    &.incorrect {
+      color: $red;
+    }
+
+    &.correct {
+      // TODO: quick zoom when transitioning to correct
+      color: $green;
+    }
+  }
 }
 
 .modal .content {
-    height: 9.5em;
+  height: 9.5rem;
 }
 
 .goto-next {
-    h1 {
-        font-weight: 600;
-        color: $green;
-    }
+  h1 {
+    font-weight: 600;
+    color: $green;
+  }
 
-    div {
-        font-size: 1.2em;
-    }
+  div {
+    font-size: 1.2rem;
+  }
 
-    a {
-        text-align: center;
-        display: block;
-    }
+  a {
+    text-align: center;
+    display: block;
+  }
 }
 
 .progress-container {
-    position: absolute;
-    bottom: 0;
+  position: relative;
+  margin: 0 30px;
+  height: $progress-height;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .progress {
+    height: 15px;
+    border-radius: 10px;
+  }
+
+  .progress-wrap {
     width: 100%;
-    height: $game-container-bottom;
-    background: white;
-    border-top: 1px solid #999;
+    background: #ddd;
+    overflow: hidden;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .progress-bar {
+      position: relative;
+      left: 0;
+      top: 0;
+      width: 0;
 
-    .progress {
-        height: 25px;
-        border-radius: 10px;
+      background: lighten($green, 10%);
     }
-
-    .progress-wrap {
-
-        width: 100%;
-        background: #ddd;
-        overflow: hidden;
-
-        .progress-bar {
-            position: relative;
-            left: 0;
-            top: 0;
-            width: 0;
-
-            background: lighten($green, 10%);
-        }
-    }
+  }
 }
 
 .overview {
 
-    background: $grey-bg;
+  background: $grey-bg;
 
-    .alert {
-        padding: 1.5em 8.333% 1.5em 8.333%;
-        background: $alert-blue;
-
-        a {
-            text-decoration: underline;
-        }
-    }
-
-    .groups {
-        padding-left: 8.333%;
-        padding-right: 8.333%;
-        background: white;
-        padding-top: 2em;
-    }
+  .alert {
+    padding: 1.5rem 30px 1.5rem 30px;
+    background: $alert-blue;
 
     a {
-        color: #333;
-        text-decoration: none;
+      text-decoration: underline;
+    }
+  }
+
+  .groups {
+    padding-left: 30px;
+    padding-right: 30px;
+    background: white;
+    padding-top: 2rem;
+  }
+
+  a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  .title-bar a {
+    color: white;
+  }
+
+  .group {
+    padding-right: 12px;
+    display: flex;
+    align-items: center;
+    height: 10rem;
+    color: #333;
+    margin-bottom: 4rem;
+
+    .index {
+      text-align: center;
+      height: 4rem;
+      width: 4rem;
+      line-height: 4rem;
+      background: $grey-bg;
+      border-radius: 3px;
+      z-index: 1;
     }
 
-    .title-bar a {
-        color: white;
+    .todo {
+      background: $grey-bg;
     }
 
-    .group {
-        padding-right: 12px;
-        display: flex;
-        align-items: center;
-        height: 10em;
-        color: #333;
-        margin-bottom: 4em;
-
-        .index {
-            text-align: center;
-            height: 2.5em;
-            width: 2.5em;
-            line-height: 2.5em;
-            background: $grey-bg;
-            border-radius: 3px;
-            z-index: 1;
-        }
-
-        .todo {
-            background: $grey-bg;
-        }
-
-        .done {
-            background: lighten($green, 10%);
-            color: white;
-        }
-
-        .illustration {
-            height: 12em;
-        }
-
-        .description {
-            display: flex;
-            align-items: center;
-        }
-
-        &:hover {
-            .todo {
-                box-shadow: inset 0 0 0 20rem darken($grey-bg, 5%);
-            }
-            .done {
-                box-shadow: inset 0 0 0 20rem lighten($green, 5%);
-            }
-        }
-
-        &:active {
-            .todo {
-                box-shadow: inset 0 0 0 20rem darken($grey-bg, 7%);
-            }
-            .done {
-                box-shadow: inset 0 0 0 20rem lighten($green, 3%);
-            }
-        }
+    .done {
+      background: lighten($green, 10%);
+      color: white;
     }
 
-    .footer {
-        color: #666;
-        background: $grey-bg;
-        padding-bottom: 40px;
-
-        ul {
-            margin: 0;
-            padding-left: 0;
-            list-style-type: none;
-
-            li {
-                display: inline-block;
-                padding-right: 10px;
-                margin-right: 10px;
-                border-right: 1px solid #666;
-
-                &:last-child {
-                    border: none;
-                }
-            }
-        }
+    .illustration {
+      height: 12rem;
     }
+
+    .description {
+      display: flex;
+      align-items: center;
+    }
+
+    &:hover {
+      .todo {
+        box-shadow: inset 0 0 0 20rem darken($grey-bg, 5%);
+      }
+      .done {
+        box-shadow: inset 0 0 0 20rem lighten($green, 5%);
+      }
+    }
+
+    &:active {
+      .todo {
+        box-shadow: inset 0 0 0 20rem darken($grey-bg, 7%);
+      }
+      .done {
+        box-shadow: inset 0 0 0 20rem lighten($green, 3%);
+      }
+    }
+  }
+
+  .footer {
+    color: #666;
+    background: $grey-bg;
+    padding: 20px 30px;
+
+    ul {
+      margin: 0;
+      padding-left: 0;
+      list-style-type: none;
+
+      li {
+        display: inline-block;
+        padding-right: 10px;
+        margin-right: 10px;
+        border-right: 1px solid #666;
+
+        &:last-child {
+          border: none;
+        }
+      }
+    }
+  }
 }
 
 .about {
-    padding-left: 8.333%;
-    padding-right: 8.333%;
-    background: white;
+  padding: 0 30px;
 
-    a {
-        text-decoration: underline;
-    }
+  a {
+    text-decoration: underline;
+  }
 }
 
 @media (min-width: $large-breakpoint-2) {
-    .words {
-        font-size: 5em;
-    }
+  .words {
+    font-size: 5rem;
+  }
 
-    .words-input input {
-        font-size: 5em;
-    }
+  .words-input input {
+    font-size: 5rem;
+  }
 }
 
 @media (min-width: $large-breakpoint-3) {
-    .words {
-        font-size: 6em;
-    }
+  .words {
+    font-size: 6rem;
+  }
 
-    .words-input input {
-        font-size: 6em;
-    }
+  .words-input input {
+    font-size: 6rem;
+  }
 }

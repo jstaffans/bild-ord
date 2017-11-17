@@ -42,16 +42,14 @@
         (for [i (range 0 22)]
           (group db current-user i))]]
       [:div.clearfix
-       [:div.col.col-1.p2.footer]
-       [:div.col.col-10.py2.footer
+       [:div.col.col-12.py2.footer
         [:ul.left
          [:li
           [:a {:href "/bild_ord.pdf"} "Översiktsblankett"]]
          [:li
           [:a {:href "/om"} "Om bild och ord"]]]
         [:div.flex.fit [:div.flex-auto ""]
-         [:div "© 2016 Kjell Staffans"]]]
-       [:div.col.col-1.p2.footer]]]
+         [:div "© 2016-2017 Kjell Staffans"]]]]]
 
      {:class "overview"})))
 

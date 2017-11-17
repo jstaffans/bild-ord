@@ -23,6 +23,7 @@
     [:head
      [:title (or (:title options) "Bild och ord")]
      [:link {:rel "apple-touch-icon-precomposed" :href "/favicon-152.png"}]
+     [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
      (include-css "/css/base.css")
      (include-css
       (versioned-resource "/css/main.css"))
@@ -42,19 +43,17 @@
   "Top title bar"
   []
   [:nav.clearfix.title-bar
-   [:div.col.col-1]
-   [:div.col.col-11
+   [:div.col.col-12
     [:a.h1 {:href "/"} "Bild och ord"]]])
 
 (defn title-bar-with-actions
   "Title bar that includes actions, such as login/logout"
   [id]
   [:nav.clearfix.title-bar
-   [:div.col.col-1]
-   [:div.col.col-3
+   [:div.col.col-6
     [:a.h1 {:href "/"} "Bild och ord"]]
-   [:div.col.col-7
-    [:ul.right.actions
+   [:div.col.col-6
+    [:ul.actions
      [:li [:a {:href "http://www.kjellstaffans.fi/material/bild-och-ord-pa-natet/"} "Instruktioner"]]
      [:li
       (if id
@@ -62,8 +61,7 @@
          [:div.absolute.menu
           [:a {:href "/logout" } "Logga ut"]]]
         [:div
-         [:a {:href "/login"} "Logga in"]])]]]
-   [:div.col.col-1]])
+         [:a {:href "/login"} "Logga in"]])]]]])
 
 (defn session-id
   [request]

@@ -11,14 +11,20 @@ $green: #009e3c;
 $red: #e4133a;
 $link: #275427;
 
+
 $alert-blue: rgb(215, 243, 255);
 
-$title-bar-height: 58px;
-
-$game-container-min-width: 960px;
+$game-container-min-width: 768px;
 $game-container-min-height: 500px;
-$game-container-bottom: 65px;
+
+$progress-height: 60px;
+
+$small-breakpoint: 40em;
 
 $large-breakpoint-1: 1400px;
 $large-breakpoint-2: 1900px;
 $large-breakpoint-3: 2400px;
+
+$title-bar-height-sm: 52px;
+$title-bar-height: 58px;
+

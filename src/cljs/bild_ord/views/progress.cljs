@@ -19,7 +19,7 @@
   (reagent/create-class
    {:reagent-render (fn []
                       [:div.progress-container
-                       [:div.mx4.progress.progress-wrap
+                       [:div.progress.progress-wrap
                         [:div.progress.progress-bar]]])
 
     :display-name "progress"
