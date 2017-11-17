@@ -70,6 +70,8 @@ in a background terminal screen:
 lein scss :dev auto
 ```
 
+The `sassc` utility needs to be installed.
+
 ### Testing
 
 Testing is fastest through the REPL, as you avoid environment startup
