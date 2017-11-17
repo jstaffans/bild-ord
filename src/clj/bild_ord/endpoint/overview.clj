@@ -33,16 +33,18 @@
       (title-bar-with-actions current-user)
       [:div.clearfix
        (when (not current-user)
-         [:div.alert
-          [:a {:href "/login"} "Logga in"]
-          " eller "
-          [:a {:href "/bild_ord.pdf" :target "_blank"} "skriv ut en översiktsblankett"]
-          " för att hålla koll på vilka övningar du redan gjort."])
-       [:div.col.col-12.groups.flex.flex-wrap.justify-between
-        (for [i (range 0 22)]
-          (group db current-user i))]]
-      [:div.clearfix
-       [:div.col.col-12.py2.footer
+         [:div.alert-container
+          [:div.alert
+           [:a {:href "/login"} "Logga in"]
+           " eller "
+           [:a {:href "/bild_ord.pdf" :target "_blank"} "skriv ut en översiktsblankett"]
+           " för att hålla koll på vilka övningar du redan gjort."]])
+       [:div.groups-container
+        [:div.groups.flex.flex-wrap.justify-between
+         (for [i (range 0 22)]
+           (group db current-user i))]]]
+      [:div.footer-container
+       [:div.footer
         [:ul.left
          [:li
           [:a {:href "/bild_ord.pdf"} "Översiktsblankett"]]

@@ -32,9 +32,15 @@ a, a:active, a:visited {
 
 // Sections
 
+.title-bar-container {
+  background: $dark-bg;
+}
+
 .title-bar {
   background: $dark-bg;
   height: $title-bar-height-sm;
+  max-width: $content-max-width;
+  margin: 0 auto;
   padding: 0 30px;
 
   @media(min-width: $small-breakpoint) {
@@ -112,14 +118,18 @@ a, a:active, a:visited {
 
 .game-container {
   position: absolute;
-  top: 2*$title-bar-height-sm + $progress-height;
+  top: $title-bar-height-sm + $progress-height;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: $content-max-width;
+  transform: translateX(-48%);
+  min-height: $game-container-min-height;
+
   @media(min-width: $small-breakpoint) {
     top: $title-bar-height + $progress-height;
   }
-  bottom: 0;
-  width: 100%;
-  min-width: $game-container-min-width;
-  min-height: $game-container-min-height;
 
   .illustration {
     height: 60px;
@@ -200,7 +210,7 @@ a, a:active, a:visited {
 }
 
 .instructions {
-  font-size: 1.6rem;
+  font-size: 1.33rem;
   color: $excercise-font-color;
 }
 
@@ -213,11 +223,12 @@ a, a:active, a:visited {
     border: 0;
     border-bottom: 2px solid black;
     font-family: $excercise-font-family;
-    font-size: 2.5rem;
+    font-size: 1.33rem;
     outline: none;
 
     @media(min-width: $small-breakpoint) {
       margin-left: -33%;
+      font-size: 2rem;
     }
 
     &.incorrect {
@@ -252,9 +263,10 @@ a, a:active, a:visited {
 }
 
 .progress-container {
-  position: relative;
-  margin: 0 30px;
   height: $progress-height;
+  max-width: $content-max-width;
+  padding: 0 30px;
+  margin: 0 auto;
 
   display: flex;
   align-items: center;
@@ -285,7 +297,13 @@ a, a:active, a:visited {
 
   background: $grey-bg;
 
+  .alert-container {
+    background: $alert-blue;
+  }
+  
   .alert {
+    max-width: $content-max-width;
+    margin: 0 auto;
     padding: 1.5rem 30px 1.5rem 30px;
     background: $alert-blue;
 
@@ -294,11 +312,15 @@ a, a:active, a:visited {
     }
   }
 
-  .groups {
-    padding-left: 30px;
-    padding-right: 30px;
+  .groups-container {
     background: white;
-    padding-top: 2rem;
+  }
+
+  .groups {
+    max-width: $content-max-width;
+    margin: 0 auto;
+    padding: 2rem 30px;
+    background: white;
   }
 
   a {
@@ -365,9 +387,15 @@ a, a:active, a:visited {
     }
   }
 
+  .footer-container {
+    background: $grey-bg;
+  }
+
   .footer {
     color: #666;
     background: $grey-bg;
+    max-width: $content-max-width;
+    margin: 0 auto;
     padding: 20px 30px;
 
     ul {

@@ -49,7 +49,7 @@
 (defn title-bar-with-actions
   "Title bar that includes actions, such as login/logout"
   [id]
-  [:nav
+  [:nav.title-bar-container
    [:div.title-bar.flex.justify-between.items-center
     [:a.h1 {:href "/"} "Bild och ord"]
     [:ul.actions
