@@ -49,10 +49,9 @@
 (defn title-bar-with-actions
   "Title bar that includes actions, such as login/logout"
   [id]
-  [:nav.clearfix.title-bar
-   [:div.col.col-6
-    [:a.h1 {:href "/"} "Bild och ord"]]
-   [:div.col.col-6
+  [:nav
+   [:div.title-bar.flex.justify-between.items-center
+    [:a.h1 {:href "/"} "Bild och ord"]
     [:ul.actions
      [:li [:a {:href "http://www.kjellstaffans.fi/material/bild-och-ord-pa-natet/"} "Instruktioner"]]
      [:li

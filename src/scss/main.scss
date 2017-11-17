@@ -35,7 +35,7 @@ a, a:active, a:visited {
 .title-bar {
   background: $dark-bg;
   height: $title-bar-height-sm;
-  padding-left: 30px;
+  padding: 0 30px;
 
   @media(min-width: $small-breakpoint) {
     height: $title-bar-height;
@@ -46,19 +46,12 @@ a, a:active, a:visited {
     text-decoration: none;
   }
 
-  div {
-    padding: 8px 0;
-  }
-
   .actions {
     color: white;
     font-size: 1rem;
     cursor: pointer;
-    margin: 0;
     list-style-type: none;
-    padding-left: 0;
     text-align: right;
-    margin-right: 30px;
 
     @media(min-width: $small-breakpoint) {
       font-size: 1.3rem;
@@ -217,7 +210,6 @@ a, a:active, a:visited {
   input {
     height: auto;
     margin-left: -25%;
-    
     border: 0;
     border-bottom: 2px solid black;
     font-family: $excercise-font-family;
