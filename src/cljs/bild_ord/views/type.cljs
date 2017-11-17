@@ -17,7 +17,7 @@
              :type         "text"
              :autoComplete "off"
              :value        guess
-             :on-change    #(dispatch [:guess-word index (-> % .-target .-value)])}]]])
+             :on-change    #(dispatch [:guess-word index (-> % .-target .-value clojure.string/lower-case)])}]]])
 
 (defn inputs
   []
