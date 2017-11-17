@@ -34,6 +34,7 @@
      body
      (include-js
       (versioned-resource "/js/main.js"))
+     (include-js "/lib/jquery.ui.touch-punch.min.js")
      (when (:cljs-main options)
        [:script (str (:cljs-main options) "();")])])))
 
