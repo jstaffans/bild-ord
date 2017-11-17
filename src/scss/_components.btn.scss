@@ -4,41 +4,41 @@ $darken-2: darken($btn-color, 4%);
 $darken-3: darken($btn-color, 5%);
 
 .btn {
-    font-family: inherit;
-    font-size: 1em;
-    line-height: 1.8em;
-    height: auto;
-    vertical-align: middle;
-    font-weight: 600;
-    text-decoration: none;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    cursor: pointer;
-    display: inline-block;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.8rem;
+  height: auto;
+  vertical-align: middle;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .btn:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.btn-primary {
-    color: white;
-    background-color: $btn-color;
+.btn-primary, btn-primary {
+  color: white !important;
+  background-color: $btn-color;
 }
 
 .btn-primary:hover {
-    box-shadow: inset 0 0 0 20rem $darken-1;
+  box-shadow: inset 0 0 0 20rem $darken-1;
 
 }
 
 .btn-primary:active {
-    box-shadow: inset 0 0 0 20rem $darken-3 ,
-    inset 0 3px 4px 0 ,
-    0 0 1px $darken-2;
+  box-shadow: inset 0 0 0 20rem $darken-3 ,
+  inset 0 3px 4px 0 ,
+  0 0 1px $darken-2;
 
 }
 
 .btn-primary:disabled,
 .btn-primary.is-disabled {
-    opacity: .5;
+  opacity: .5;
 }
