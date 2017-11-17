@@ -215,7 +215,7 @@ a, a:active, a:visited {
 }
 
 .words-input {
-  margin-top: -30px;
+  margin-top: -3rem;
 
   input {
     height: auto;
@@ -223,12 +223,12 @@ a, a:active, a:visited {
     border: 0;
     border-bottom: 2px solid black;
     font-family: $excercise-font-family;
-    font-size: 1.33rem;
+    font-size: 1.5rem;
     outline: none;
 
     @media(min-width: $small-breakpoint) {
       margin-left: -33%;
-      font-size: 2rem;
+      font-size: 3rem;
     }
 
     &.incorrect {

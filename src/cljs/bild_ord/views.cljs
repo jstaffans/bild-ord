@@ -43,20 +43,21 @@
         current-progress (subscribe [:progress])]
     (fn []
       [:div
-       (conj
-        (condp = @stage
-          :drag (conj
-                 (container @group)
-                 [drag/slots]
-                 [drag/instructions-and-pile]
-                 (when @success? (goto-type @group @stage)))
-          :hint (conj
-                 (container @group)
-                 [hint/truths @group]
-                 [hint/instructions @group])
-          :type (conj
-                 (container @group)
-                 [type/inputs]
-                 [type/instructions @group]
-                 (when @success? (goto-done @group)))))
-       [progress/progress {:percent @current-progress}]])))
+       (when @success?
+         (condp = @stage
+           :drag (goto-type @group @stage)
+           :type (goto-done @group)))
+       [progress/progress {:percent @current-progress}]
+       (condp = @stage
+         :drag (conj
+                (container @group)
+                [drag/slots]
+                [drag/instructions-and-pile])
+         :hint (conj
+                (container @group)
+                [hint/truths @group]
+                [hint/instructions @group])
+         :type (conj
+                (container @group)
+                [type/inputs]
+                [type/instructions @group]))])))
