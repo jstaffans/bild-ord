@@ -1,4 +1,4 @@
-(defproject bild-ord "0.1.0-SNAPSHOT"
+(defproject bild-ord "0.1.1-SNAPSHOT"
   :description "Swedish-language word game"
   :url "http://bildord.kjellstaffans.fi"
   :min-lein-version "2.0.0"
