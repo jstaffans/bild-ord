@@ -41,26 +41,26 @@
 
 (defn title-bar
   "Top title bar"
-  []
-  [:nav.clearfix.title-bar
-   [:div.col.col-12
-    [:a.h1 {:href "/"} "Bild och ord"]]])
+  ([] (title-bar nil))
+  ([actions]
+   [:nav.title-bar-container
+    [:div.title-bar.flex.justify-between.items-center
+     [:a.h1 {:href "/"} "Bild och ord"]
+     actions]]))
 
 (defn title-bar-with-actions
   "Title bar that includes actions, such as login/logout"
   [id]
-  [:nav.title-bar-container
-   [:div.title-bar.flex.justify-between.items-center
-    [:a.h1 {:href "/"} "Bild och ord"]
-    [:ul.actions
-     [:li [:a {:href "http://www.kjellstaffans.fi/material/bild-och-ord-pa-natet/"} "Instruktioner"]]
-     [:li
-      (if id
-        [:div.menu-header {:id "menu-header"} id
-         [:div.absolute.menu
-          [:a {:href "/logout" } "Logga ut"]]]
-        [:div
-         [:a {:href "/login"} "Logga in"]])]]]])
+  (title-bar
+   [:ul.actions
+    [:li [:a {:href "http://www.kjellstaffans.fi/material/bild-och-ord-pa-natet/"} "Instruktioner"]]
+    [:li
+     (if id
+       [:div.menu-header {:id "menu-header"} id
+        [:div.absolute.menu
+         [:a {:href "/logout" } "Logga ut"]]]
+       [:div
+        [:a {:href "/login"} "Logga in"]])]]))
 
 (defn session-id
   [request]
