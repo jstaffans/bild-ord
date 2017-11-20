@@ -215,7 +215,7 @@ a, a:active, a:visited {
 }
 
 .words-input {
-  margin-top: -3rem;
+  margin-top: -2.5rem;
 
   input {
     height: auto;
@@ -286,9 +286,18 @@ a, a:active, a:visited {
       position: relative;
       left: 0;
       top: 0;
-      width: 0;
 
       background: lighten($green, 10%);
+
+      width: 0;
+ 
+      @for $i from 1 through 10 {
+        &.percent-#{$i*10} {
+          width: $i*10%;
+        }
+      }
+
+      transition: width ease-in-out 0.3s;
     }
   }
 }
@@ -300,7 +309,7 @@ a, a:active, a:visited {
   .alert-container {
     background: $alert-blue;
   }
-  
+
   .alert {
     max-width: $content-max-width;
     margin: 0 auto;
