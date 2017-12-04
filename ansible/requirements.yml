@@ -1,6 +1,6 @@
-- src: jdauphant.nginx
-  path: roles/
 - src: franklinkim.environment
+  path: roles/
+- src: jdauphant.nginx
   path: roles/
 - src: geerlingguy.firewall
   path: roles/

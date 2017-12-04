@@ -15,35 +15,36 @@
       environment_config:
         PORT: 8080
         GA_TOKEN: "{{ ga_token }}"
-    - role: jdauphant.nginx
-      nginx_http_params:
-        - access_log "/var/log/nginx/access.log"
-      nginx_sites:
-        default:
-          - listen 80
-          - server_name _
-          - location /dashboard {
-              alias /srv/dashboard;
-            }
-          - location ~* (?!dashboard)/\.(?:jpg|jpeg|gif|png|ico|svg|css|js)$ {
-              access_log off;
-              expires max;
-              proxy_pass       http://localhost:8080;
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header Host $http_host;
-            }
-          - location / {
-              proxy_pass       http://localhost:8080;
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header Host $http_host; 
-            }
-    - role: geerlingguy.firewall
-      firewall_allowed_tcp_ports:
-        - "22"
-        - "80"
-    - role: tersmitten.fail2ban
+    # moved to general droplet configuration
+    # - role: jdauphant.nginx
+    #   nginx_http_params:
+    #     - access_log "/var/log/nginx/access.log"
+    #   nginx_sites:
+    #     default:
+    #       - listen 80
+    #       - server_name _
+    #       - location /dashboard {
+    #           alias /srv/dashboard;
+    #         }
+    #       - location ~* (?!dashboard)/\.(?:jpg|jpeg|gif|png|ico|svg|css|js)$ {
+    #           access_log off;
+    #           expires max;
+    #           proxy_pass       http://localhost:8080;
+    #           proxy_set_header X-Real-IP $remote_addr;
+    #           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    #           proxy_set_header Host $http_host;
+    #         }
+    #       - location / {
+    #           proxy_pass       http://localhost:8080;
+    #           proxy_set_header X-Real-IP $remote_addr;
+    #           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    #           proxy_set_header Host $http_host; 
+    #         }
+    # - role: geerlingguy.firewall
+    #   firewall_allowed_tcp_ports:
+    #     - "22"
+    #     - "80"
+    # - role: tersmitten.fail2ban
   handlers:
     - name: restart app server
       service: name=bild-ord state=restarted
